@@ -19,22 +19,25 @@ public enum IntricationMode
 public struct IntricationGroup
 {
     public IntricationMode mode;
-    int[] diceIndex;
+    public int[] diceIndex;
 }
 
 public class DiceManager : MonoBehaviour
 {
+    public static DiceManager instance;
     public LevelConfig config;
     public DiceState[] dice;
     public IntricationGroup[] intricationGroups;
     public System.Action diceRollDelegate;
 
-    public void Start()
+    public void Awake()
     {
+        instance = this;
         dice = new DiceState[config.diceCount];
         for(int i=0; i<config.diceCount; i++)
             dice[i].value = 0;
     }
+    
     public void RollDice(int diceIndex)
     {
         dice[diceIndex].value = Random.Range(1, 7);
