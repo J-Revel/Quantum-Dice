@@ -26,9 +26,11 @@ public class DiceManager : MonoBehaviour
 {
     public DiceState[] dice;
     public IntricationGroup[] intricationGroups;
+    public System.Action diceRollDelegate;
 
     public void RollDice(int diceIndex)
     {
         dice[diceIndex].value = Random.Range(1, 7);
+        diceRollDelegate?.Invoke();
     }
 }
