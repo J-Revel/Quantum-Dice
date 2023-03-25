@@ -10,9 +10,9 @@ public struct DiceState
 
 public enum IntricationMode
 {
-    Gregarious,
-    Opposite,
-    Selfish,
+    Gregarious, // same value
+    Opposite, // 2 dice only => Opposite values : result sum = 7 (1-6, 2-5, 3-4)
+    Selfish, // All values are different
 }
 
 [System.Serializable]
