@@ -53,72 +53,65 @@ public class DiceManager : MonoBehaviour
             //verifier s'il est contenue dans la liste diceIndex
             Debug.Log($"Groupe {i} !");
 
-            if (Array.IndexOf(dicesIndex, diceIndex) != -1)
+            string dicesIndexRes = "List dicesIndex before: ";
+            foreach (var item in dicesIndex)
             {
-                Debug.Log($"Dés {diceIndex} appartient au groupe {i}");
-                
-                string dicesIndex1 = "List dicesIndex before: ";
-                foreach (var item in dicesIndex)
-                {
-                    dicesIndex1 += item.ToString() + ", ";
-                }
-                Debug.Log(dicesIndex1);
+                dicesIndexRes += item.ToString() + ", ";
+            }
+            Debug.Log(dicesIndexRes);
 
+            if (Array.IndexOf(dicesIndex, diceIndex) != -1)
+            {               
                 int[] dicesIndexCopy = dicesIndex.Except(new int[] { diceIndex }).ToArray();
 
-                string dicesIndex2 = "List dicesIndexCopy before: ";
-                foreach (var item in dicesIndexCopy)
+                string result1 = "List valuesPossible before: ";
+                foreach (var item in valuesPossible)
                 {
-                    dicesIndex2 += item.ToString() + ", ";
+                    result1 += item.ToString() + ", ";
                 }
-                Debug.Log(dicesIndex2);
+                Debug.Log(result1);
 
                 if (intricationGroups[i].mode == IntricationMode.Selfish)
                 {
+                    Debug.Log("selfish");
                     for (int k = 0; k < dicesIndexCopy.Length; k++)
                     {
-                        valuesPossible.Remove(k);
+                        valuesPossible.Remove(dice[dicesIndexCopy[k]].value);
                     }
                 }
-
                 if (intricationGroups[i].mode == IntricationMode.Gregarious)
                 {
-                    Debug.Log($"group Greagrious");
-                    string result1 = "List valuesPossible before: ";
-                    foreach (var item in valuesPossible)
-                    {
-                        result1 += item.ToString() + ", ";
-                    }
-                    Debug.Log(result1);
-
+                    Debug.Log($"Greagrious");
+                   
                     for (int k = 0; k < dicesIndexCopy.Length; k++) // a achanger pour une boucle while
                     {
-                        //Debug.Log($"dicesIndexCopy[{k}] = {dicesIndexCopy[k]}");
                         if(dice[dicesIndexCopy[k]].value != 0)
                         {
                             valuesPossible = new List<int> { dice[dicesIndexCopy[k]].value };
                         }
                     }
-
-                    string result2 = "List valuesPossible after: ";
-                    foreach (var item in valuesPossible)
-                    {
-                        result2 += item.ToString() + ", ";
-                    }
-                    Debug.Log(result2);
-                    //Debug.Log(valuesPossible);
                 }
                 if (intricationGroups[i].mode == IntricationMode.Opposite)
                 {
-                    Debug.Log($"group Opposite");
+                    Debug.Log($"Opposite");
 
                     for (int k = 0; k < dicesIndexCopy.Length; k++)
                     {
-                        int tmp = 7 - dicesIndexCopy[k];
+                        if (dice[dicesIndexCopy[k]].value != 0)
+                        {
+                            int tmp = 7 - dice[dicesIndexCopy[k]].value;
                             valuesPossible = new List<int> { tmp };
+                        }
                     }
                 }
             }
+
+            string result2 = "List valuesPossible after: ";
+            foreach (var item in valuesPossible)
+            {
+                result2 += item.ToString() + ", ";
+            }
+            Debug.Log(result2);
         }
         System.Random random = new System.Random();
         int index = random.Next(valuesPossible.Count);/**/
