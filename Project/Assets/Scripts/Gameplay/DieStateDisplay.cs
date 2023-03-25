@@ -15,7 +15,7 @@ public class DieStateDisplay : MonoBehaviour
     public List<IntricationMode> intrications = new List<IntricationMode>();
     public DieEntanglementEffectConfig[] effects;
     public string shaderColorParam = "_FXColor";
-    public Renderer renderer;
+    public new Renderer renderer;
     private MaterialPropertyBlock propertyBlock;
 
     private float effectTime = 0;
@@ -32,7 +32,8 @@ public class DieStateDisplay : MonoBehaviour
         for(int i=0; i<effects.Length; i++)
         {
             bool effectActive = intrications.Contains(effects[i].entanglementMode);
-            effects[i].particleEffects.SetActive(effectActive);
+            if(effects[i].particleEffects != null)
+                effects[i].particleEffects.SetActive(effectActive);
             if(effectActive)
             {
                 activeColors.Add(effects[i].shaderColor);
@@ -46,5 +47,6 @@ public class DieStateDisplay : MonoBehaviour
         propertyBlock.SetColor(shaderColorParam, currentColor);
         
         renderer.SetPropertyBlock(propertyBlock);
+        effectTime += Time.deltaTime;
     }
 }

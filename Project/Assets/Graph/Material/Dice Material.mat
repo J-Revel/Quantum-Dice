@@ -21,9 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Dice Material
-  m_Shader: {fileID: -6465566751694194690, guid: 2df9f537b283d2b4884d0cd0e90a79aa, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
+  m_Shader: {fileID: -6465566751694194690, guid: dc15b19f58e7dce408da0c8f21d1ca0b, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 6
@@ -32,7 +30,6 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -98,7 +95,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 1
+    - _Alpha: 0
     - _AlphaClip: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
@@ -112,7 +109,7 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _Fresnel_Thickness: 5
+    - _Fresnel_Thickness: 1.64
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossinessSource: 0
@@ -141,5 +138,6 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color_Glow: {r: 0.38823527, g: 0.8235294, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FXColor: {r: 0.8018868, g: 0, b: 0.1566904, a: 1}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
   m_BuildTextureStacks: []
