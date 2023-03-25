@@ -7,7 +7,12 @@ using UnityEngine;
 [System.Serializable]
 public struct DiceState
 {
+    public int id; // a supprimer
     public int value; // 0 = not rolled, 1->6 = face visible
+    
+    List<int> valuePossible;
+    List<int> indexNeighbor;
+    
 }
 
 public enum IntricationMode
@@ -24,6 +29,90 @@ public struct IntricationGroup
     public int[] diceIndex;
 }
 
+
+public class GraphNode
+{
+    public DiceState state;
+    public List<(GraphNode, IntricationMode)> neighbors;
+
+    public GraphNode(DiceState state)
+    {
+        this.state = state;
+        neighbors = new List<(GraphNode, IntricationMode)>();
+    }
+}
+
+public class Graph
+{
+    public List<GraphNode> nodes;
+
+    public Graph()
+    {
+        nodes = new List<GraphNode>();
+
+        DiceState des0 = new DiceState();
+        des0.value = 0; // non lancé
+        des0.id = 0; // non lancé
+
+        DiceState des1 = new DiceState();
+        des1.value = 0; // non lancé
+        des1.id = 1; // non lancé
+
+        DiceState des2 = new DiceState();
+        des2.id = 2; // non lancé
+        des2.value = 0; // non lancé
+
+        DiceState des3 = new DiceState();
+        des3.id = 3; // non lancé
+        des3.value = 0; // non lancé
+        
+        GraphNode node0 = new GraphNode(des0);
+        GraphNode node1 = new GraphNode(des1);
+        GraphNode node2 = new GraphNode(des2);
+        GraphNode node3 = new GraphNode(des3);
+
+        // Ajouter les voisins de chaque noeud
+        node0.neighbors.Add((node1, IntricationMode.Selfish));
+        node0.neighbors.Add((node2, IntricationMode.Selfish));
+        node0.neighbors.Add((node2, IntricationMode.Opposite));
+
+        node1.neighbors.Add((node0, IntricationMode.Selfish));
+        node1.neighbors.Add((node2, IntricationMode.Selfish));
+        node1.neighbors.Add((node3, IntricationMode.Gregarious));
+
+        node2.neighbors.Add((node0, IntricationMode.Selfish));
+        node2.neighbors.Add((node0, IntricationMode.Opposite));
+        node2.neighbors.Add((node1, IntricationMode.Selfish));
+
+        node3.neighbors.Add((node1, IntricationMode.Gregarious));
+
+        // Ajouter les nœuds à la liste de nœuds du graphe
+        nodes.Add(node0);
+        nodes.Add(node1);
+        nodes.Add(node2);
+        nodes.Add(node3);
+
+        //Debug.Log(nodes);
+    }
+    public void PrintGraph()
+    {
+        foreach (GraphNode node in nodes)
+        {
+            Debug.Log("Node state: dé" + node.state.id);
+            Debug.Log("Neighbors: ");
+            foreach ((GraphNode neighbor, IntricationMode mode) in node.neighbors)
+            {
+                Debug.Log("->(dé "+neighbor.state.id + " with mode " + mode.ToString()+")");
+            }
+            Debug.Log("--------------------------------------");
+        }
+    }
+}
+
+
+
+
+
 public class DiceManager : MonoBehaviour
 {
     public static DiceManager instance;
@@ -31,6 +120,16 @@ public class DiceManager : MonoBehaviour
     public DiceState[] dice;
     public IntricationGroup[] intricationGroups;
     public System.Action diceRollDelegate;
+    Graph graphDice;
+
+    public void Start()
+    {
+        graphDice = new Graph();
+        //PrintGraph(graphDice);
+        graphDice.PrintGraph();
+        Debug.Log($"GapheDice.nodes.Count() = {graphDice.nodes.Count()}");
+
+    }
 
     public void Awake()
     {
@@ -39,12 +138,11 @@ public class DiceManager : MonoBehaviour
         for(int i=0; i<config.diceCount; i++)
             dice[i].value = 0;
     }
-    
+
     public void RollDice(int diceIndex)
     {
         List<int> valuesPossible = new List<int> { 1, 2, 3, 4, 5, 6 };
         Debug.Log($"Lancer du dés {diceIndex} !");
-        //parcourir l'ensemble des groupe d'intrication
     
         for (int i = 0; i < intricationGroups.Length; i++ )
         {
@@ -105,18 +203,10 @@ public class DiceManager : MonoBehaviour
                     }
                 }
             }
-
-            string result2 = "List valuesPossible after: ";
-            foreach (var item in valuesPossible)
-            {
-                result2 += item.ToString() + ", ";
-            }
-            Debug.Log(result2);
         }
         System.Random random = new System.Random();
-        int index = random.Next(valuesPossible.Count);/**/
+        int index = random.Next(valuesPossible.Count);
 
-        //int indexValue = System.Random Range(0, valuesPossible.Count);
         dice[diceIndex].value = valuesPossible[index];
 
         diceRollDelegate?.Invoke();
