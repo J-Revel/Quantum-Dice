@@ -46,7 +46,9 @@ public class MouseInput : MonoBehaviour
                 {
                     StopCoroutine(coroutines[hoverDie]);
                 }
-                coroutines[hoverDie] = StartCoroutine(ReplayAnimCoroutine(hoverDie, storedPositions, storedRotations, 1));
+                DiceManager.instance.RollDice(hoverDie.dieIndex);
+                int targetValue = DiceManager.instance.dice[hoverDie.dieIndex].value-1;
+                coroutines[hoverDie] = StartCoroutine(ReplayAnimCoroutine(hoverDie, storedPositions, storedRotations, targetValue));
 
                 hoverDie = null;
                 Physics.autoSimulation = true;
@@ -97,19 +99,34 @@ public class MouseInput : MonoBehaviour
         die.rigidbody.velocity = Vector3.zero;
         die.rigidbody.angularVelocity = Vector3.zero;
         Vector3 targetNormal = RollableDie.faceNormals[targetValue];
-        Quaternion rotationOffset = Quaternion.FromToRotation(storedRotations[storedRotations.Length - 1] * targetNormal, Vector3.up);
+        Quaternion targetRotation = storedRotations[storedRotations.Length - 1];
+        Quaternion rotationOffset = Quaternion.FromToRotation(Quaternion.Inverse(targetRotation) * Vector3.up, targetNormal);
+        if((targetRotation * rotationOffset * targetNormal).y < 0)
+        {
+            Vector3 rotAxis;
+            float rotAngle;
+            rotationOffset.ToAngleAxis(out rotAngle, out rotAxis);
+            rotationOffset *= Quaternion.AngleAxis(180, rotAxis);
+        }
 
         for(float time=0; time < storedPositions.Length * Time.fixedDeltaTime; time += Time.deltaTime)
         {
             int stepIndex = Mathf.FloorToInt(time / Time.fixedDeltaTime);
             die.transform.position = storedPositions[stepIndex];
             float lerpRatio = Mathf.Clamp01(time / 0.3f);
-            die.transform.rotation = Quaternion.Lerp(Quaternion.identity, rotationOffset, lerpRatio) * storedRotations[stepIndex];
+            die.transform.rotation = storedRotations[stepIndex] * Quaternion.Lerp(Quaternion.identity, rotationOffset, 1 - (1-lerpRatio) * (1-lerpRatio));
             yield return null;
         }
+        yield return null;
         int lastIndex = storedPositions.Length - 1;
+        Vector3 axis;
+        float angle;
+        rotationOffset.ToAngleAxis(out angle, out axis);
+        axis = die.transform.TransformDirection(axis);
+        // Debug.Log(angle);
+        Debug.DrawLine(die.transform.position, die.transform.position + axis * 10, Color.red, 5);
         die.transform.position = storedPositions[lastIndex];
-        die.transform.rotation = rotationOffset * storedRotations[lastIndex];
+        die.transform.rotation = storedRotations[lastIndex] * rotationOffset;
     }
 
     void FixedUpdate()
