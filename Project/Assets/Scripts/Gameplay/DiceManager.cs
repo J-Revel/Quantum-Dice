@@ -8,11 +8,7 @@ using UnityEngine;
 public struct DiceState
 {
     public int id; // a supprimer
-    public int value; // 0 = not rolled, 1->6 = face visible
-    
-    List<int> valuePossible;
-    List<int> indexNeighbor;
-    
+    public int value; // 0 = not rolled, 1->6 = face visible   
 }
 
 public enum IntricationMode
@@ -32,7 +28,8 @@ public struct IntricationGroup
 
 public class GraphNode
 {
-    public DiceState state;
+    //mettre DiceState ou index
+    public DiceState state; 
     public List<(GraphNode, IntricationMode)> neighbors;
 
     public GraphNode(DiceState state)
@@ -98,13 +95,61 @@ public class Graph
     {
         foreach (GraphNode node in nodes)
         {
-            Debug.Log("Node state: dé" + node.state.id);
+            Debug.Log("Node state: dé" + node.state.id+" value = "+ node.state.value);
             Debug.Log("Neighbors: ");
             foreach ((GraphNode neighbor, IntricationMode mode) in node.neighbors)
             {
-                Debug.Log("->(dé "+neighbor.state.id + " with mode " + mode.ToString()+")");
+                Debug.Log("->((dé "+neighbor.state.id + " = "+ neighbor.state.value+ ") with mode " + mode.ToString()+")");
             }
             Debug.Log("--------------------------------------");
+        }
+    }
+
+    GraphNode getNodes(DiceState state)
+    {
+        foreach (GraphNode gn in nodes)
+        {
+            if (gn.state.Equals(state))
+            {
+                return gn;
+            }
+        }
+        return null;
+    }
+
+    public void BreadthFirstSearch( GraphNode startNode, int newValue)
+    {
+        // Initialisation des variables
+        Queue<GraphNode> queue = new Queue<GraphNode>();
+        HashSet<GraphNode> visited = new HashSet<GraphNode>();
+
+        // Ajouter le noeud de départ dans la queue
+        queue.Enqueue(startNode);
+
+        while (queue.Count > 0)
+        {
+            // Obtenir le premier noeud de la queue
+            GraphNode currentNode = queue.Dequeue();
+
+            // Mise à jour de la valeur du DiceState
+            if (currentNode.state.Equals(startNode.state))
+            {
+                currentNode.state.value = newValue;
+            }
+
+            // Parcourir tous les voisins du noeud courant
+            foreach ((GraphNode neighbor, IntricationMode mode) in currentNode.neighbors)
+            {
+                // Vérifier si le voisin n'a pas déjà été visité
+                if (!visited.Contains(neighbor))
+                {
+                    // Ajouter le voisin dans la queue
+                    queue.Enqueue(neighbor);
+
+                    // Marquer le voisin comme visité
+                    visited.Add(neighbor);
+                }
+            }
         }
     }
 }
@@ -127,6 +172,11 @@ public class DiceManager : MonoBehaviour
         graphDice = new Graph();
         //PrintGraph(graphDice);
         graphDice.PrintGraph();
+
+        graphDice.BreadthFirstSearch(graphDice.nodes[0], 6);
+        Debug.Log("##########################################");
+        graphDice.PrintGraph();
+
         Debug.Log($"GapheDice.nodes.Count() = {graphDice.nodes.Count()}");
 
     }
