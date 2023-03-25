@@ -51,20 +51,20 @@ public class Graph
         nodes = new List<GraphNode>();
 
         DiceState des0 = new DiceState();
-        des0.value = 0; // non lancé
-        des0.id = 0; // non lancé
+        des0.value = 0; // non lancï¿½
+        des0.id = 0; // non lancï¿½
 
         DiceState des1 = new DiceState();
-        des1.value = 0; // non lancé
-        des1.id = 1; // non lancé
+        des1.value = 0; // non lancï¿½
+        des1.id = 1; // non lancï¿½
 
         DiceState des2 = new DiceState();
-        des2.id = 2; // non lancé
-        des2.value = 0; // non lancé
+        des2.id = 2; // non lancï¿½
+        des2.value = 0; // non lancï¿½
 
         DiceState des3 = new DiceState();
-        des3.id = 3; // non lancé
-        des3.value = 0; // non lancé
+        des3.id = 3; // non lancï¿½
+        des3.value = 0; // non lancï¿½
         
         GraphNode node0 = new GraphNode(des0);
         GraphNode node1 = new GraphNode(des1);
@@ -86,7 +86,7 @@ public class Graph
 
         node3.neighbors.Add((node1, IntricationMode.Gregarious));
 
-        // Ajouter les nœuds à la liste de nœuds du graphe
+        // Ajouter les nï¿½uds ï¿½ la liste de nï¿½uds du graphe
         nodes.Add(node0);
         nodes.Add(node1);
         nodes.Add(node2);
@@ -98,11 +98,11 @@ public class Graph
     {
         foreach (GraphNode node in nodes)
         {
-            Debug.Log("Node state: dé" + node.state.id);
+            Debug.Log("Node state: dï¿½" + node.state.id);
             Debug.Log("Neighbors: ");
             foreach ((GraphNode neighbor, IntricationMode mode) in node.neighbors)
             {
-                Debug.Log("->(dé "+neighbor.state.id + " with mode " + mode.ToString()+")");
+                Debug.Log("->(dï¿½ "+neighbor.state.id + " with mode " + mode.ToString()+")");
             }
             Debug.Log("--------------------------------------");
         }
@@ -142,7 +142,7 @@ public class DiceManager : MonoBehaviour
     public void RollDice(int diceIndex)
     {
         List<int> valuesPossible = new List<int> { 1, 2, 3, 4, 5, 6 };
-        Debug.Log($"Lancer du dés {diceIndex} !");
+        Debug.Log($"Lancer du dï¿½s {diceIndex} !");
     
         for (int i = 0; i < intricationGroups.Length; i++ )
         {

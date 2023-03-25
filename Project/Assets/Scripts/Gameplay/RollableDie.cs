@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RollableDie : MonoBehaviour
 {
+    public int dieIndex;
     public GameObject hoverElement;
     public new Rigidbody rigidbody;
     public bool attracted;
