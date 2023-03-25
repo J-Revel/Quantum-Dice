@@ -25,7 +25,7 @@ public class RollableDie : MonoBehaviour
     public void FixedUpdate()
     {
         float gravityHeightRatio = Mathf.Clamp01((transform.position.y - gravityHeightThresholdStart) / (gravityHeightThresholdEnd - gravityHeightThresholdStart));
-        rigidbody.AddForce(gravity * Vector3.Lerp(Vector3.down, (transform.position - Camera.main.transform.position).normalized, gravityHeightRatio), ForceMode.Acceleration);
+        rigidbody.AddForce(gravity * Vector3.down, ForceMode.Acceleration);
         if(attracted)
         {
             float distanceRatio = Mathf.Clamp01((attractionPosition - transform.position).magnitude / grabTargetDistance);

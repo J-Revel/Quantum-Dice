@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 774417378971766720}
   - component: {fileID: 4671240716038123243}
   m_Layer: 0
-  m_Name: Dice
+  m_Name: Die
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68fe0c7f3dbb8134db3530fe2433af7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieIndex: 0
   hoverElement: {fileID: 8741179642287361309}
   rigidbody: {fileID: 774417378971766721}
   attracted: 0
@@ -135,9 +136,9 @@ MonoBehaviour:
   grabAttractionForce: 1500
   grabSlowdown: 0.999
   grabTargetDistance: 10
-  gravity: 30
-  gravityHeightThresholdStart: 3
-  gravityHeightThresholdEnd: 5
+  gravity: 50
+  gravityHeightThresholdStart: 10
+  gravityHeightThresholdEnd: 20
 --- !u!1 &8741179642287361309
 GameObject:
   m_ObjectHideFlags: 0
