@@ -47,63 +47,64 @@ public class Graph
     public Graph()
     {
         nodes = new List<GraphNode>();
-        List<int> initializeList = new List<int> { 1, 2, 3, 4, 5, 6 };
-        DiceState des0 = new DiceState();
-        des0.value = 0; // non lancé
-        des0.id = 0; // non lancé
-        des0.possibleValues = new List<int> { 1, 2, 3, 4, 5, 6 };
+        /*        nodes = new List<GraphNode>();
+                List<int> initializeList = new List<int> { 1, 2, 3, 4, 5, 6 };
+                DiceState des0 = new DiceState();
+                des0.value = 0; // non lancé
+                des0.id = 0; // non lancé
+                des0.possibleValues = new List<int> { 1, 2, 3, 4, 5, 6 };
 
-        DiceState des1 = new DiceState();
-        des1.value = 0; // non lancé
-        des1.id = 1; // non lancé
-        des1.possibleValues = new List<int> { 1, 2, 3, 4, 5, 6 };
+                DiceState des1 = new DiceState();
+                des1.value = 0; // non lancé
+                des1.id = 1; // non lancé
+                des1.possibleValues = new List<int> { 1, 2, 3, 4, 5, 6 };
 
-        DiceState des2 = new DiceState();
-        des2.id = 2; // non lancé
-        des2.value = 0; // non lancé
-        des2.possibleValues = new List<int> { 1, 2, 3, 4, 5, 6 };
+                DiceState des2 = new DiceState();
+                des2.id = 2; // non lancé
+                des2.value = 0; // non lancé
+                des2.possibleValues = new List<int> { 1, 2, 3, 4, 5, 6 };
 
-        DiceState des3 = new DiceState();
-        des3.id = 3; // non lancé
-        des3.value = 0; // non lancé
-        des3.possibleValues = new List<int> { 1, 2, 3, 4, 5, 6 };
+                DiceState des3 = new DiceState();
+                des3.id = 3; // non lancé
+                des3.value = 0; // non lancé
+                des3.possibleValues = new List<int> { 1, 2, 3, 4, 5, 6 };
 
 
-        DiceState des4 = new DiceState();
-        des4.id = 4; // non lancé
-        des4.value = 0; // non lancé
-        des4.possibleValues = new List<int> { 1, 2, 3, 4, 5, 6 };
+                DiceState des4 = new DiceState();
+                des4.id = 4; // non lancé
+                des4.value = 0; // non lancé
+                des4.possibleValues = new List<int> { 1, 2, 3, 4, 5, 6 };
 
-        GraphNode node0 = new GraphNode(des0);
-        GraphNode node1 = new GraphNode(des1);
-        GraphNode node2 = new GraphNode(des2);
-        GraphNode node3 = new GraphNode(des3);
-        GraphNode node4 = new GraphNode(des4);
+                GraphNode node0 = new GraphNode(des0);
+                GraphNode node1 = new GraphNode(des1);
+                GraphNode node2 = new GraphNode(des2);
+                GraphNode node3 = new GraphNode(des3);
+                GraphNode node4 = new GraphNode(des4);
 
-        // Ajouter les voisins de chaque noeud
-        node0.neighbors.Add((node1, IntricationMode.Selfish));
-        node0.neighbors.Add((node2, IntricationMode.Selfish));
-        node0.neighbors.Add((node2, IntricationMode.Opposite));
+                // Ajouter les voisins de chaque noeud
+                node0.neighbors.Add((node1, IntricationMode.Selfish));
+                node0.neighbors.Add((node2, IntricationMode.Selfish));
+                node0.neighbors.Add((node2, IntricationMode.Opposite));
 
-        node1.neighbors.Add((node0, IntricationMode.Selfish));
-        node1.neighbors.Add((node2, IntricationMode.Selfish));
+                node1.neighbors.Add((node0, IntricationMode.Selfish));
+                node1.neighbors.Add((node2, IntricationMode.Selfish));
 
-        node2.neighbors.Add((node0, IntricationMode.Selfish));
-        node2.neighbors.Add((node0, IntricationMode.Opposite));
-        node2.neighbors.Add((node1, IntricationMode.Selfish));
+                node2.neighbors.Add((node0, IntricationMode.Selfish));
+                node2.neighbors.Add((node0, IntricationMode.Opposite));
+                node2.neighbors.Add((node1, IntricationMode.Selfish));
 
-        node3.neighbors.Add((node4, IntricationMode.Gregarious));
+                node3.neighbors.Add((node4, IntricationMode.Gregarious));
 
-        node4.neighbors.Add((node3, IntricationMode.Gregarious));
+                node4.neighbors.Add((node3, IntricationMode.Gregarious));
 
-        // Ajouter les nœuds à la liste de nœuds du graphe
-        nodes.Add(node0);
-        nodes.Add(node1);
-        nodes.Add(node2);
-        nodes.Add(node3);
-        nodes.Add(node4);
+                // Ajouter les nœuds à la liste de nœuds du graphe
+                nodes.Add(node0);
+                nodes.Add(node1);
+                nodes.Add(node2);
+                nodes.Add(node3);
+                nodes.Add(node4);
 
-        //Debug.Log(nodes);
+                //Debug.Log(nodes);*/
     }
     public void PrintGraph()
     {
@@ -125,6 +126,66 @@ public class Graph
         }
     }
 
+    public void AddNode(DiceState state)
+    {
+        GraphNode node = new GraphNode(state);
+        nodes.Add(node);
+    }
+
+    /*    public void AddEdge(GraphNode node1, GraphNode node2, IntricationMode mode)
+        {
+            node1.neighbors.Add((node2, mode));
+            node2.neighbors.Add((node1, mode));
+        }*/
+
+    //1 un lien avec un sommet avec un sommet voisin gregarious on ne peut pas ajouter un lien S ou O avec le meme voisin
+
+    //2 un lien avec un sommet avec un sommet voisin gregarious on ne peut pas avoir un lien S avec aucun autre voisin
+
+    //3 un sommet peut au plus avoir 5 voisin S.
+
+    //4 un lien avec un sommet avec un sommet voisin S ne peut pas avoir 2 lien avec des voisins de type 0
+    //un sommet qq ne peut avoir 2 voisin O
+    public void AddEdge(DiceState state1, DiceState state2, IntricationMode mode)
+    {
+        // Recherche des noeuds correspondants aux DiceStates
+        GraphNode node1 = nodes.Find(n => n.state.id == state1.id);
+        GraphNode node2 = nodes.Find(n => n.state.id == state2.id);
+
+        // Vérification si les noeuds existent
+        if (node1 == null)
+        {
+            node1 = new GraphNode(state1);
+            nodes.Add(node1);
+        }
+        if (node2 == null)
+        {
+            node2 = new GraphNode(state2);
+            nodes.Add(node2);
+        }
+
+        // Ajout de l'arête entre les noeuds
+        node1.neighbors.Add((node2, mode));
+        node2.neighbors.Add((node1, mode));
+    }
+
+    public void AddEdgesFromGroups(IntricationGroup[] groups)
+    {
+        foreach (IntricationGroup group in groups)
+        {
+            for (int i = 0; i < group.diceIndex.Length; i++)
+            {
+                GraphNode node1 = nodes[group.diceIndex[i]];
+                for (int j = i + 1; j < group.diceIndex.Length; j++)
+                {
+                    GraphNode node2 = nodes[group.diceIndex[j]];
+                    node1.neighbors.Add((node2, group.mode));
+                    node2.neighbors.Add((node1, group.mode));
+                }
+            }
+        }
+    }
+
     GraphNode getNodes(DiceState state)
     {
         foreach (GraphNode gn in nodes)
@@ -140,7 +201,7 @@ public class Graph
     public void UpdateForSelfish()
     {
         GraphNode graphNode = nodes[0];
-        foreach(GraphNode node in nodes){
+        foreach (GraphNode node in nodes){
             if(node.state.value == 0 && node.state.possibleValues.Count == 1)
             {
                 foreach((GraphNode neighbord, IntricationMode mode) in node.neighbors){
@@ -152,6 +213,7 @@ public class Graph
             }
         }
     }
+
     public void BreadthFirstSearch( GraphNode startNode, int newValue)
     {
         // Initialisation des variables
@@ -170,7 +232,7 @@ public class Graph
             if (currentNode.state.Equals(startNode.state))
             {
                 currentNode.state.value = newValue;
-                currentNode.state.possibleValues = new List<int> { newValue };
+                //currentNode.state.possibleValues = new List<int> { newValue };
                 //changer list valueur possible a lui meme
             }
 
@@ -226,18 +288,11 @@ public class DiceManager : MonoBehaviour
     public void Start()
     {
         graphDice = new Graph();
-        //graphDice.PrintGraph();
-
-        graphDice.BreadthFirstSearch(graphDice.nodes[0], 6);
-        Debug.Log("##########################################");
-        //graphDice.PrintGraph();
-
-        //Debug.Log($"GapheDice.nodes.Count() = {graphDice.nodes.Count()}");
-        Debug.Log("##########################################");
-
-        graphDice.BreadthFirstSearch(graphDice.nodes[3], 2);
-        graphDice.PrintGraph();
-
+        foreach(DiceState ds in dice)
+        {
+            graphDice.AddNode(ds);
+        }
+        graphDice.AddEdgesFromGroups(intricationGroups);
 
     }
 
@@ -246,79 +301,28 @@ public class DiceManager : MonoBehaviour
         instance = this;
         dice = new DiceState[config.diceCount];
         for(int i=0; i<config.diceCount; i++)
+        {
             dice[i].value = 0;
+            dice[i].id = i;
+            dice[i].possibleValues = new List<int> { 1,2,3,4,5,6};
+        }
     }
 
     public void RollDice(int diceIndex)
     {
-        List<int> valuesPossible = new List<int> { 1, 2, 3, 4, 5, 6 };
         Debug.Log($"Lancer du dés {diceIndex} !");
-    
-        for (int i = 0; i < intricationGroups.Length; i++ )
-        {
-            int[] dicesIndex = intricationGroups[i].diceIndex;
 
-            //verifier s'il est contenue dans la liste diceIndex
-            Debug.Log($"Groupe {i} !");
-
-            string dicesIndexRes = "List dicesIndex before: ";
-            foreach (var item in dicesIndex)
-            {
-                dicesIndexRes += item.ToString() + ", ";
-            }
-            Debug.Log(dicesIndexRes);
-
-            if (Array.IndexOf(dicesIndex, diceIndex) != -1)
-            {               
-                int[] dicesIndexCopy = dicesIndex.Except(new int[] { diceIndex }).ToArray();
-
-                string result1 = "List valuesPossible before: ";
-                foreach (var item in valuesPossible)
-                {
-                    result1 += item.ToString() + ", ";
-                }
-                Debug.Log(result1);
-
-                if (intricationGroups[i].mode == IntricationMode.Selfish)
-                {
-                    Debug.Log("selfish");
-                    for (int k = 0; k < dicesIndexCopy.Length; k++)
-                    {
-                        valuesPossible.Remove(dice[dicesIndexCopy[k]].value);
-                    }
-                }
-                if (intricationGroups[i].mode == IntricationMode.Gregarious)
-                {
-                    Debug.Log($"Greagrious");
-                   
-                    for (int k = 0; k < dicesIndexCopy.Length; k++) // a achanger pour une boucle while
-                    {
-                        if(dice[dicesIndexCopy[k]].value != 0)
-                        {
-                            valuesPossible = new List<int> { dice[dicesIndexCopy[k]].value };
-                        }
-                    }
-                }
-                if (intricationGroups[i].mode == IntricationMode.Opposite)
-                {
-                    Debug.Log($"Opposite");
-
-                    for (int k = 0; k < dicesIndexCopy.Length; k++)
-                    {
-                        if (dice[dicesIndexCopy[k]].value != 0)
-                        {
-                            int tmp = 7 - dice[dicesIndexCopy[k]].value;
-                            valuesPossible = new List<int> { tmp };
-                        }
-                    }
-                }
-            }
-        }
         System.Random random = new System.Random();
-        int index = random.Next(valuesPossible.Count);
+        Debug.Log(graphDice.nodes[diceIndex].state.possibleValues);
+        int index = random.Next(graphDice.nodes[diceIndex].state.possibleValues.Count);
 
-        dice[diceIndex].value = valuesPossible[index];
-
+        graphDice.BreadthFirstSearch(graphDice.nodes[diceIndex], graphDice.nodes[diceIndex].state.possibleValues[index]);
+        for(int i = 0; i < dice.Length; i++)
+        {
+            dice[i] = graphDice.nodes[i].state;
+        }
+        graphDice.PrintGraph();
+        Debug.Log("#############################################");
         diceRollDelegate?.Invoke();
     }
 }
