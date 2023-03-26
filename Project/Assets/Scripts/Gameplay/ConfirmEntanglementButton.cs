@@ -55,34 +55,32 @@ public class ConfirmEntanglementButton : MonoBehaviour
             bool verificationR2 = true;
             bool verificationR3 = true; // regle qu'un des est liée a qu'un seul opposite
 
-            /*if (diceInGroup.Length != 0)
-            {
-                if (intricationMode.Equals(IntricationMode.Gregarious))
-                {
+            //if (diceInGroup.Length != 0)
+            //{
+            //    if (intricationMode.Equals(IntricationMode.Gregarious))
+            //    {
+            //        //noeud 1
+            //        for (int i = 0; i < diceInGroup.Length; i++)
+            //        {
+            //            //noeud 2
+            //            for (int j = 0; j < diceInGroup.Length; j++)
+            //            {
+            //                //regarde dans les groupe de type Opposite et Selfish
+            //                for (int k = 0; k < DiceManager.instance.intricationGroups.Length; k++)
+            //                {
+            //                    if (DiceManager.instance.intricationGroups[k].mode.Equals(IntricationMode.Opposite) || DiceManager.instance.intricationGroups[k].mode.Equals(IntricationMode.Opposite))
+            //                    {
+            //                        verificationR1 &= !(DiceManager.instance.intricationGroups[k].diceIndex.Contains(i) && DiceManager.instance.intricationGroups[k].diceIndex.Contains(j));
+            //                    }
+            //                }
+            //            }
 
-                    //noeud 1
-                    for (int i = 0; i < diceInGroup.Length; i++)
-                    {
-                        //noeud 2
-                        for (int j = 0; j < diceInGroup.Length; j++)
-                        {
-                            //regarde dans les groupe de type Opposite et Selfish
-                            for (int k = 0; k < DiceManager.instance.intricationGroups.Length; k++)
-                            {
-                                if (DiceManager.instance.intricationGroups[k].mode.Equals(IntricationMode.Opposite) || DiceManager.instance.intricationGroups[k].mode.Equals(IntricationMode.Opposite))
-                                {
-                                    verificationR1 &= !(DiceManager.instance.intricationGroups[k].diceIndex.Contains(i) && DiceManager.instance.intricationGroups[k].diceIndex.Contains(j));
-                                }
-                            }
-                        }
+            //        }
 
-                    }
+            //    }
 
-                }
 
-                if (intricationMode.Equals(IntricationMode.Selfish)) { }
-
-                if (intricationMode.Equals(IntricationMode.Opposite))
+/*                if (intricationMode.Equals(IntricationMode.Opposite))
                 {
                     for (int i = 0; i < diceInGroup.Length; i++)
                     {
@@ -92,9 +90,8 @@ public class ConfirmEntanglementButton : MonoBehaviour
                                 verificationR3 &= !(DiceManager.instance.intricationGroups[j].diceIndex.Contains(currentGroupIndex));
                         }
                     }
-                }
-            }
-*/
+                }*/
+            //}
             button.interactable = verificationR3 && verificationR1 && diceInGroup != null && diceInGroup.Length > 1 && MouseToolSelector.instance.currentQuantumEnergy >= MouseToolSelector.instance.energyCost;
         
         }

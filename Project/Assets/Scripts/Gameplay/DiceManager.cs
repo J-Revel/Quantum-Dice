@@ -411,8 +411,12 @@ public class DiceManager : MonoBehaviour
             switch (cond.vc)
                     {
                         case VictoryConditionType.NSupSum:
-                            int countSupSum = diceValues.Where(d => d.state.value != 0).Count(d => d.state.value >= cond.value);
-                            IsVictory &= countSupSum >= cond.N;
+                            int sum = 0;
+                            for(int i=0; i<diceValues.Count; i++)
+                            {
+                                sum += diceValues[i].state.value;
+                            }
+                            IsVictory &= sum >= cond.N;
                             break;
 
                         case VictoryConditionType.AllDifferentValues:
