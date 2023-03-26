@@ -35,6 +35,9 @@ public class LevelConfig : ScriptableObject
     public int targetThrowCount = 0;
 
     public List<VictoryCondition> conditions;
+    public LocalizedString title;
+    public LocalizedString objective;
+    public IntricationMode[] availableEntanglements;
 
     public LocalizedString[] introDialogueEntries;
     public LocalizedString[] rollPhaseDialogueEntries;
