@@ -12,37 +12,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a6c367aee91ea14090497dc8515603f, type: 3}
   m_Name: Niv7
   m_EditorClassIdentifier: 
-  diceCount: 5
-  quantumEnergy: 0
-  targetThrowCount: 0
-  conditions: []
+  diceCount: 4
+  quantumEnergy: 5
+  targetThrowCount: 4
+  conditions:
+  - vc: 6
+    N: 4
+    value: 14
+  - vc: 1
+    N: 4
+    value: 0
   title:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:6bb81c0712cd6da4390368fd510e46e1
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 1262794817566
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
   objective:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:6bb81c0712cd6da4390368fd510e46e1
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 59606972743685
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
   availableEntanglements: 
-  introDialogueEntries: []
-  rollPhaseDialogueEntries: []
-  infoDialogueEntries: []
+  introDialogueEntries:
+  - m_TableReference:
+      m_TableCollectionName: GUID:6bb81c0712cd6da4390368fd510e46e1
+    m_TableEntryReference:
+      m_KeyId: 1262794817550
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  rollPhaseDialogueEntries:
+  - m_TableReference:
+      m_TableCollectionName: GUID:6bb81c0712cd6da4390368fd510e46e1
+    m_TableEntryReference:
+      m_KeyId: 1262794817551
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  infoDialogueEntries:
+  - m_TableReference:
+      m_TableCollectionName: GUID:6bb81c0712cd6da4390368fd510e46e1
+    m_TableEntryReference:
+      m_KeyId: 52923999436806
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   citation:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:6bb81c0712cd6da4390368fd510e46e1
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 52923999436815
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0

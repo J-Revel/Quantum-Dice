@@ -29,7 +29,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1262790623232
-    m_Localized: Click on a die and move it to the play mat to throw it.
+    m_Localized: Will you manage to do so while respecting the number of throws indicated
+      on the crown?
     m_Metadata:
       m_Items: []
   - m_Id: 1262790623233
