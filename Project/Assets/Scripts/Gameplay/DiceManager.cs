@@ -33,9 +33,31 @@ public class GraphNode
     public DiceState state; 
     public List<(GraphNode, IntricationMode)> neighbors;
 
+
     public GraphNode(DiceState state)
     {
         this.state = state;
+        neighbors = new List<(GraphNode, IntricationMode)>();
+    }
+
+    public void Reset()
+    {
+        //initializer la dé par default, 
+        state.value = 0;
+        state.possibleValues = new List<int> { 1, 2, 3, 4, 5, 6 };
+
+        removeAllIntrication(); //A ajouter ?
+    }
+    public void removeAllIntrication()
+    {
+        // Elle enleves toute ses intrication 
+        for (int i = 0; i < neighbors.Count; i++)
+        {
+            neighbors[i].Item1.neighbors.Remove((this, IntricationMode.Gregarious));
+            neighbors[i].Item1.neighbors.Remove((this, IntricationMode.Opposite));
+            neighbors[i].Item1.neighbors.Remove((this, IntricationMode.Selfish));
+        }
+
         neighbors = new List<(GraphNode, IntricationMode)>();
     }
 }
@@ -132,12 +154,16 @@ public class Graph
         nodes.Add(node);
     }
 
-    /*    public void AddEdge(GraphNode node1, GraphNode node2, IntricationMode mode)
+    public void Reset()
+    {
+        //
+        for (int i = 0; i < nodes.Count; i++)
         {
-            node1.neighbors.Add((node2, mode));
-            node2.neighbors.Add((node1, mode));
-        }*/
+            nodes[i].Reset();
+        }
+        BreadthFirstSearch(nodes[0], 0);
 
+    }
     //1 un lien avec un sommet avec un sommet voisin gregarious on ne peut pas ajouter un lien S ou O avec le meme voisin
 
     //2 un lien avec un sommet avec un sommet voisin gregarious on ne peut pas avoir un lien S avec aucun autre voisin
@@ -269,12 +295,7 @@ public class Graph
         UpdateForSelfish();
     }
 
-
 }
-
-
-
-
 
 public class DiceManager : MonoBehaviour
 {
@@ -321,8 +342,87 @@ public class DiceManager : MonoBehaviour
         {
             dice[i] = graphDice.nodes[i].state;
         }
-        graphDice.PrintGraph();
-        Debug.Log("#############################################");
+
+        Debug.Log($"Victoir ? {CheckVictoryCondition(config.conditions, graphDice.nodes)}"); 
         diceRollDelegate?.Invoke();
     }
+
+    public bool CheckVictoryCondition(List<VictoryCondition> condition,  List<GraphNode> diceValues)
+    {
+        bool IsVictory = true;
+        foreach(VictoryCondition cond in config.conditions){
+
+            switch (cond.vc)
+                    {
+                        case VictoryConditionType.NSupSum:
+                            int countSupSum = diceValues.Count(d => d.state.value >= cond.value);
+                            IsVictory &= countSupSum >= cond.N;
+                            break;
+
+                        case VictoryConditionType.AllDifferentValues:
+                            IsVictory &= diceValues.Select(d => d.state.value).Distinct().Count() == diceValues.Count;
+                            break;
+
+                        case VictoryConditionType.NAllSame:
+                            IsVictory &= diceValues.GroupBy(d => d.state.value).Any(g => g.Count() == cond.N);
+                            break;
+                        case VictoryConditionType.MixedValues:
+                            int countSpecificValues = diceValues.Count(d => d.state.value == cond.value);
+                            int countOtherValues = diceValues.Count - countSpecificValues;
+                            IsVictory &= countSpecificValues == cond.N && countOtherValues == diceValues.Count - cond.N;
+                            break;
+                        case VictoryConditionType.PairValues:
+                            int countPairValues = diceValues.Count(d => d.state.value % 2 == 0);
+                            IsVictory &= countPairValues == cond.N;
+                            break;
+                        case VictoryConditionType.ImpairValues:
+                            int countImpairValues = diceValues.Count(d => d.state.value % 2 == 1);
+                            IsVictory &= countImpairValues == cond.N;
+                            break;
+                        default:
+                            Debug.LogError("Unknown victory condition: " + condition);
+                            break;
+            }
+        }
+
+        return IsVictory;
+        
+    }
+
+
+    //public bool CheckVictoryCondition(VictoryConditionType condition, int N, int threshold, List<GraphNode> diceValues)
+    //{
+    //    List<GraphNode> diceValues = graphDice.nodes;
+    //    switch (condition)
+    //    {
+    //        case VictoryConditionType.NSupSum:
+    //            return diceValues.Any(d => d >= threshold);
+
+    //        case VictoryConditionType.AllDifferentValues:
+    //            return diceValues.Distinct().Count() == N;
+
+    //        case VictoryConditionType.NAllSame:
+    //            return diceValues.GroupBy(d => d).Count(g => g.Count() == N) == threshold;
+
+    //            //return diceValues.GroupBy(d => d).Any(g => g.Count() == threshold);
+
+    //        case VictoryConditionType.MixedValues:
+    //            int requiredValueCount = diceValues.Length - threshold;
+    //            int requiredValue = diceValues.GroupBy(d => d).OrderByDescending(g => g.Count()).Take(requiredValueCount).Last().Key;
+    //            return diceValues.Count(d => d == requiredValue) == N;
+
+    //        case VictoryConditionType.PairValues:
+    //            int countOdd = diceValues.Count(d => d % 2 == 1);
+    //            return countOdd == N;
+
+    //        case VictoryConditionType.ImpairValues:
+    //            int countEven = diceValues.Count(d => d % 2 == 0);
+    //            return countEven == N;
+
+    //        default:
+    //            return false;
+    //    }
+    //}
+
+
 }
