@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a6c367aee91ea14090497dc8515603f, type: 3}
-  m_Name: Test Level Config
+  m_Script: {fileID: 11500000, guid: 3a189bb168d8d90478a09ea08c2f3d72, type: 3}
+  m_Name: DefaultObject
   m_EditorClassIdentifier: 
-  diceCount: 5
-  introDialogueLocKeys:
-  - LVL1_TXT_1
-  - LVL1_TXT_2
-  - LVL1_TXT_3
+  m_AddressableAssetSettingsGuid: 9dc804d85a0929846a9ce91e04010902
