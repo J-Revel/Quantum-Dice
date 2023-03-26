@@ -62,6 +62,7 @@ public class MouseInput : MonoBehaviour
                     cursor++;
                 }
                 DiceManager.instance.RollDice(hoverDie.dieIndex);
+                MouseToolSelector.instance.currentStepCount++;
                 int targetValue = DiceManager.instance.dice[hoverDie.dieIndex].value-1;
                 coroutines[hoverDie] = StartCoroutine(ReplayAnimCoroutine(hoverDie, storedPositions, storedRotations, targetValue));
 

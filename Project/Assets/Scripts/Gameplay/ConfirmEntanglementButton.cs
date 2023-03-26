@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class ConfirmEntanglementButton : MonoBehaviour
 {
     private Button button;
+    public GameObject toShow;
     
     void Start()
     {
         button = GetComponent<Button>();
-        button.onClick.AddListener( () => {
+        button.onClick.AddListener(() => {
             MouseToolSelector.instance.intricationGroupIndex = -1;
             MouseToolSelector.instance.SelectTool(ToolMode.Entanglement);
             gameObject.SetActive(false);
@@ -19,8 +20,15 @@ public class ConfirmEntanglementButton : MonoBehaviour
             if(MouseToolSelector.instance.currentTool == ToolMode.Entanglement && MouseToolSelector.instance.intricationToolMode != IntricationMode.None)
             {
                 gameObject.SetActive(true);
+                if(toShow != null)
+                    toShow.SetActive(true);
             }
-            else gameObject.SetActive(false);
+            else
+            {
+                gameObject.SetActive(false);
+                if(toShow != null)
+                    toShow.SetActive(false);
+            }
         };
         gameObject.SetActive(false);
     }

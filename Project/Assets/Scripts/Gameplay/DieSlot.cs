@@ -45,10 +45,12 @@ public class DieSlot : MonoBehaviour
     {
         if(diceDisplays[0].intrications.Contains(MouseToolSelector.instance.intricationGroupIndex))
         {
+            MouseToolSelector.instance.currentQuantumEnergy--;
             DiceManager.instance.RemoveFromIntricationGroup(MouseToolSelector.instance.intricationGroupIndex, dieIndex);
         }
         else
         {
+            MouseToolSelector.instance.currentQuantumEnergy++;
             DiceManager.instance.AddToIntricationGroup(MouseToolSelector.instance.intricationGroupIndex, dieIndex);
         }
         foreach(DieStateDisplay stateDisplay in diceDisplays)
