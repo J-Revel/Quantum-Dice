@@ -22,6 +22,8 @@ public class DialoguePanel : MonoBehaviour
     public LocalizedString locKey;
     private bool allowSkip;
     private bool skip;
+    public System.Action playDialogueSoundDelegate;
+    public GameObject[] characterFrames;
 
     private void Awake()
     {
@@ -63,9 +65,14 @@ public class DialoguePanel : MonoBehaviour
         }
         for(int i=0; i<dialogueEntries.Length; i++)
         {
+            int randomIndex = Random.Range(0, characterFrames.Length);
+            for(int k=0; k<characterFrames.Length; k++)
+            {
+                characterFrames[k].SetActive(k == randomIndex);
+            }
             bubbleText.text = dialogueEntries[i].GetLocalizedString();
 
-            
+            playDialogueSoundDelegate?.Invoke();
             allowSkip = true;
             for(float time = 0; time < bubbleScaleAnimDuration; time += Time.deltaTime)
             {

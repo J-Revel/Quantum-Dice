@@ -81,7 +81,7 @@ public class ConfirmEntanglementButton : MonoBehaviour
             }
             if (intricationMode.Equals(IntricationMode.Selfish)) { }
 
-            bool verificationR3 = true; // regle qu'un des est liée a qu'un seul opposite
+            bool verificationR3 = true; // regle qu'un des est liï¿½e a qu'un seul opposite
             if (intricationMode.Equals(IntricationMode.Opposite))
             {
                 for (int i = 0; i < diceInGroup.Length; i++)
@@ -103,12 +103,12 @@ public class ConfirmEntanglementButton : MonoBehaviour
 
 /*private bool CheckGregariousAndOpposite(List<GraphNode> diceValues)
 {
-    // On commence par trouver les paires de dés de même valeur
+    // On commence par trouver les paires de dï¿½s de mï¿½me valeur
     var pairs = diceValues.GroupBy(d => d.state.value)
                           .Where(g => g.Count() >= 2)
                           .SelectMany(g => g.Combinations(2));
 
-    // On vérifie si chaque paire a un élément dans l'autre paire
+    // On vï¿½rifie si chaque paire a un ï¿½lï¿½ment dans l'autre paire
     foreach (var pair1 in pairs)
     {
         foreach (var pair2 in pairs)

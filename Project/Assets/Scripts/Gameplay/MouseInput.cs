@@ -23,6 +23,8 @@ public class MouseInput : MonoBehaviour
     public Transform resultScreenContainer;
     public float victoryAnimDelay = 3;
     public float fadeAnimDuration = 1;
+
+    public System.Action throwDiceDelegate;
     
     void Start()
     {
@@ -68,6 +70,7 @@ public class MouseInput : MonoBehaviour
                     cursor++;
                 }
                 DiceManager.instance.RollDice(hoverDie.dieIndex);
+                throwDiceDelegate?.Invoke();
                 if(DiceManager.instance.Victory())
                 {
                     if(MouseToolSelector.instance.currentStepCount <= DiceManager.instance.config.targetThrowCount)
@@ -225,10 +228,13 @@ public class MouseInput : MonoBehaviour
 
         for(float time=0; time < storedPositions.Length * Time.fixedDeltaTime; time += Time.deltaTime)
         {
-            int stepIndex = Mathf.FloorToInt(time / Time.fixedDeltaTime);
-            die.transform.position = storedPositions[stepIndex];
-            float lerpRatio = Mathf.Clamp01(time / rotationOffsetDuration);
-            die.transform.rotation = storedRotations[stepIndex] * Quaternion.Lerp(Quaternion.identity, rotationOffset, 1 - (1-lerpRatio) * (1-lerpRatio));
+            if(die != null)
+            {
+                int stepIndex = Mathf.FloorToInt(time / Time.fixedDeltaTime);
+                die.transform.position = storedPositions[stepIndex];
+                float lerpRatio = Mathf.Clamp01(time / rotationOffsetDuration);
+                die.transform.rotation = storedRotations[stepIndex] * Quaternion.Lerp(Quaternion.identity, rotationOffset, 1 - (1-lerpRatio) * (1-lerpRatio));
+            }
             yield return null;
         }
         yield return null;
