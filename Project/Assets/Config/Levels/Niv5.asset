@@ -43,7 +43,7 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  availableEntanglements: 
+  availableEntanglements: 0000000001000000
   introDialogueEntries:
   - m_TableReference:
       m_TableCollectionName: GUID:6bb81c0712cd6da4390368fd510e46e1
