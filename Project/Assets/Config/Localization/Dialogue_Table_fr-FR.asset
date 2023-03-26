@@ -29,7 +29,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1262790623232
-    m_Localized: "Clique sur un d\xE9 et d\xE9place-le vers le tapis pour le lancer."
+    m_Localized: "Arriverez-vous \xE0 faire l'objectif en respectants le nombre de
+      lanc\xE9s indiqu\xE9 sur la couronne ?"
     m_Metadata:
       m_Items: []
   - m_Id: 1262790623233

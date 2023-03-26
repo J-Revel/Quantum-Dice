@@ -18,18 +18,18 @@ MonoBehaviour:
   conditions: []
   title:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:6bb81c0712cd6da4390368fd510e46e1
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 1262794817562
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
   objective:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:6bb81c0712cd6da4390368fd510e46e1
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 59606972743681
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
