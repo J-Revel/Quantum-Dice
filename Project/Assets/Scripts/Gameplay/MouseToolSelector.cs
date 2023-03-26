@@ -14,7 +14,7 @@ public class MouseToolSelector : MonoBehaviour
     public int intricationGroupIndex;
 
     public IntricationMode intricationToolMode {
-        get 
+        get
         {
             if(intricationGroupIndex < 0)
                 return IntricationMode.None;
@@ -31,9 +31,19 @@ public class MouseToolSelector : MonoBehaviour
         instance = this;
     }
 
+    public void Start()
+    {
+        DialoguePanel.instance.PlayDialogue(DialogueType.LevelIntro);
+    }
+
     public void SelectTool(ToolMode toolMode)
     {
-        currentTool = toolMode;
+        if(currentTool != toolMode)
+        {
+            currentTool = toolMode;
+            if(toolMode == ToolMode.DragAndDrop)
+                DialoguePanel.instance.PlayDialogue(DialogueType.BeforeThrowPhase);
+        }
         toolChangedDelegate?.Invoke();
     }
     
