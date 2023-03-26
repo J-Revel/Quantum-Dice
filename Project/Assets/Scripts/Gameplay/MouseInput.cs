@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 
 public class MouseInput : MonoBehaviour
@@ -113,7 +114,7 @@ public class MouseInput : MonoBehaviour
                     hoveredClickable.hoverEndDelegate?.Invoke();
                     hoveredClickable = null;
                 }
-                if(Mouse.current.leftButton.wasPressedThisFrame)
+                if(!EventSystem.current.IsPointerOverGameObject() && Mouse.current.leftButton.wasPressedThisFrame)
                 {
                     if(hoverDie != null)
                     {
@@ -167,7 +168,7 @@ public class MouseInput : MonoBehaviour
                 hoveredClickable.hoverEndDelegate?.Invoke();
                 hoveredClickable = null;
             }
-            if(Mouse.current.leftButton.wasPressedThisFrame)
+            if(!EventSystem.current.IsPointerOverGameObject() && Mouse.current.leftButton.wasPressedThisFrame)
             {
                 if(hoveredClickable != null)
                 {

@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 
 
 [System.Serializable]
 public enum VictoryConditionType
 {
-    NSupSum, // n dés doit être supérieure ou égale à un certain seuil
-    AllDifferentValues, // chaque dé doit avoir une valeur different entre elle, n= All
-    NAllSame, // N dés doivent avoir la même valeur
-    MixedValues, // n dés doivent avoir une valeur spécifique, tandis que le reste doit avoir une valeur différente
+    NSupSum, // n dï¿½s doit ï¿½tre supï¿½rieure ou ï¿½gale ï¿½ un certain seuil
+    AllDifferentValues, // chaque dï¿½ doit avoir une valeur different entre elle, n= All
+    NAllSame, // N dï¿½s doivent avoir la mï¿½me valeur
+    MixedValues, // n dï¿½s doivent avoir une valeur spï¿½cifique, tandis que le reste doit avoir une valeur diffï¿½rente
     PairValues, //n des doivent etre impair
     ImpairValues //n des doivent etre paire
 }
@@ -25,7 +26,7 @@ public struct VictoryCondition
 [CreateAssetMenu()]
 public class LevelConfig : ScriptableObject
 {
-    public int diceCount = 5; //nombre dé disponible
+    public int diceCount = 5; //nombre des disponible
 
     public int QuantumEnergy = 0;
 
@@ -33,4 +34,7 @@ public class LevelConfig : ScriptableObject
 
     public List<VictoryCondition> conditions;
 
+    public LocalizedString[] introDialogueEntries;
+    public LocalizedString[] rollPhaseDialogueEntries;
+    public LocalizedString[] infoDialogueEntries;
 }

@@ -13,7 +13,32 @@ MonoBehaviour:
   m_Name: Test Level Config
   m_EditorClassIdentifier: 
   diceCount: 5
-  introDialogueLocKeys:
-  - LVL1_TXT_1
-  - LVL1_TXT_2
-  - LVL1_TXT_3
+  introDialogueEntries:
+  - m_TableReference:
+      m_TableCollectionName: GUID:6bb81c0712cd6da4390368fd510e46e1
+    m_TableEntryReference:
+      m_KeyId: 1262715125760
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:6bb81c0712cd6da4390368fd510e46e1
+    m_TableEntryReference:
+      m_KeyId: 1262786428928
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  rollPhaseDialogueEntries:
+  - m_TableReference:
+      m_TableCollectionName: GUID:6bb81c0712cd6da4390368fd510e46e1
+    m_TableEntryReference:
+      m_KeyId: 1262790623232
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
