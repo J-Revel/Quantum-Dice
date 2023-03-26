@@ -16,6 +16,7 @@ public class MouseToolSelector : MonoBehaviour
     public int currentQuantumEnergy;
     public int currentStepCount;
     public int maxStepCount;
+    public int energyCost;
 
     public IntricationMode intricationToolMode {
         get
@@ -47,6 +48,7 @@ public class MouseToolSelector : MonoBehaviour
         if(currentTool != toolMode)
         {
             currentTool = toolMode;
+            MouseToolSelector.instance.energyCost = 0;
             if(toolMode == ToolMode.DragAndDrop)
                 DialoguePanel.instance.PlayDialogue(DialogueType.BeforeThrowPhase);
         }

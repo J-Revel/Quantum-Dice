@@ -21,6 +21,7 @@ public class EntanglementSelector : MonoBehaviour
             DiceManager.instance.intricationGroups = newGroups;
             MouseToolSelector.instance.intricationGroupIndex = oldGroups.Length;
             MouseToolSelector.instance.SelectTool(toolMode);
+            MouseToolSelector.instance.energyCost = newGroups.Length - 1;
         };
     }
 }
