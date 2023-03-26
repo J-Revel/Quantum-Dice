@@ -17,6 +17,7 @@ public enum IntricationMode
     Gregarious, // same value
     Opposite, // 2 dice only => Opposite values : result sum = 7 (1-6, 2-5, 3-4)
     Selfish, // All values are different
+    None,
 }
 
 [System.Serializable]
@@ -32,7 +33,6 @@ public class GraphNode
     //mettre DiceState ou index
     public DiceState state; 
     public List<(GraphNode, IntricationMode)> neighbors;
-
 
     public GraphNode(DiceState state)
     {
@@ -295,7 +295,12 @@ public class Graph
         UpdateForSelfish();
     }
 
+
 }
+
+
+
+
 
 public class DiceManager : MonoBehaviour
 {
@@ -315,6 +320,11 @@ public class DiceManager : MonoBehaviour
         }
         graphDice.AddEdgesFromGroups(intricationGroups);
 
+    }
+
+    public void ValidateGraph()
+    {
+        graphDice.AddEdgesFromGroups(intricationGroups);
     }
 
     public void Awake()
@@ -342,87 +352,42 @@ public class DiceManager : MonoBehaviour
         {
             dice[i] = graphDice.nodes[i].state;
         }
-
-        Debug.Log($"Victoir ? {CheckVictoryCondition(config.conditions, graphDice.nodes)}"); 
+        graphDice.PrintGraph();
+        Debug.Log("#############################################");
         diceRollDelegate?.Invoke();
     }
 
-    public bool CheckVictoryCondition(List<VictoryCondition> condition,  List<GraphNode> diceValues)
+    public void AddToIntricationGroup(int groupIndex, int dieIndex)
     {
-        bool IsVictory = true;
-        foreach(VictoryCondition cond in config.conditions){
-
-            switch (cond.vc)
-                    {
-                        case VictoryConditionType.NSupSum:
-                            int countSupSum = diceValues.Count(d => d.state.value >= cond.value);
-                            IsVictory &= countSupSum >= cond.N;
-                            break;
-
-                        case VictoryConditionType.AllDifferentValues:
-                            IsVictory &= diceValues.Select(d => d.state.value).Distinct().Count() == diceValues.Count;
-                            break;
-
-                        case VictoryConditionType.NAllSame:
-                            IsVictory &= diceValues.GroupBy(d => d.state.value).Any(g => g.Count() == cond.N);
-                            break;
-                        case VictoryConditionType.MixedValues:
-                            int countSpecificValues = diceValues.Count(d => d.state.value == cond.value);
-                            int countOtherValues = diceValues.Count - countSpecificValues;
-                            IsVictory &= countSpecificValues == cond.N && countOtherValues == diceValues.Count - cond.N;
-                            break;
-                        case VictoryConditionType.PairValues:
-                            int countPairValues = diceValues.Count(d => d.state.value % 2 == 0);
-                            IsVictory &= countPairValues == cond.N;
-                            break;
-                        case VictoryConditionType.ImpairValues:
-                            int countImpairValues = diceValues.Count(d => d.state.value % 2 == 1);
-                            IsVictory &= countImpairValues == cond.N;
-                            break;
-                        default:
-                            Debug.LogError("Unknown victory condition: " + condition);
-                            break;
+        int[] oldIndex = intricationGroups[groupIndex].diceIndex;
+        int newIndexLength = 1;
+        if(oldIndex != null)
+            newIndexLength = oldIndex.Length+1;
+        int[] newIndex = new int[newIndexLength];
+        if(oldIndex != null)
+        {
+            for(int i=0; i<oldIndex.Length; i++)
+            {
+                newIndex[i] = oldIndex[i];
             }
         }
-
-        return IsVictory;
-        
+        newIndex[newIndexLength - 1] = dieIndex;
+        intricationGroups[groupIndex].diceIndex = newIndex;
     }
 
-
-    //public bool CheckVictoryCondition(VictoryConditionType condition, int N, int threshold, List<GraphNode> diceValues)
-    //{
-    //    List<GraphNode> diceValues = graphDice.nodes;
-    //    switch (condition)
-    //    {
-    //        case VictoryConditionType.NSupSum:
-    //            return diceValues.Any(d => d >= threshold);
-
-    //        case VictoryConditionType.AllDifferentValues:
-    //            return diceValues.Distinct().Count() == N;
-
-    //        case VictoryConditionType.NAllSame:
-    //            return diceValues.GroupBy(d => d).Count(g => g.Count() == N) == threshold;
-
-    //            //return diceValues.GroupBy(d => d).Any(g => g.Count() == threshold);
-
-    //        case VictoryConditionType.MixedValues:
-    //            int requiredValueCount = diceValues.Length - threshold;
-    //            int requiredValue = diceValues.GroupBy(d => d).OrderByDescending(g => g.Count()).Take(requiredValueCount).Last().Key;
-    //            return diceValues.Count(d => d == requiredValue) == N;
-
-    //        case VictoryConditionType.PairValues:
-    //            int countOdd = diceValues.Count(d => d % 2 == 1);
-    //            return countOdd == N;
-
-    //        case VictoryConditionType.ImpairValues:
-    //            int countEven = diceValues.Count(d => d % 2 == 0);
-    //            return countEven == N;
-
-    //        default:
-    //            return false;
-    //    }
-    //}
-
-
+    public void RemoveFromIntricationGroup(int groupIndex, int dieIndex)
+    {
+        int[] oldIndex = intricationGroups[groupIndex].diceIndex;
+        int[] newIndex = new int[oldIndex.Length-1];
+        int cursor = 0;
+        for(int i=0; i<oldIndex.Length; i++)
+        {
+            if(oldIndex[i] != dieIndex)
+            {
+                newIndex[cursor] = oldIndex[i];
+                cursor++;
+            }
+        }
+        intricationGroups[groupIndex].diceIndex = newIndex;
+    }
 }

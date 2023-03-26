@@ -1,0 +1,212 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Dialogue_Table Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Dialogue_Table
+  m_TableCollectionNameGuidString: 6bb81c0712cd6da4390368fd510e46e1
+  m_Entries:
+  - m_Id: 1262715125760
+    m_Key: LVL1_TXT_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262786428928
+    m_Key: LVL1_TXT_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262790623232
+    m_Key: LVL1_TXT_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262790623233
+    m_Key: LVL2_TXT_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817536
+    m_Key: LVL2_TXT_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817537
+    m_Key: LVL2_TXT_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817538
+    m_Key: LVL2_TXT_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817539
+    m_Key: LVL3_TXT_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817540
+    m_Key: LVL3_TXT_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817541
+    m_Key: LVL4_TXT_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817542
+    m_Key: LVL4_TXT_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817543
+    m_Key: LVL4_TXT_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817544
+    m_Key: LVL5_TXT_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817545
+    m_Key: LVL5_TXT_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817546
+    m_Key: LVL6_TXT_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817547
+    m_Key: LVL6_TXT_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817548
+    m_Key: LVL6_TXT_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817549
+    m_Key: LVL6_TXT_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817550
+    m_Key: LVL7_TXT_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817551
+    m_Key: LVL7_TXT_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817552
+    m_Key: LVL7_TXT_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817553
+    m_Key: LVL8_TXT_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817554
+    m_Key: LVL8_TXT_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817555
+    m_Key: LVL8_TXT_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817556
+    m_Key: LVL9_TXT_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817557
+    m_Key: LVL9_TXT_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817558
+    m_Key: LVL10_TXT_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817559
+    m_Key: LVL10_TXT_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817560
+    m_Key: LVL1_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817561
+    m_Key: LVL2_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817562
+    m_Key: LVL3_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817563
+    m_Key: LVL4_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817564
+    m_Key: LVL5_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817565
+    m_Key: LVL6_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817566
+    m_Key: LVL7_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817567
+    m_Key: LVL8_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817568
+    m_Key: LVL9_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817569
+    m_Key: LVL10_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817570
+    m_Key: EndScreen_AlainAspect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817571
+    m_Key: EndScreen_Dice_Base
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817572
+    m_Key: EndScreen_Dice_Greg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817573
+    m_Key: EndScreen_Dice_Indi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817574
+    m_Key: EndScreen_Dice_Oppo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817575
+    m_Key: EndScreen_Young
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817576
+    m_Key: EndScreen_Thanks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817577
+    m_Key: CreditScreen_Thanks
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5812964640376750104
+  references:
+    version: 2
+    RefIds:
+    - rid: 5812964640376750104
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1679816295865

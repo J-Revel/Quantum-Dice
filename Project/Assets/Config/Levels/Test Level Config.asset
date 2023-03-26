@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: Test Level Config
   m_EditorClassIdentifier: 
   diceCount: 5
+  introDialogueLocKeys:
+  - LVL1_TXT_1
+  - LVL1_TXT_2
+  - LVL1_TXT_3

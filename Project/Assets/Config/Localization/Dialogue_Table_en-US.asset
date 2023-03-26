@@ -1,0 +1,241 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Dialogue_Table_en-US
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en-US
+  m_SharedData: {fileID: 11400000, guid: 6bb81c0712cd6da4390368fd510e46e1, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 1262715125760
+    m_Localized: Hi, my name is Alain Aspect. Let's make money using the power of
+      science!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262786428928
+    m_Localized: In order to win the prize, throw the dice and try to get a correct
+      result. Click on Finish to be able to throw them !
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262790623232
+    m_Localized: Click on a die and move it to the play mat to throw it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262790623233
+    m_Localized: This one will be harsh unsing only classical dice. But I have prepared
+      a little device to help us!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817536
+    m_Localized: Try to use gregarious dice!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817537
+    m_Localized: All the selected dice will have the same result. Try to select them
+      all before clicking on Validate.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817538
+    m_Localized: Good, try now to throw them all.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817539
+    m_Localized: 'Now it is time to try out a new quantum power: try the selfish
+      dice!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817540
+    m_Localized: Each of these dices will have a different result from one another.
+      But pay attention, the more dices you entangle, the more it will cost of your
+      Quantum Energy.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817541
+    m_Localized: Who said that dice had to be friends... opposition is key! Try now
+      the opposite dice.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817542
+    m_Localized: Dice affected by this power will always have opposite results, like
+      1 and 6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817543
+    m_Localized: 'Congratulations, you now know 3 types of entanglement! (There are
+      many other examples of entanglement, but those 3 should be enough for now.) '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817544
+    m_Localized: It is becoming more and more interesting... try to mix the different
+      types of entanglement!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817545
+    m_Localized: Hmm hmm... I think you should first from a triplet of gregarious
+      dice, then form 3 pairs of opposite dice.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817546
+    m_Localized: Good, you are now a master of entanglement, but let that aside for
+      the moment...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817547
+    m_Localized: I still have somethin new for you. It would be a shame to play only
+      with classical dice.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817548
+    m_Localized: Go directly to the Throw Phase and click and the slit.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817549
+    m_Localized: Using contructing slits, you are sure to obtain an even result (2,4
+      or 6)! But that will consome 1 Quantum Energy each time a die goes through
+      the slits.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817550
+    m_Localized: Let's keep the entanglement aside.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817551
+    m_Localized: 'You aslo have access to destructive slits, that only keep odd results.
+      Try it out! '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817552
+    m_Localized: 'Bonus info: when a wave goes through slits, it goes throug both
+      apertures at once. Both resulting waves interfere, which cancels some possible
+      outcomes. Our die is quantum and behaves here like a wave!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817553
+    m_Localized: You master now all the tools, up to you to use them properly to
+      become rich!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817554
+    m_Localized: 'Bonus info: Selfish dice have the same behaviour as fermions, one
+      of the two big families of particles. These particles tends to all occupy different
+      states, this is for instance the case of electron, which are responsible for
+      electricity!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817555
+    m_Localized: 'Hint: Try to use selfish dice! And constructive slits shoul help
+      you!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817556
+    m_Localized: 'Bonus info: Opposite dice correspond to a particular entangled
+      state also kown as Bell state. I used this state to show that quantum mechanics
+      allows you to win more often than clasical mechanics! And thanks to that I
+      won the Nobel Prize!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817557
+    m_Localized: 'Hint: There are several ways to solve this puzzle, one of them
+      involves using cleverly opposite dice!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817558
+    m_Localized: 'Bonus info: Gregarious dice have the same behaviour as bosons,
+      the other family of particles. These ones tend to al occupy the same state,
+      juste like particle of lights. This phenomenon is at the core of Lasers!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817559
+    m_Localized: 'Hint: There are once again several ways to solve this puzzle, but
+      in any case you will have to use two pairs of gragarious dice!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817560
+    m_Localized: Do you know how to throw dice?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817561
+    m_Localized: Birds of a feather flock together
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817562
+    m_Localized: Agree to disagree
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817563
+    m_Localized: Black Vs Jack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817564
+    m_Localized: Black & Jack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817565
+    m_Localized: Building one's wealth...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817566
+    m_Localized: Destroying other's!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817567
+    m_Localized: Singular pairs?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817568
+    m_Localized: Alternate destruction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817569
+    m_Localized: Double Trouble
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817570
+    m_Localized: Even though I am not a millionaire, I have a Nobel Prize, and this
+      is priceless!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817571
+    m_Localized: Spin defines the different possible states of a quantum object (any
+      sufficiently small object, like electrons or atoms). We can see it as a little
+      magnet, pointing in a given direction, or several at once (this is a weirdness
+      of quantum mechanics)! Here, we have 6 states with our dice.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817572
+    m_Localized: Entangle the particle in a symmetric way, all of them will have
+      the smae spin.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817573
+    m_Localized: Entangle the particles in an antisymmetric way, none of them will
+      have the same spin.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817574
+    m_Localized: Form a Bell state, where both spin point toward opposite directions.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817575
+    m_Localized: Generate interferences, which cancels some results.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262794817576
+    m_Localized: Thanks for playing! We hope that you now understand (a bit) better
+      quantum mechanics!
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
