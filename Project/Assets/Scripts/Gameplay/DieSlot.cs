@@ -14,6 +14,10 @@ public class DieSlot : MonoBehaviour
     {
         MouseToolSelector.instance.toolChangedDelegate += OnToolChanged;
         entanglementClickable.clickedDelegate += OnClicked;
+        foreach(DieStateDisplay display in diceDisplays)
+        {
+            display.dieIndex = dieIndex;
+        }
     }
 
     void Update()
@@ -43,27 +47,34 @@ public class DieSlot : MonoBehaviour
 
     private void OnClicked()
     {
-        if(diceDisplays[0].intrications.Contains(MouseToolSelector.instance.intricationGroupIndex))
+        IntricationGroup intricationGroup = DiceManager.instance.intricationGroups[MouseToolSelector.instance.intricationGroupIndex];
+        bool isInGroup = false;
+        if(intricationGroup.diceIndex == null)
+            intricationGroup.diceIndex = new int[0];
+        for(int i=0; i<intricationGroup.diceIndex.Length; i++)
         {
-            MouseToolSelector.instance.currentQuantumEnergy--;
+            if(dieIndex == intricationGroup.diceIndex[i])
+                isInGroup = true;
+        }
+        if(isInGroup)
+        {
             DiceManager.instance.RemoveFromIntricationGroup(MouseToolSelector.instance.intricationGroupIndex, dieIndex);
         }
         else
         {
-            MouseToolSelector.instance.currentQuantumEnergy++;
             DiceManager.instance.AddToIntricationGroup(MouseToolSelector.instance.intricationGroupIndex, dieIndex);
         }
-        foreach(DieStateDisplay stateDisplay in diceDisplays)
-        {
-            if(stateDisplay.intrications.Contains(MouseToolSelector.instance.intricationGroupIndex))
-            {
-                stateDisplay.intrications.Remove(MouseToolSelector.instance.intricationGroupIndex);
-            }
-            else
-            {
-                stateDisplay.intrications.Add(MouseToolSelector.instance.intricationGroupIndex);
-            }
-        }
+        // foreach(DieStateDisplay stateDisplay in diceDisplays)
+        // {
+        //     if(isInGroup)
+        //     {
+        //         stateDisplay.intrications.Remove(MouseToolSelector.instance.intricationGroupIndex);
+        //     }
+        //     else
+        //     {
+        //         stateDisplay.intrications.Add(MouseToolSelector.instance.intricationGroupIndex);
+        //     }
+        // }
         
     }
 }

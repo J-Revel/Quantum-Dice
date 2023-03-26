@@ -8,7 +8,9 @@ public class StepCountDisplay : MonoBehaviour
 
     void Start()
     {
-        
+        MouseToolSelector.instance.toolChangedDelegate += () => {
+            gameObject.SetActive(MouseToolSelector.instance.currentTool == ToolMode.DragAndDrop);
+        };
     }
 
     void Update()

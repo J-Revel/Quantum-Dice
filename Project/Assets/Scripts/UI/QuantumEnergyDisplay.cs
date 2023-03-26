@@ -9,6 +9,9 @@ public class QuantumEnergyDisplay : MonoBehaviour
     void Start()
     {
         
+        MouseToolSelector.instance.toolChangedDelegate += () => {
+            gameObject.SetActive(MouseToolSelector.instance.currentTool == ToolMode.Entanglement);
+        };
     }
 
     void Update()

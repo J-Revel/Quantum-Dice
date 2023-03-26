@@ -368,6 +368,22 @@ public class DiceManager : MonoBehaviour
         }
         intricationGroups[groupIndex].diceIndex = newIndex;
     }
+
+    public void RemoveIntricationGroup(int groupIndex)
+    {
+        IntricationGroup[] oldGroups = intricationGroups;
+        IntricationGroup[] newGroups = new IntricationGroup[intricationGroups.Length - 1];
+        int cursor = 0;
+        for(int i=0; i<oldGroups.Length; i++)
+        {
+            if(i != groupIndex)
+            {
+                newGroups[cursor] = oldGroups[i];
+                cursor++;
+            }
+        }
+        intricationGroups = newGroups;
+    }
     public void RollDice(int diceIndex)
     {
         Debug.Log($"Lancer du d�s {diceIndex} !");
