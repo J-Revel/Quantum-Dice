@@ -237,7 +237,10 @@ MonoBehaviour:
   - {x: 0.9202423, y: -0.9202881, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -267190
+  m_InstanceId: 82668
+  m_LocalBounds:
+    m_Center: {x: -0.0000019073486, y: -0.000030517578, z: 0}
+    m_Extent: {x: 0.9202442, y: 0.92025757, z: 0}
 --- !u!1 &9215508850650366220
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,7 +364,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9215508850650366217}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1634433853140727109}
+        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+        m_MethodName: set_alpha
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &9215508850650366263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,4 +403,7 @@ MonoBehaviour:
   - {x: 0.9202423, y: -0.9202881, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 114348
+  m_InstanceId: 82682
+  m_LocalBounds:
+    m_Center: {x: -0.0000019073486, y: -0.000030517578, z: 0}
+    m_Extent: {x: 0.9202442, y: 0.92025757, z: 0}
