@@ -416,7 +416,7 @@ public class DiceManager : MonoBehaviour
                             {
                                 sum += diceValues[i].state.value;
                             }
-                            IsVictory &= sum >= cond.N;
+                            IsVictory &= sum >= cond.value;
                             break;
 
                         case VictoryConditionType.AllDifferentValues:
