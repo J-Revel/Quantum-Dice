@@ -453,8 +453,8 @@ MonoBehaviour:
   m_text: "\u201CBonjour, je suis Alain Aspect. Je vais vous montrer la puissance
     de la science ! Nous allons devenir riche\u2026\u201D\r\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 01e4a7c580ed5f14f944cde189da2cd1, type: 2}
+  m_sharedMaterial: {fileID: -3078362391074419105, guid: 01e4a7c580ed5f14f944cde189da2cd1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -478,12 +478,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.9
+  m_fontSize: 27.4
   m_fontSizeBase: 32.9
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 27.4
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512

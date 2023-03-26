@@ -41,6 +41,7 @@ public class DialoguePanel : MonoBehaviour
     IEnumerator DialogueCoroutine(DialogueType dialogueType)
     {
         bubbleTransform.localScale = Vector3.zero;
+        overlayCanvasGroup.blocksRaycasts = true;
         for(float time = 0; time < appearDuration; time += Time.deltaTime)
         {
             overlayCanvasGroup.alpha = time / appearDuration;
@@ -91,6 +92,7 @@ public class DialoguePanel : MonoBehaviour
             yield return null;
         }
         overlayCanvasGroup.alpha = 0;
+        overlayCanvasGroup.blocksRaycasts = false;
     }
 
     public void SkipDialogue()
