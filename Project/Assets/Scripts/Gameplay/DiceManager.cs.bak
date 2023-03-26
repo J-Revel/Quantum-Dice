@@ -9,6 +9,7 @@ public struct DiceState
 {
     public int id; // a supprimer
     public int value; // 0 = not rolled, 1->6 = face visible   
+    public List<int> possibleValues;
 }
 
 public enum IntricationMode
@@ -16,6 +17,7 @@ public enum IntricationMode
     Gregarious, // same value
     Opposite, // 2 dice only => Opposite values : result sum = 7 (1-6, 2-5, 3-4)
     Selfish, // All values are different
+    None,
 }
 
 [System.Serializable]
@@ -32,9 +34,31 @@ public class GraphNode
     public DiceState state; 
     public List<(GraphNode, IntricationMode)> neighbors;
 
+
     public GraphNode(DiceState state)
     {
         this.state = state;
+        neighbors = new List<(GraphNode, IntricationMode)>();
+    }
+
+    public void Reset()
+    {
+        //initializer la dé par default, 
+        state.value = 0;
+        state.possibleValues = new List<int> { 1, 2, 3, 4, 5, 6 };
+
+        removeAllIntrication(); //A ajouter ?
+    }
+    public void removeAllIntrication()
+    {
+        // Elle enleves toute ses intrication 
+        for (int i = 0; i < neighbors.Count; i++)
+        {
+            neighbors[i].Item1.neighbors.Remove((this, IntricationMode.Gregarious));
+            neighbors[i].Item1.neighbors.Remove((this, IntricationMode.Opposite));
+            neighbors[i].Item1.neighbors.Remove((this, IntricationMode.Selfish));
+        }
+
         neighbors = new List<(GraphNode, IntricationMode)>();
     }
 }
@@ -46,70 +70,146 @@ public class Graph
     public Graph()
     {
         nodes = new List<GraphNode>();
+        /*        nodes = new List<GraphNode>();
+                List<int> initializeList = new List<int> { 1, 2, 3, 4, 5, 6 };
+                DiceState des0 = new DiceState();
+                des0.value = 0; // non lancï¿½
+                des0.id = 0; // non lancï¿½
+                des0.possibleValues = new List<int> { 1, 2, 3, 4, 5, 6 };
 
-        DiceState des0 = new DiceState();
-        des0.value = 0; // non lancï¿½
-        des0.id = 0; // non lancï¿½
+                DiceState des1 = new DiceState();
+                des1.value = 0; // non lancï¿½
+                des1.id = 1; // non lancï¿½
+                des1.possibleValues = new List<int> { 1, 2, 3, 4, 5, 6 };
 
-        DiceState des1 = new DiceState();
-        des1.value = 0; // non lancï¿½
-        des1.id = 1; // non lancï¿½
+                DiceState des2 = new DiceState();
+                des2.id = 2; // non lancï¿½
+                des2.value = 0; // non lancï¿½
+                des2.possibleValues = new List<int> { 1, 2, 3, 4, 5, 6 };
 
-        DiceState des2 = new DiceState();
-        des2.id = 2; // non lancï¿½
-        des2.value = 0; // non lancï¿½
+                DiceState des3 = new DiceState();
+                des3.id = 3; // non lancï¿½
+                des3.value = 0; // non lancï¿½
+                des3.possibleValues = new List<int> { 1, 2, 3, 4, 5, 6 };
 
-        DiceState des3 = new DiceState();
-        des3.id = 3; // non lancï¿½
-        des3.value = 0; // non lancï¿½
-        
-        GraphNode node0 = new GraphNode(des0);
-        GraphNode node1 = new GraphNode(des1);
-        GraphNode node2 = new GraphNode(des2);
-        GraphNode node3 = new GraphNode(des3);
 
-        // Ajouter les voisins de chaque noeud
-        node0.neighbors.Add((node1, IntricationMode.Selfish));
-        node0.neighbors.Add((node2, IntricationMode.Selfish));
-        node0.neighbors.Add((node2, IntricationMode.Opposite));
+                DiceState des4 = new DiceState();
+                des4.id = 4; // non lancï¿½
+                des4.value = 0; // non lancï¿½
+                des4.possibleValues = new List<int> { 1, 2, 3, 4, 5, 6 };
 
-        node1.neighbors.Add((node0, IntricationMode.Selfish));
-        node1.neighbors.Add((node2, IntricationMode.Selfish));
-        node1.neighbors.Add((node3, IntricationMode.Gregarious));
+                GraphNode node0 = new GraphNode(des0);
+                GraphNode node1 = new GraphNode(des1);
+                GraphNode node2 = new GraphNode(des2);
+                GraphNode node3 = new GraphNode(des3);
+                GraphNode node4 = new GraphNode(des4);
 
-        node2.neighbors.Add((node0, IntricationMode.Selfish));
-        node2.neighbors.Add((node0, IntricationMode.Opposite));
-        node2.neighbors.Add((node1, IntricationMode.Selfish));
+                // Ajouter les voisins de chaque noeud
+                node0.neighbors.Add((node1, IntricationMode.Selfish));
+                node0.neighbors.Add((node2, IntricationMode.Selfish));
+                node0.neighbors.Add((node2, IntricationMode.Opposite));
 
-        node3.neighbors.Add((node1, IntricationMode.Gregarious));
+                node1.neighbors.Add((node0, IntricationMode.Selfish));
+                node1.neighbors.Add((node2, IntricationMode.Selfish));
 
-        // Ajouter les nï¿½uds ï¿½ la liste de nï¿½uds du graphe
-        nodes.Add(node0);
-        nodes.Add(node1);
-        nodes.Add(node2);
-        nodes.Add(node3);
+                node2.neighbors.Add((node0, IntricationMode.Selfish));
+                node2.neighbors.Add((node0, IntricationMode.Opposite));
+                node2.neighbors.Add((node1, IntricationMode.Selfish));
 
-        //Debug.Log(nodes);
+                node3.neighbors.Add((node4, IntricationMode.Gregarious));
+
+                node4.neighbors.Add((node3, IntricationMode.Gregarious));
+
+                // Ajouter les nï¿½uds ï¿½ la liste de nï¿½uds du graphe
+                nodes.Add(node0);
+                nodes.Add(node1);
+                nodes.Add(node2);
+                nodes.Add(node3);
+                nodes.Add(node4);
+
+                //Debug.Log(nodes);*/
     }
     public void PrintGraph()
     {
         foreach (GraphNode node in nodes)
         {
-<<<<<<< HEAD
-            Debug.Log("Node state: dé" + node.state.id+" value = "+ node.state.value);
-            Debug.Log("Neighbors: ");
-            foreach ((GraphNode neighbor, IntricationMode mode) in node.neighbors)
+            Debug.Log(node.state.id+" - Node state: dï¿½" + node.state.id+" value = "+ node.state.value);
+            string Res = node.state.id.ToString() + " - Ses valeurs possible: ";
+            foreach (var item in node.state.possibleValues)
             {
-                Debug.Log("->((dé "+neighbor.state.id + " = "+ neighbor.state.value+ ") with mode " + mode.ToString()+")");
-=======
-            Debug.Log("Node state: dï¿½" + node.state.id);
-            Debug.Log("Neighbors: ");
-            foreach ((GraphNode neighbor, IntricationMode mode) in node.neighbors)
-            {
-                Debug.Log("->(dï¿½ "+neighbor.state.id + " with mode " + mode.ToString()+")");
->>>>>>> 464a3fcd1f40424bd53c6834e7c138a243ed7d95
+                Res += item.ToString() + ", ";
             }
-            Debug.Log("--------------------------------------");
+            Debug.Log(Res);
+            Debug.Log(node.state.id+" - Neighbors: ");
+            foreach ((GraphNode neighbor, IntricationMode mode) in node.neighbors)
+            {
+                Debug.Log(node.state.id + " -->((dï¿½ "+neighbor.state.id + " = "+ neighbor.state.value+ ") with mode " + mode.ToString()+")");
+            }
+            Debug.Log(node.state.id + " ---------------------------------------");
+        }
+    }
+
+    public void AddNode(DiceState state)
+    {
+        GraphNode node = new GraphNode(state);
+        nodes.Add(node);
+    }
+
+    public void Reset()
+    {
+        //
+        for (int i = 0; i < nodes.Count; i++)
+        {
+            nodes[i].Reset();
+        }
+        BreadthFirstSearch(nodes[0], 0);
+
+    }
+    //1 un lien avec un sommet avec un sommet voisin gregarious on ne peut pas ajouter un lien S ou O avec le meme voisin
+
+    //2 un lien avec un sommet avec un sommet voisin gregarious on ne peut pas avoir un lien S avec aucun autre voisin
+
+    //3 un sommet peut au plus avoir 5 voisin S.
+
+    //4 un lien avec un sommet avec un sommet voisin S ne peut pas avoir 2 lien avec des voisins de type 0
+    //un sommet qq ne peut avoir 2 voisin O
+    public void AddEdge(DiceState state1, DiceState state2, IntricationMode mode)
+    {
+        // Recherche des noeuds correspondants aux DiceStates
+        GraphNode node1 = nodes.Find(n => n.state.id == state1.id);
+        GraphNode node2 = nodes.Find(n => n.state.id == state2.id);
+
+        // Vï¿½rification si les noeuds existent
+        if (node1 == null)
+        {
+            node1 = new GraphNode(state1);
+            nodes.Add(node1);
+        }
+        if (node2 == null)
+        {
+            node2 = new GraphNode(state2);
+            nodes.Add(node2);
+        }
+
+        // Ajout de l'arï¿½te entre les noeuds
+        node1.neighbors.Add((node2, mode));
+        node2.neighbors.Add((node1, mode));
+    }
+
+    public void AddEdgesFromGroups(IntricationGroup[] groups)
+    {
+        foreach (IntricationGroup group in groups)
+        {
+            for (int i = 0; i < group.diceIndex.Length; i++)
+            {
+                GraphNode node1 = nodes[group.diceIndex[i]];
+                for (int j = i + 1; j < group.diceIndex.Length; j++)
+                {
+                    GraphNode node2 = nodes[group.diceIndex[j]];
+                    node1.neighbors.Add((node2, group.mode));
+                    node2.neighbors.Add((node1, group.mode));
+                }
+            }
         }
     }
 
@@ -125,13 +225,29 @@ public class Graph
         return null;
     }
 
+    public void UpdateForSelfish()
+    {
+        GraphNode graphNode = nodes[0];
+        foreach (GraphNode node in nodes){
+            if(node.state.value == 0 && node.state.possibleValues.Count == 1)
+            {
+                foreach((GraphNode neighbord, IntricationMode mode) in node.neighbors){
+                    if (mode.Equals(IntricationMode.Selfish))
+                    {
+                        neighbord.state.possibleValues.Remove(node.state.possibleValues[0]);
+                    }
+                }
+            }
+        }
+    }
+
     public void BreadthFirstSearch( GraphNode startNode, int newValue)
     {
         // Initialisation des variables
         Queue<GraphNode> queue = new Queue<GraphNode>();
         HashSet<GraphNode> visited = new HashSet<GraphNode>();
 
-        // Ajouter le noeud de départ dans la queue
+        // Ajouter le noeud de dï¿½part dans la queue
         queue.Enqueue(startNode);
 
         while (queue.Count > 0)
@@ -139,32 +255,48 @@ public class Graph
             // Obtenir le premier noeud de la queue
             GraphNode currentNode = queue.Dequeue();
 
-            // Mise à jour de la valeur du DiceState
+            // Mise ï¿½ jour de la valeur du DiceState
             if (currentNode.state.Equals(startNode.state))
             {
                 currentNode.state.value = newValue;
+                //currentNode.state.possibleValues = new List<int> { newValue };
+                //changer list valueur possible a lui meme
             }
 
             // Parcourir tous les voisins du noeud courant
             foreach ((GraphNode neighbor, IntricationMode mode) in currentNode.neighbors)
             {
-                // Vérifier si le voisin n'a pas déjà été visité
+                // Vï¿½rifier si le voisin n'a pas dï¿½jï¿½ ï¿½tï¿½ visitï¿½
                 if (!visited.Contains(neighbor))
                 {
+                    if (mode.Equals(IntricationMode.Gregarious))
+                    {
+                        neighbor.state.possibleValues = new List<int> { currentNode.state.value};
+                    }
+                    if (mode.Equals(IntricationMode.Selfish))
+                    {
+                        neighbor.state.possibleValues.Remove(currentNode.state.value);   
+                    }
+                    if (mode.Equals(IntricationMode.Opposite))
+                    {
+                        neighbor.state.possibleValues = new List<int> { 7-currentNode.state.value };
+                    }
                     // Ajouter le voisin dans la queue
                     queue.Enqueue(neighbor);
 
-                    // Marquer le voisin comme visité
-                    visited.Add(neighbor);
+                    // Marquer le voisin comme visitï¿½
+                    //visited.Add(neighbor);
+
                 }
             }
+            visited.Add(currentNode);
+
         }
+
+        UpdateForSelfish();
     }
+
 }
-
-
-
-
 
 public class DiceManager : MonoBehaviour
 {
@@ -178,15 +310,17 @@ public class DiceManager : MonoBehaviour
     public void Start()
     {
         graphDice = new Graph();
-        //PrintGraph(graphDice);
-        graphDice.PrintGraph();
+        foreach(DiceState ds in dice)
+        {
+            graphDice.AddNode(ds);
+        }
+        graphDice.AddEdgesFromGroups(intricationGroups);
 
-        graphDice.BreadthFirstSearch(graphDice.nodes[0], 6);
-        Debug.Log("##########################################");
-        graphDice.PrintGraph();
+    }
 
-        Debug.Log($"GapheDice.nodes.Count() = {graphDice.nodes.Count()}");
-
+    public void ValidateGraph()
+    {
+        graphDice.AddEdgesFromGroups(intricationGroups);
     }
 
     public void Awake()
@@ -194,79 +328,143 @@ public class DiceManager : MonoBehaviour
         instance = this;
         dice = new DiceState[config.diceCount];
         for(int i=0; i<config.diceCount; i++)
+        {
             dice[i].value = 0;
+            dice[i].id = i;
+            dice[i].possibleValues = new List<int> { 1,2,3,4,5,6};
+        }
     }
 
     public void RollDice(int diceIndex)
     {
-        List<int> valuesPossible = new List<int> { 1, 2, 3, 4, 5, 6 };
         Debug.Log($"Lancer du dï¿½s {diceIndex} !");
-    
-        for (int i = 0; i < intricationGroups.Length; i++ )
-        {
-            int[] dicesIndex = intricationGroups[i].diceIndex;
 
-            //verifier s'il est contenue dans la liste diceIndex
-            Debug.Log($"Groupe {i} !");
-
-            string dicesIndexRes = "List dicesIndex before: ";
-            foreach (var item in dicesIndex)
-            {
-                dicesIndexRes += item.ToString() + ", ";
-            }
-            Debug.Log(dicesIndexRes);
-
-            if (Array.IndexOf(dicesIndex, diceIndex) != -1)
-            {               
-                int[] dicesIndexCopy = dicesIndex.Except(new int[] { diceIndex }).ToArray();
-
-                string result1 = "List valuesPossible before: ";
-                foreach (var item in valuesPossible)
-                {
-                    result1 += item.ToString() + ", ";
-                }
-                Debug.Log(result1);
-
-                if (intricationGroups[i].mode == IntricationMode.Selfish)
-                {
-                    Debug.Log("selfish");
-                    for (int k = 0; k < dicesIndexCopy.Length; k++)
-                    {
-                        valuesPossible.Remove(dice[dicesIndexCopy[k]].value);
-                    }
-                }
-                if (intricationGroups[i].mode == IntricationMode.Gregarious)
-                {
-                    Debug.Log($"Greagrious");
-                   
-                    for (int k = 0; k < dicesIndexCopy.Length; k++) // a achanger pour une boucle while
-                    {
-                        if(dice[dicesIndexCopy[k]].value != 0)
-                        {
-                            valuesPossible = new List<int> { dice[dicesIndexCopy[k]].value };
-                        }
-                    }
-                }
-                if (intricationGroups[i].mode == IntricationMode.Opposite)
-                {
-                    Debug.Log($"Opposite");
-
-                    for (int k = 0; k < dicesIndexCopy.Length; k++)
-                    {
-                        if (dice[dicesIndexCopy[k]].value != 0)
-                        {
-                            int tmp = 7 - dice[dicesIndexCopy[k]].value;
-                            valuesPossible = new List<int> { tmp };
-                        }
-                    }
-                }
-            }
-        }
         System.Random random = new System.Random();
-        int index = random.Next(valuesPossible.Count);
+        Debug.Log(graphDice.nodes[diceIndex].state.possibleValues);
+        int index = random.Next(graphDice.nodes[diceIndex].state.possibleValues.Count);
 
-        dice[diceIndex].value = valuesPossible[index];
+        graphDice.BreadthFirstSearch(graphDice.nodes[diceIndex], graphDice.nodes[diceIndex].state.possibleValues[index]);
+        for(int i = 0; i < dice.Length; i++)
+        {
+            dice[i] = graphDice.nodes[i].state;
+        }
 
+        Debug.Log($"Victoir ? {CheckVictoryCondition(config.conditions, graphDice.nodes)}"); 
         diceRollDelegate?.Invoke();
     }
+
+<<<<<<< HEAD
+    public bool CheckVictoryCondition(List<VictoryCondition> condition,  List<GraphNode> diceValues)
+    {
+        bool IsVictory = true;
+        foreach(VictoryCondition cond in config.conditions){
+
+            switch (cond.vc)
+                    {
+                        case VictoryConditionType.NSupSum:
+                            int countSupSum = diceValues.Count(d => d.state.value >= cond.value);
+                            IsVictory &= countSupSum >= cond.N;
+                            break;
+
+                        case VictoryConditionType.AllDifferentValues:
+                            IsVictory &= diceValues.Select(d => d.state.value).Distinct().Count() == diceValues.Count;
+                            break;
+
+                        case VictoryConditionType.NAllSame:
+                            IsVictory &= diceValues.GroupBy(d => d.state.value).Any(g => g.Count() == cond.N);
+                            break;
+                        case VictoryConditionType.MixedValues:
+                            int countSpecificValues = diceValues.Count(d => d.state.value == cond.value);
+                            int countOtherValues = diceValues.Count - countSpecificValues;
+                            IsVictory &= countSpecificValues == cond.N && countOtherValues == diceValues.Count - cond.N;
+                            break;
+                        case VictoryConditionType.PairValues:
+                            int countPairValues = diceValues.Count(d => d.state.value % 2 == 0);
+                            IsVictory &= countPairValues == cond.N;
+                            break;
+                        case VictoryConditionType.ImpairValues:
+                            int countImpairValues = diceValues.Count(d => d.state.value % 2 == 1);
+                            IsVictory &= countImpairValues == cond.N;
+                            break;
+                        default:
+                            Debug.LogError("Unknown victory condition: " + condition);
+                            break;
+            }
+        }
+
+        return IsVictory;
+        
+    }
+
+
+    //public bool CheckVictoryCondition(VictoryConditionType condition, int N, int threshold, List<GraphNode> diceValues)
+    //{
+    //    List<GraphNode> diceValues = graphDice.nodes;
+    //    switch (condition)
+    //    {
+    //        case VictoryConditionType.NSupSum:
+    //            return diceValues.Any(d => d >= threshold);
+
+    //        case VictoryConditionType.AllDifferentValues:
+    //            return diceValues.Distinct().Count() == N;
+
+    //        case VictoryConditionType.NAllSame:
+    //            return diceValues.GroupBy(d => d).Count(g => g.Count() == N) == threshold;
+
+    //            //return diceValues.GroupBy(d => d).Any(g => g.Count() == threshold);
+
+    //        case VictoryConditionType.MixedValues:
+    //            int requiredValueCount = diceValues.Length - threshold;
+    //            int requiredValue = diceValues.GroupBy(d => d).OrderByDescending(g => g.Count()).Take(requiredValueCount).Last().Key;
+    //            return diceValues.Count(d => d == requiredValue) == N;
+
+    //        case VictoryConditionType.PairValues:
+    //            int countOdd = diceValues.Count(d => d % 2 == 1);
+    //            return countOdd == N;
+
+    //        case VictoryConditionType.ImpairValues:
+    //            int countEven = diceValues.Count(d => d % 2 == 0);
+    //            return countEven == N;
+
+    //        default:
+    //            return false;
+    //    }
+    //}
+
+
+=======
+    public void AddToIntricationGroup(int groupIndex, int dieIndex)
+    {
+        int[] oldIndex = intricationGroups[groupIndex].diceIndex;
+        int newIndexLength = 1;
+        if(oldIndex != null)
+            newIndexLength = oldIndex.Length+1;
+        int[] newIndex = new int[newIndexLength];
+        if(oldIndex != null)
+        {
+            for(int i=0; i<oldIndex.Length; i++)
+            {
+                newIndex[i] = oldIndex[i];
+            }
+        }
+        newIndex[newIndexLength - 1] = dieIndex;
+        intricationGroups[groupIndex].diceIndex = newIndex;
+    }
+
+    public void RemoveFromIntricationGroup(int groupIndex, int dieIndex)
+    {
+        int[] oldIndex = intricationGroups[groupIndex].diceIndex;
+        int[] newIndex = new int[oldIndex.Length-1];
+        int cursor = 0;
+        for(int i=0; i<oldIndex.Length; i++)
+        {
+            if(oldIndex[i] != dieIndex)
+            {
+                newIndex[cursor] = oldIndex[i];
+                cursor++;
+            }
+        }
+        intricationGroups[groupIndex].diceIndex = newIndex;
+    }
+>>>>>>> e4da9f4bcc20ce0635ca6b25e26c46bda538938b
 }
