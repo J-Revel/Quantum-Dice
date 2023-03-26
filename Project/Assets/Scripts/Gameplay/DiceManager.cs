@@ -309,6 +309,13 @@ public class DiceManager : MonoBehaviour
 
     public void Start()
     {
+        dice = new DiceState[config.diceCount];
+        for (int i = 0; i < config.diceCount; i++)
+        {
+            dice[i].value = 0;
+            dice[i].id = i;
+            dice[i].possibleValues = new List<int> { 1, 2, 3, 4, 5, 6 };
+        }
         graphDice = new Graph();
         foreach(DiceState ds in dice)
         {
@@ -326,13 +333,6 @@ public class DiceManager : MonoBehaviour
     public void Awake()
     {
         instance = this;
-        dice = new DiceState[config.diceCount];
-        for(int i=0; i<config.diceCount; i++)
-        {
-            dice[i].value = 0;
-            dice[i].id = i;
-            dice[i].possibleValues = new List<int> { 1,2,3,4,5,6};
-        }
     }
 
     public void AddToIntricationGroup(int groupIndex, int dieIndex)
