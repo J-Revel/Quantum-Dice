@@ -375,7 +375,7 @@ public class DiceManager : MonoBehaviour
         Debug.Log($"Lancer du dés {diceIndex} !");
 
         System.Random random = new System.Random();
-        Debug.Log(graphDice.nodes[diceIndex].state.possibleValues);
+        //Debug.Log(graphDice.nodes[diceIndex].state.possibleValues);
         int index = random.Next(graphDice.nodes[diceIndex].state.possibleValues.Count);
 
         graphDice.BreadthFirstSearch(graphDice.nodes[diceIndex], graphDice.nodes[diceIndex].state.possibleValues[index]);
@@ -383,10 +383,9 @@ public class DiceManager : MonoBehaviour
         {
             dice[i] = graphDice.nodes[i].state;
         }
-        graphDice.PrintGraph();
-        Debug.Log("#############################################");
-        Debug.Log($"Victoir ? {CheckVictoryCondition(config.conditions, graphDice.nodes)}"); 
+
         diceRollDelegate?.Invoke();
+        nbRollDice++;
     }
 
     public bool CheckVictoryCondition(List<VictoryCondition> condition,  List<GraphNode> diceValues)
@@ -402,7 +401,7 @@ public class DiceManager : MonoBehaviour
                             break;
 
                         case VictoryConditionType.AllDifferentValues:
-                            IsVictory &= diceValues.Select(d => d.state.value).Distinct().Count() == diceValues.Count;
+                            IsVictory &= diceValues.Select(d => d.state.value).Distinct().Count() == cond.N;
                             break;
 
                         case VictoryConditionType.NAllSame:
@@ -414,14 +413,19 @@ public class DiceManager : MonoBehaviour
                             IsVictory &= countSpecificValues == cond.N && countOtherValues == diceValues.Count - cond.N;
                             break;
                         case VictoryConditionType.PairValues:
-                            int countPairValues = diceValues.Count(d => d.state.value % 2 == 0);
+                            int countPairValues = diceValues.Count(d => (d.state.value % 2 == 0 && d.state.value !=0));
                             IsVictory &= countPairValues == cond.N;
                             break;
                         case VictoryConditionType.ImpairValues:
                             int countImpairValues = diceValues.Count(d => d.state.value % 2 == 1);
                             IsVictory &= countImpairValues == cond.N;
                             break;
-                        default:
+                        case VictoryConditionType.NSumEqual:
+                            var combinations = GetCombinations(diceValues.Where(d => d.state.value != 0).Select(d => d.state.value), cond.N);
+                            IsVictory &= combinations.Any(c => c.Sum() == cond.value);
+                            break;
+
+                default:
                             Debug.LogError("Unknown victory condition: " + condition);
                             break;
             }
@@ -430,5 +434,21 @@ public class DiceManager : MonoBehaviour
         return IsVictory;
         
     }
+
+    public bool Victory()
+    {
+        return CheckVictoryCondition(config.conditions, graphDice.nodes);
+    }
+    public static IEnumerable<IEnumerable<T>> GetCombinations<T>(IEnumerable<T> list, int n)
+    {
+        if (n == 0)
+            return new[] { new T[0] };
+        else
+        {
+            return list.SelectMany((e, i) =>
+                GetCombinations(list.Skip(i + 1), n - 1).Select(c => (new[] { e }).Concat(c)));
+        }
+    }
+
 
 }

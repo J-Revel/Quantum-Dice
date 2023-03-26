@@ -7,12 +7,13 @@ using UnityEngine.Localization;
 [System.Serializable]
 public enum VictoryConditionType
 {
-    NSupSum, // n d�s doit �tre sup�rieure ou �gale � un certain seuil
-    AllDifferentValues, // chaque d� doit avoir une valeur different entre elle, n= All
-    NAllSame, // N d�s doivent avoir la m�me valeur
-    MixedValues, // n d�s doivent avoir une valeur sp�cifique, tandis que le reste doit avoir une valeur diff�rente
-    PairValues, //n des doivent etre impair
-    ImpairValues //n des doivent etre paire
+    NSupSum, // n des doit etre superieure ou egale e un certain seuil OK
+    AllDifferentValues, // chaque de doit avoir une valeur different entre elle, n= All OK
+    NAllSame, // N des doivent avoir la meme valeur OK
+    MixedValues, // n des doivent avoir une valeur specifique, tandis que le reste doit avoir une valeur differente
+    PairValues, //n des doivent etre impair OK
+    ImpairValues, //n des doivent etre paire OK
+    NSumEqual //n des doivent avoir comme somme = Value OK
 }
 
 [System.Serializable]
