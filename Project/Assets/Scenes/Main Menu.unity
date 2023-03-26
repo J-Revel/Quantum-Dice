@@ -6192,47 +6192,43 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Les particules physiques poss\xE8dent un spin, qui est comme une petite
-    boussole qui peut pointer dans diff\xE9rentes directions. Une des propri\xE9t\xE9s
-    importantes de ce spin est sa taille (un peu comme la longueur ou la force d\u2019aimantation
-    de l\u2019aiguille de la boussole).\r\n\r\nUne particule qui a un spin entier
-    (0, 1, 2, \u2026) s'appelle \u201Cboson\u201D, et se comportera comme les d\xE9s
-    gr\xE9gaires introduits dans le jeu. C\u2019est le cas des photons qui composent
-    la lumi\xE8re. Ces particules ont tendance \xE0 toutes se mettre dans le m\xEAme
-    \xE9tat lorsque cela est possible.\r\n\r\nUne particule avec un spin demi-entier
-    (0.5, 1.5, 2.5\u2026) s'appelle fermion, et se comportera comme les d\xE9s individualistes.
-    C\u2019est le cas des \xE9lectrons qui sont responsables du courant \xE9lectrique.
-    Deux de ces particules ne peuvent jamais \xEAtre exactement dans le m\xEAme \xE9tat.\r\n\r\nIci,
+  m_text: "Les particules physiques poss\xE8dent un <color=#ffd72c>spin</color>,
+    qui est comme une petite boussole qui peut pointer dans diff\xE9rentes directions.
+    Une des propri\xE9t\xE9s importantes de ce spin est sa taille (un peu comme la
+    longueur ou la force d\u2019aimantation de l\u2019aiguille de la boussole).\r\n\r\nUne
+    particule qui a un spin entier (0, 1, 2, \u2026) s'appelle <color=#ffd72c>\u201Cboson\u201D</color>,
+    et se comporte comme les d\xE9s <color=#ffd72c>gr\xE9gaires</color> introduits
+    dans le jeu. C\u2019est le cas des photons qui composent la lumi\xE8re. Ces particules
+    ont tendance \xE0 toutes se mettre dans le <color=#ffd72c>m\xEAme \xE9tat</color>
+    lorsque cela est possible.\r\n\r\nUne particule avec un spin demi-entier (0.5,
+    1.5, 2.5\u2026) s'appelle <color=#ffd72c>\"fermion\"</color>, et se comporte
+    comme les d\xE9s <color=#ffd72c>individualistes</color>. C\u2019est le cas des
+    \xE9lectrons qui sont responsables du courant \xE9lectrique. Deux de ces particules
+    ne peuvent <color=#ffd72c>jamais \xEAtre exactement dans le m\xEAme \xE9tat</color>.\r\n\r\nIci,
     nos d\xE9s peuvent \xEAtre vus comme des spins 2.5, et si on suppose qu\u2019ils
-    sont discernables, on pourra les intriquer dans des \xE9tats antisym\xE9triques
-    (comme les d\xE9s individualistes) ou des \xE9tats sym\xE9triques (comme les
-    d\xE9s gr\xE9gaires).\r\n\r\nEnfin, \xE0 partir de bosons ou de fermions, on
-    peut cr\xE9er des \xE9tats intriqu\xE9s un peu particuliers, dits \xE9tats de
-    Bell (dont les d\xE9s oppos\xE9s sont un exemple). En utilisant ces \xE9tats,
+    sont <color=#ffd72c>discernables</color>, on pourra les intriquer dans des \xE9tats
+    <color=#ffd72c>antisym\xE9triques</color> (comme les d\xE9s individualistes)
+    ou des \xE9tats <color=#ffd72c>sym\xE9triques</color> (comme les d\xE9s gr\xE9gaires).\r\n\r\nEnfin,
+    \xE0 partir de bosons ou de fermions, on peut cr\xE9er des \xE9tats intriqu\xE9s
+    un peu particuliers, dits <color=#ffd72c>\xE9tats de Bell</color> (dont les d\xE9s
+    <color=#ffd72c>oppos\xE9s</color> sont un exemple). En utilisant ces \xE9tats,
     Alain Aspect a r\xE9ussi \xE0 d\xE9montrer qu\u2019il existait des corr\xE9lations
     purement quantiques, et \xE0 \u201Cgagner\u201D \xE0 un jeu (appel\xE9 jeu de
     Bell) plus souvent qu\u2019avec des \xE9tats classiques (87% de victoires contre
-    75%). C\u2019est entre autres ce qui lui a valu le prix Nobel de Physique 2022.\r\n\r\nLa
-    derni\xE8re notion introduite, \xE0 travers les fentes d\u2019Young, est la dualit\xE9
-    onde corpuscule. En m\xE9canique quantique, un m\xEAme objet pourra, comme notre
-    d\xE9, se comporter tant\xF4t comme une particule, tant\xF4t comme une onde et
-    interf\xE9rer lorsqu\u2019il passe \xE0 travers les fentes. Une mod\xE9lisation
-    de cette interf\xE9rence peut \xEAtre vue par le fait qu\u2019en passant par
-    une fente, la moiti\xE9 des r\xE9sultats possibles sera \xE9limin\xE9e, et on
-    ne gardera que les r\xE9sultats pair ou impair.\r\n\r\n\r\nLors de ma th\xE8se,
-    je m\u2019int\xE9resse \xE0 des m\xE9thodes pour former des \xE9tats intriqu\xE9s
-    \xE0 partir d\u2019atomes. Notamment, j\u2019essaye de d\xE9terminer quels types
-    d\u2019\xE9tats intriqu\xE9s se forment au cours du temps, comment les caract\xE9riser
-    et quelles seraient leurs applications. Un exemple typique d\u2019\xE9tat auquel
-    je m\u2019int\xE9resse est une famille d\u2019\xE9tats proches d'\xE9tats de
-    Bell, appel\xE9s \xE9tats de chat de Schr\xF6dinger (avec nos d\xE9s ici, cela
-    serait caract\xE9ris\xE9 par 2 d\xE9s ou plus, qui ne pourraient faire que des
-    1 ou que des 6, mais tout le m\xEAme r\xE9sultat). Ce genre d\u2019\xE9tat est
-    tr\xE8s utile, car il permet de mesurer de fa\xE7on la plus pr\xE9cise possible
-    un champ magn\xE9tique ext\xE9rieur par exemple."
+    75%). C\u2019est entre autres ce qui lui a valu le prix Nobel de Physique 2022.\r\n\r\nLors
+    de ma th\xE8se, je m\u2019int\xE9resse \xE0 des m\xE9thodes pour former des \xE9tats
+    intriqu\xE9s \xE0 partir d\u2019atomes. Notamment, j\u2019essaye de d\xE9terminer
+    quels types d\u2019\xE9tats intriqu\xE9s se forment au cours du temps, comment
+    les caract\xE9riser et quelles seraient leurs applications. Un exemple typique
+    d\u2019\xE9tat auquel je m\u2019int\xE9resse est une famille d\u2019\xE9tats
+    proches d'\xE9tats de Bell, appel\xE9s \xE9tats de <color=#ffd72c>chat de Schr\xF6dinger</color>
+    (avec nos d\xE9s ici, cela serait caract\xE9ris\xE9 par 2 d\xE9s ou plus, qui
+    ne pourraient faire que des 1 ou que des 6, mais tous le m\xEAme r\xE9sultat).
+    Ce genre d\u2019\xE9tat est tr\xE8s utile, car il permet de mesurer de fa\xE7on
+    la plus pr\xE9cise possible un champ magn\xE9tique, par exemple."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 65b0bdb38eaa3ce4fbf1565b1dd7c9c1, type: 2}
+  m_sharedMaterial: {fileID: -7727546611853817541, guid: 65b0bdb38eaa3ce4fbf1565b1dd7c9c1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6256,8 +6252,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 11.37
-  m_fontSizeBase: 11.37
+  m_fontSize: 16.44
+  m_fontSizeBase: 16.44
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
