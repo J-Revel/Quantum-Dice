@@ -132,7 +132,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817557
-    m_Localized: "Tester calcul proba r\xE9sussite classique vs quantique"
+    m_Localized: "\"Avec seulement des d\xE9s classiques, nos chances de victoire
+      seraient de moins de 10%. Avec nos d\xE9s quantiques, on peut monter \xE0 33%
+      !\""
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817560
@@ -365,6 +367,43 @@ MonoBehaviour:
   - m_Id: 52923999436821
     m_Localized: "D\xE9 individualiste : tous les d\xE9s intriqu\xE9s par cet effet
       auront des r\xE9sultats diff\xE9rents les uns des autres."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59606943383552
+    m_Localized: "Obtiens un r\xE9sultat sup\xE9rieur \xE0 4 avec un d\xE9."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59606972743680
+    m_Localized: "Obtiens 4 d\xE9s identiques"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59606972743681
+    m_Localized: "Obtiens 2 paires de d\xE9s (ex : 1-1 et 2-2)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59606972743682
+    m_Localized: "Obtiens une somme de 21 exactement avec 6 d\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59606972743683
+    m_Localized: 'Obtiens un double paire et un double impair (ex: 2-2 et 3-3)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59606972743684
+    m_Localized: "Obtiens 6 r\xE9sultats diff\xE9rents (donc 1-2-3-4-5-6)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59606972743685
+    m_Localized: "Obtiens une somme de 14 avec des r\xE9sulats tous diff\xE9rents"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59606972743686
+    m_Localized: "Obtiens une somme de 21 exactement avec tes d\xE9s et obtiens 2
+      triplets identiques (ex: 1-1-1 et 6-6-6)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59606972743687
+    m_Localized: "Obtient somme sup\xE9rieure \xE0 27 avec 6 d\xE9s"
     m_Metadata:
       m_Items: []
   references:
