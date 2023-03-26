@@ -411,19 +411,19 @@ public class DiceManager : MonoBehaviour
             switch (cond.vc)
                     {
                         case VictoryConditionType.NSupSum:
-                            int countSupSum = diceValues.Count(d => d.state.value >= cond.value);
+                            int countSupSum = diceValues.Where(d => d.state.value != 0).Count(d => d.state.value >= cond.value);
                             IsVictory &= countSupSum >= cond.N;
                             break;
 
                         case VictoryConditionType.AllDifferentValues:
-                            IsVictory &= diceValues.Select(d => d.state.value).Distinct().Count() == cond.N;
+                            IsVictory &= diceValues.Where(d => d.state.value != 0).Select(d => d.state.value).Distinct().Count() == cond.N;
                             break;
 
                         case VictoryConditionType.NAllSame:
-                            IsVictory &= diceValues.GroupBy(d => d.state.value).Any(g => g.Count() == cond.N);
+                            IsVictory &= diceValues.Where(d => d.state.value != 0).GroupBy(d => d.state.value).Any(g => g.Count() == cond.N);
                             break;
                         case VictoryConditionType.MixedValues:
-                            int countSpecificValues = diceValues.Count(d => d.state.value == cond.value);
+                            int countSpecificValues = diceValues.Where(d => d.state.value != 0).Count(d => d.state.value == cond.value);
                             int countOtherValues = diceValues.Count - countSpecificValues;
                             IsVictory &= countSpecificValues == cond.N && countOtherValues == diceValues.Count - cond.N;
                             break;
