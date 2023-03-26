@@ -28,13 +28,14 @@ public class LevelConfig : ScriptableObject
 {
     public int diceCount = 5; //nombre des disponible
 
-    public int QuantumEnergy = 0;
+    public int quantumEnergy = 0;
 
-    public int throwsDisable = 0;
+    public int targetThrowCount = 0;
 
     public List<VictoryCondition> conditions;
 
     public LocalizedString[] introDialogueEntries;
     public LocalizedString[] rollPhaseDialogueEntries;
     public LocalizedString[] infoDialogueEntries;
+    public LocalizedString citation;
 }

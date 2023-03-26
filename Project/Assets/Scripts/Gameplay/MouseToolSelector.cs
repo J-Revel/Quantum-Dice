@@ -13,6 +13,10 @@ public class MouseToolSelector : MonoBehaviour
     public ToolMode currentTool;
     public int intricationGroupIndex;
 
+    public int currentQuantumEnergy;
+    public int currentStepCount;
+    public int maxStepCount;
+
     public IntricationMode intricationToolMode {
         get
         {
@@ -34,6 +38,8 @@ public class MouseToolSelector : MonoBehaviour
     public void Start()
     {
         DialoguePanel.instance.PlayDialogue(DialogueType.LevelIntro);
+        currentQuantumEnergy = DiceManager.instance.config.quantumEnergy;
+        currentStepCount = 0;
     }
 
     public void SelectTool(ToolMode toolMode)
