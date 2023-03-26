@@ -17,6 +17,7 @@ public enum IntricationMode
     Gregarious, // same value
     Opposite, // 2 dice only => Opposite values : result sum = 7 (1-6, 2-5, 3-4)
     Selfish, // All values are different
+    None,
 }
 
 [System.Serializable]
@@ -50,29 +51,29 @@ public class Graph
         /*        nodes = new List<GraphNode>();
                 List<int> initializeList = new List<int> { 1, 2, 3, 4, 5, 6 };
                 DiceState des0 = new DiceState();
-                des0.value = 0; // non lancé
-                des0.id = 0; // non lancé
+                des0.value = 0; // non lancï¿½
+                des0.id = 0; // non lancï¿½
                 des0.possibleValues = new List<int> { 1, 2, 3, 4, 5, 6 };
 
                 DiceState des1 = new DiceState();
-                des1.value = 0; // non lancé
-                des1.id = 1; // non lancé
+                des1.value = 0; // non lancï¿½
+                des1.id = 1; // non lancï¿½
                 des1.possibleValues = new List<int> { 1, 2, 3, 4, 5, 6 };
 
                 DiceState des2 = new DiceState();
-                des2.id = 2; // non lancé
-                des2.value = 0; // non lancé
+                des2.id = 2; // non lancï¿½
+                des2.value = 0; // non lancï¿½
                 des2.possibleValues = new List<int> { 1, 2, 3, 4, 5, 6 };
 
                 DiceState des3 = new DiceState();
-                des3.id = 3; // non lancé
-                des3.value = 0; // non lancé
+                des3.id = 3; // non lancï¿½
+                des3.value = 0; // non lancï¿½
                 des3.possibleValues = new List<int> { 1, 2, 3, 4, 5, 6 };
 
 
                 DiceState des4 = new DiceState();
-                des4.id = 4; // non lancé
-                des4.value = 0; // non lancé
+                des4.id = 4; // non lancï¿½
+                des4.value = 0; // non lancï¿½
                 des4.possibleValues = new List<int> { 1, 2, 3, 4, 5, 6 };
 
                 GraphNode node0 = new GraphNode(des0);
@@ -97,7 +98,7 @@ public class Graph
 
                 node4.neighbors.Add((node3, IntricationMode.Gregarious));
 
-                // Ajouter les nœuds à la liste de nœuds du graphe
+                // Ajouter les nï¿½uds ï¿½ la liste de nï¿½uds du graphe
                 nodes.Add(node0);
                 nodes.Add(node1);
                 nodes.Add(node2);
@@ -110,7 +111,7 @@ public class Graph
     {
         foreach (GraphNode node in nodes)
         {
-            Debug.Log(node.state.id+" - Node state: dé" + node.state.id+" value = "+ node.state.value);
+            Debug.Log(node.state.id+" - Node state: dï¿½" + node.state.id+" value = "+ node.state.value);
             string Res = node.state.id.ToString() + " - Ses valeurs possible: ";
             foreach (var item in node.state.possibleValues)
             {
@@ -120,7 +121,7 @@ public class Graph
             Debug.Log(node.state.id+" - Neighbors: ");
             foreach ((GraphNode neighbor, IntricationMode mode) in node.neighbors)
             {
-                Debug.Log(node.state.id + " -->((dé "+neighbor.state.id + " = "+ neighbor.state.value+ ") with mode " + mode.ToString()+")");
+                Debug.Log(node.state.id + " -->((dï¿½ "+neighbor.state.id + " = "+ neighbor.state.value+ ") with mode " + mode.ToString()+")");
             }
             Debug.Log(node.state.id + " ---------------------------------------");
         }
@@ -152,7 +153,7 @@ public class Graph
         GraphNode node1 = nodes.Find(n => n.state.id == state1.id);
         GraphNode node2 = nodes.Find(n => n.state.id == state2.id);
 
-        // Vérification si les noeuds existent
+        // Vï¿½rification si les noeuds existent
         if (node1 == null)
         {
             node1 = new GraphNode(state1);
@@ -164,7 +165,7 @@ public class Graph
             nodes.Add(node2);
         }
 
-        // Ajout de l'arête entre les noeuds
+        // Ajout de l'arï¿½te entre les noeuds
         node1.neighbors.Add((node2, mode));
         node2.neighbors.Add((node1, mode));
     }
@@ -220,7 +221,7 @@ public class Graph
         Queue<GraphNode> queue = new Queue<GraphNode>();
         HashSet<GraphNode> visited = new HashSet<GraphNode>();
 
-        // Ajouter le noeud de départ dans la queue
+        // Ajouter le noeud de dï¿½part dans la queue
         queue.Enqueue(startNode);
 
         while (queue.Count > 0)
@@ -228,7 +229,7 @@ public class Graph
             // Obtenir le premier noeud de la queue
             GraphNode currentNode = queue.Dequeue();
 
-            // Mise à jour de la valeur du DiceState
+            // Mise ï¿½ jour de la valeur du DiceState
             if (currentNode.state.Equals(startNode.state))
             {
                 currentNode.state.value = newValue;
@@ -239,7 +240,7 @@ public class Graph
             // Parcourir tous les voisins du noeud courant
             foreach ((GraphNode neighbor, IntricationMode mode) in currentNode.neighbors)
             {
-                // Vérifier si le voisin n'a pas déjà été visité
+                // Vï¿½rifier si le voisin n'a pas dï¿½jï¿½ ï¿½tï¿½ visitï¿½
                 if (!visited.Contains(neighbor))
                 {
                     if (mode.Equals(IntricationMode.Gregarious))
@@ -257,7 +258,7 @@ public class Graph
                     // Ajouter le voisin dans la queue
                     queue.Enqueue(neighbor);
 
-                    // Marquer le voisin comme visité
+                    // Marquer le voisin comme visitï¿½
                     //visited.Add(neighbor);
 
                 }
@@ -296,6 +297,11 @@ public class DiceManager : MonoBehaviour
 
     }
 
+    public void ValidateGraph()
+    {
+        graphDice.AddEdgesFromGroups(intricationGroups);
+    }
+
     public void Awake()
     {
         instance = this;
@@ -310,7 +316,7 @@ public class DiceManager : MonoBehaviour
 
     public void RollDice(int diceIndex)
     {
-        Debug.Log($"Lancer du dés {diceIndex} !");
+        Debug.Log($"Lancer du dï¿½s {diceIndex} !");
 
         System.Random random = new System.Random();
         Debug.Log(graphDice.nodes[diceIndex].state.possibleValues);
@@ -324,5 +330,39 @@ public class DiceManager : MonoBehaviour
         graphDice.PrintGraph();
         Debug.Log("#############################################");
         diceRollDelegate?.Invoke();
+    }
+
+    public void AddToIntricationGroup(int groupIndex, int dieIndex)
+    {
+        int[] oldIndex = intricationGroups[groupIndex].diceIndex;
+        int newIndexLength = 1;
+        if(oldIndex != null)
+            newIndexLength = oldIndex.Length+1;
+        int[] newIndex = new int[newIndexLength];
+        if(oldIndex != null)
+        {
+            for(int i=0; i<oldIndex.Length; i++)
+            {
+                newIndex[i] = oldIndex[i];
+            }
+        }
+        newIndex[newIndexLength - 1] = dieIndex;
+        intricationGroups[groupIndex].diceIndex = newIndex;
+    }
+
+    public void RemoveFromIntricationGroup(int groupIndex, int dieIndex)
+    {
+        int[] oldIndex = intricationGroups[groupIndex].diceIndex;
+        int[] newIndex = new int[oldIndex.Length-1];
+        int cursor = 0;
+        for(int i=0; i<oldIndex.Length; i++)
+        {
+            if(oldIndex[i] != dieIndex)
+            {
+                newIndex[cursor] = oldIndex[i];
+                cursor++;
+            }
+        }
+        intricationGroups[groupIndex].diceIndex = newIndex;
     }
 }

@@ -12,9 +12,10 @@ public class DieEntanglementEffectConfig
 
 public class DieStateDisplay : MonoBehaviour
 {
-    public List<IntricationMode> intrications = new List<IntricationMode>();
+    public List<int> intrications = new List<int>();
     public DieEntanglementEffectConfig[] effects;
     public string shaderColorParam = "_FXColor";
+    public string alphaColorParam = "_Alpha";
     public new Renderer renderer;
     private MaterialPropertyBlock propertyBlock;
 
@@ -31,20 +32,32 @@ public class DieStateDisplay : MonoBehaviour
         List<Color> activeColors = new List<Color>();
         for(int i=0; i<effects.Length; i++)
         {
-            bool effectActive = intrications.Contains(effects[i].entanglementMode);
+            bool effectActive = false;
+            // check if present in intrication group with the same entanglement mode as the displayed effect
+            foreach(int intricationGroupIndex in intrications)
+            {
+                if(DiceManager.instance.intricationGroups[intricationGroupIndex].mode == effects[i].entanglementMode)
+                {
+                    // RemoveFromIntricationGroup(intricationGroupIndex);
+                    effectActive = true;
+                }
+            }
             if(effects[i].particleEffects != null)
                 effects[i].particleEffects.SetActive(effectActive);
             if(effectActive)
             {
                 activeColors.Add(effects[i].shaderColor);
             }
-            
         }
         float colorIndex = effectTime / colorChangeDuration;
-        Color previousColor = activeColors[Mathf.FloorToInt(colorIndex) % activeColors.Count];
-        Color nextColor = activeColors[Mathf.CeilToInt(colorIndex) % activeColors.Count];
-        Color currentColor = Color.Lerp(previousColor, nextColor, Mathf.Repeat(colorIndex, 1));
-        propertyBlock.SetColor(shaderColorParam, currentColor);
+        if(activeColors.Count > 0)
+        {
+            Color previousColor = activeColors[Mathf.FloorToInt(colorIndex) % activeColors.Count];
+            Color nextColor = activeColors[Mathf.CeilToInt(colorIndex) % activeColors.Count];
+            Color currentColor = Color.Lerp(previousColor, nextColor, Mathf.Repeat(colorIndex, 1));
+            propertyBlock.SetColor(shaderColorParam, currentColor);
+        }
+        propertyBlock.SetFloat(alphaColorParam, activeColors.Count > 0 ? 1 : 0);
         
         renderer.SetPropertyBlock(propertyBlock);
         effectTime += Time.deltaTime;

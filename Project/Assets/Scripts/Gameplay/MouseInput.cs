@@ -138,6 +138,11 @@ public class MouseInput : MonoBehaviour
                 hoverDie.hoverElement.SetActive(false);
                 hoverDie = null;        
             }
+            if(hoveredClickable != null)
+            {
+                hoveredClickable.hoverEndDelegate?.Invoke();
+                hoveredClickable = null;
+            }
         }
     }
 
@@ -177,7 +182,7 @@ public class MouseInput : MonoBehaviour
         die.rigidbody.isKinematic = true;
         die.rigidbody.velocity = Vector3.zero;
         die.rigidbody.angularVelocity = Vector3.zero;
-        Vector3 targetNormal = RollableDie.faceNormals[targetValue];
+        Vector3 targetNormal = targetValue >= 0 ? RollableDie.faceNormals[targetValue] : Vector3.up;
         Quaternion targetRotation = storedRotations[storedRotations.Length - 1];
         Quaternion rotationOffset = Quaternion.FromToRotation(Quaternion.Inverse(targetRotation) * Vector3.up, targetNormal);
         if((targetRotation * rotationOffset * targetNormal).y < 0)
@@ -202,7 +207,6 @@ public class MouseInput : MonoBehaviour
         float angle;
         rotationOffset.ToAngleAxis(out angle, out axis);
         axis = die.transform.TransformDirection(axis);
-        // Debug.Log(angle);
         die.transform.position = storedPositions[lastIndex];
         die.transform.rotation = storedRotations[lastIndex] * rotationOffset;
     }

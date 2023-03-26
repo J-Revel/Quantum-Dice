@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Dice Material
-  m_Shader: {fileID: -6465566751694194690, guid: dc15b19f58e7dce408da0c8f21d1ca0b, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 3f6140dd5dbb23e4f81094a0a3d8e51a, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 6
@@ -109,19 +109,23 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _Fresnel_Thickness: 1.64
+    - _FXColorBrightness: -0.2
+    - _FXColorLerp: 1
+    - _Fresnel_Thickness: 5.53
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossinessSource: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _Noise_Scale: 10
-    - _Noise_Speed: 0.1
+    - _NoiseInfluence: 2.74
+    - _Noise_Scale: 3.6
+    - _Noise_Speed: 1.89
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _Rect_Thickness: 0.89
     - _Shininess: 0
     - _Smoothness: 0.272
     - _SmoothnessSource: 0
@@ -138,6 +142,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color_Glow: {r: 0.38823527, g: 0.8235294, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FXColor: {r: 0.8018868, g: 0, b: 0.1566904, a: 1}
+    - _FXColor: {r: 0, g: 0, b: 0, a: 0}
+    - _Noise_Effect_Smoothstep_Edges: {r: 1, g: 1.2, b: 0, a: 0}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
   m_BuildTextureStacks: []
