@@ -52,73 +52,51 @@ public class ConfirmEntanglementButton : MonoBehaviour
 
             IntricationMode intricationMode = MouseToolSelector.instance.intricationToolMode;
             bool verificationR1 = true; //rip le nom :(
-            if (intricationMode.Equals(IntricationMode.Gregarious)) { 
+            bool verificationR2 = true;
+            bool verificationR3 = true; // regle qu'un des est liée a qu'un seul opposite
 
-                //noeud 1
-                for(int i = 0; i < diceInGroup.Length; i++)
+            /*if (diceInGroup.Length != 0)
+            {
+                if (intricationMode.Equals(IntricationMode.Gregarious))
                 {
-                    //noeud 2
-                    for (int j = 0; j < diceInGroup.Length; j++)
+
+                    //noeud 1
+                    for (int i = 0; i < diceInGroup.Length; i++)
                     {
-                        //regarde dans les groupe de type Opposite et Selfish
-                        for(int k = 0; k < DiceManager.instance.intricationGroups.Length; k++)
+                        //noeud 2
+                        for (int j = 0; j < diceInGroup.Length; j++)
                         {
-                            if (DiceManager.instance.intricationGroups[k].mode.Equals(IntricationMode.Opposite) || DiceManager.instance.intricationGroups[k].mode.Equals(IntricationMode.Opposite))
+                            //regarde dans les groupe de type Opposite et Selfish
+                            for (int k = 0; k < DiceManager.instance.intricationGroups.Length; k++)
                             {
-                                verificationR1 &= !(DiceManager.instance.intricationGroups[k].diceIndex.Contains(i) && DiceManager.instance.intricationGroups[k].diceIndex.Contains(j));
+                                if (DiceManager.instance.intricationGroups[k].mode.Equals(IntricationMode.Opposite) || DiceManager.instance.intricationGroups[k].mode.Equals(IntricationMode.Opposite))
+                                {
+                                    verificationR1 &= !(DiceManager.instance.intricationGroups[k].diceIndex.Contains(i) && DiceManager.instance.intricationGroups[k].diceIndex.Contains(j));
+                                }
                             }
                         }
+
                     }
 
                 }
 
-            }
+                if (intricationMode.Equals(IntricationMode.Selfish)) { }
 
-            bool verificationR2 = true;
-            if (intricationMode.Equals(IntricationMode.Gregarious))
-            {
-
-            }
-            if (intricationMode.Equals(IntricationMode.Selfish)) { }
-
-            bool verificationR3 = true; // regle qu'un des est liée a qu'un seul opposite
-            if (intricationMode.Equals(IntricationMode.Opposite))
-            {
-                for (int i = 0; i < diceInGroup.Length; i++)
+                if (intricationMode.Equals(IntricationMode.Opposite))
                 {
-                    for (int j = 0; j < DiceManager.instance.intricationGroups.Length; j++)
+                    for (int i = 0; i < diceInGroup.Length; i++)
                     {
-                        if (DiceManager.instance.intricationGroups[j].mode.Equals(IntricationMode.Opposite) && j != currentGroupIndex)
-                            verificationR3 &= !(DiceManager.instance.intricationGroups[j].diceIndex.Contains(currentGroupIndex));
+                        for (int j = 0; j < DiceManager.instance.intricationGroups.Length; j++)
+                        {
+                            if (DiceManager.instance.intricationGroups[j].mode.Equals(IntricationMode.Opposite) && j != currentGroupIndex)
+                                verificationR3 &= !(DiceManager.instance.intricationGroups[j].diceIndex.Contains(currentGroupIndex));
+                        }
                     }
                 }
             }
-
+*/
             button.interactable = verificationR3 && verificationR1 && diceInGroup != null && diceInGroup.Length > 1 && MouseToolSelector.instance.currentQuantumEnergy >= MouseToolSelector.instance.energyCost;
         
         }
     }
 }
-
-
-/*private bool CheckGregariousAndOpposite(List<GraphNode> diceValues)
-{
-    // On commence par trouver les paires de dés de même valeur
-    var pairs = diceValues.GroupBy(d => d.state.value)
-                          .Where(g => g.Count() >= 2)
-                          .SelectMany(g => g.Combinations(2));
-
-    // On vérifie si chaque paire a un élément dans l'autre paire
-    foreach (var pair1 in pairs)
-    {
-        foreach (var pair2 in pairs)
-        {
-            if (pair1 != pair2 && pair1.Any(d => pair2.Any(d2 => d2 == d)))
-            {
-                return true;
-            }
-        }
-    }
-
-    return false;
-}*/
