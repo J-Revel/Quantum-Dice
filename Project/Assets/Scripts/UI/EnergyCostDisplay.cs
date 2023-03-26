@@ -11,10 +11,17 @@ public class EnergyCostDisplay : MonoBehaviour
         MouseToolSelector.instance.toolChangedDelegate += OnToolChanged;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        text.text = MouseToolSelector.instance.energyCost.ToString();
+        if(DiceManager.instance.intricationGroups.Length > 0)
+        {
+            int[] group = DiceManager.instance.intricationGroups[DiceManager.instance.intricationGroups.Length-1].diceIndex;
+            if(group == null)
+                MouseToolSelector.instance.energyCost = 0;
+            else
+                MouseToolSelector.instance.energyCost = Mathf.Max(0, group.Length - 1);
+            text.text = MouseToolSelector.instance.energyCost.ToString();
+        }
     }
 
     private void OnToolChanged()

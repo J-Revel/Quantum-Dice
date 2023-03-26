@@ -10,6 +10,13 @@ public class EntanglementSelector : MonoBehaviour
 
     void Start()
     {
+        bool available = false;
+        foreach(IntricationMode mode in DiceManager.instance.config.availableEntanglements)
+        {
+            if(mode == intricationMode)
+                available = true;
+        }
+        gameObject.SetActive(available);
         clickable = GetComponent<Clickable>();
         clickable.clickedDelegate += () => { 
             IntricationGroup[] oldGroups = DiceManager.instance.intricationGroups;
@@ -21,7 +28,6 @@ public class EntanglementSelector : MonoBehaviour
             DiceManager.instance.intricationGroups = newGroups;
             MouseToolSelector.instance.intricationGroupIndex = oldGroups.Length;
             MouseToolSelector.instance.SelectTool(toolMode);
-            MouseToolSelector.instance.energyCost = newGroups.Length - 1;
         };
     }
 }

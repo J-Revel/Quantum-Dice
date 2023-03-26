@@ -7118,8 +7118,9 @@ GameObject:
   - component: {fileID: 1489711344}
   - component: {fileID: 1489711346}
   - component: {fileID: 1489711345}
+  - component: {fileID: 1489711347}
   m_Layer: 5
-  m_Name: Quantic Energy Display (1)
+  m_Name: Energy Cost Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7185,6 +7186,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489711343}
   m_CullTransparentMesh: 1
+--- !u!114 &1489711347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489711343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c31d134c6969c045bd71d632a159b85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1708834178}
 --- !u!1 &1508825554
 GameObject:
   m_ObjectHideFlags: 0
@@ -8120,7 +8134,6 @@ GameObject:
   - component: {fileID: 1708834176}
   - component: {fileID: 1708834179}
   - component: {fileID: 1708834178}
-  - component: {fileID: 1708834177}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -8148,19 +8161,6 @@ RectTransform:
   m_AnchoredPosition: {x: 42.9, y: 0}
   m_SizeDelta: {x: 45.020004, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1708834177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1708834175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e7f658db9a61384db9c42ec3a77eed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 1708834178}
 --- !u!114 &1708834178
 MonoBehaviour:
   m_ObjectHideFlags: 0
