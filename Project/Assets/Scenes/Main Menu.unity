@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.28502658, g: 0.37139305, b: 0.4960094, a: 1}
+  m_IndirectSpecularColor: {r: 0.28502667, g: 0.37139323, b: 0.49600998, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2256,6 +2256,63 @@ MonoBehaviour:
   previousTarget: Tuto 3
   size: {x: 960, y: 600}
   availableSize: {x: 0, y: 0}
+--- !u!1 &565043446
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 565043448}
+  - component: {fileID: 565043447}
+  m_Layer: 0
+  m_Name: Level Loader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &565043447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565043446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60ba3fd51c695a2439da14b52f48ced3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelList:
+  - {fileID: 11400000, guid: 8375169250b0f44419d88aa8d69af5ce, type: 2}
+  - {fileID: 11400000, guid: 65b48342fd569c54a8ddb24f535e2ef2, type: 2}
+  - {fileID: 11400000, guid: b6c27b040a3f08845a77f00def6d7da3, type: 2}
+  - {fileID: 11400000, guid: 17852adb65a597b41a9367f778b09999, type: 2}
+  - {fileID: 11400000, guid: 0ebce5f9c2a2e7044a1eaa6267970d96, type: 2}
+  - {fileID: 11400000, guid: 10a71db5962779a48bfbb4c60db6da64, type: 2}
+  - {fileID: 11400000, guid: 4452022ea89dae943b0b20db0bdc4d6d, type: 2}
+  - {fileID: 11400000, guid: f6b57102ccd0a7f439fc7ce25b44b40e, type: 2}
+  - {fileID: 11400000, guid: 361996f33a83e8548b3948d1f5f7c1b5, type: 2}
+  gameSceneName: Game Scene
+  endingSceneName: Main Menu
+  currentLevelIndex: 0
+--- !u!4 &565043448
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565043446}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 345.5446, y: 396.7113, z: -4.9504395}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &574518102
 GameObject:
   m_ObjectHideFlags: 0
@@ -3590,8 +3647,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 924059225}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadScene
+        m_TargetAssemblyTypeName: LevelTransition, Assembly-CSharp
+        m_MethodName: LaunchFirst
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3648,10 +3705,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 924059220}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 126b2f11f6626f84dafb222f0f4e2d36, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ad298e432db85640b5fa7e32f8966e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetScene: Game Scene
 --- !u!1 &943905220
 GameObject:
   m_ObjectHideFlags: 0
@@ -3926,7 +3982,7 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 --- !u!95 &973513203
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3943,8 +3999,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &975311227
 GameObject:
   m_ObjectHideFlags: 0

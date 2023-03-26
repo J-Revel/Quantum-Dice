@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a6c367aee91ea14090497dc8515603f, type: 3}
   m_Name: Niv1
   m_EditorClassIdentifier: 
-  diceCount: 4
+  diceCount: 1
   quantumEnergy: 0
   targetThrowCount: 4
   conditions:
@@ -30,9 +30,9 @@ MonoBehaviour:
     m_LocalVariables: []
   objective:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:6bb81c0712cd6da4390368fd510e46e1
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 59606943383552
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -42,7 +42,7 @@ MonoBehaviour:
   - m_TableReference:
       m_TableCollectionName: GUID:6bb81c0712cd6da4390368fd510e46e1
     m_TableEntryReference:
-      m_KeyId: 1262790623233
+      m_KeyId: 1262715125760
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0

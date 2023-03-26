@@ -406,6 +406,22 @@ MonoBehaviour:
     m_Localized: "Obtient somme sup\xE9rieure \xE0 27 avec 6 d\xE9s"
     m_Metadata:
       m_Items: []
+  - m_Id: 82855244840960
+    m_Localized: "Pas assez d'\xE9nergie."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82855290978304
+    m_Localized: "Un d\xE9 ne peu pas \xEAtre gr\xE9gaire et individualiste."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82855290978305
+    m_Localized: "Un d\xE9 ne peut pas \xEAtre oppos\xE9 \xE0 plusieurs d\xE9s."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82855290978306
+    m_Localized: "Deux d\xE9s gregaires ne peuvent pas \xEAtre oppos\xE9s"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -303,6 +303,22 @@ MonoBehaviour:
     m_Key: LVL9_OBJO
     m_Metadata:
       m_Items: []
+  - m_Id: 82855244840960
+    m_Key: exception1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82855290978304
+    m_Key: exception2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82855290978305
+    m_Key: exception3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82855290978306
+    m_Key: exception4
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

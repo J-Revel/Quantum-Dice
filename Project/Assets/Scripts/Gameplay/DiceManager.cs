@@ -301,7 +301,7 @@ public class Graph
 public class DiceManager : MonoBehaviour
 {
     public static DiceManager instance;
-    public LevelConfig config;
+    public LevelConfig config { get { return GameConfigHandler.instance.currentLevel; }}
     public DiceState[] dice;
     public IntricationGroup[] intricationGroups;
     public System.Action diceRollDelegate;
