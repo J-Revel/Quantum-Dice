@@ -12,7 +12,6 @@ public class DieEntanglementEffectConfig
 
 public class DieStateDisplay : MonoBehaviour
 {
-    public List<int> intrications = new List<int>();
     public DieEntanglementEffectConfig[] effects;
     public string shaderColorParam = "_FXColor";
     public string alphaColorParam = "_Alpha";
@@ -21,6 +20,7 @@ public class DieStateDisplay : MonoBehaviour
 
     private float effectTime = 0;
     public float colorChangeDuration = 0.5f;
+    public int dieIndex;
 
     void Start()
     {
@@ -30,18 +30,25 @@ public class DieStateDisplay : MonoBehaviour
 
     void Update() {
         List<Color> activeColors = new List<Color>();
-        for(int i=0; i<effects.Length; i++)
+        List<IntricationMode> activeIntrications = new List<IntricationMode>();
+        for(int j=0; j<DiceManager.instance.intricationGroups.Length; j++)
         {
-            bool effectActive = false;
-            // check if present in intrication group with the same entanglement mode as the displayed effect
-            foreach(int intricationGroupIndex in intrications)
+            IntricationGroup intricationGroup = DiceManager.instance.intricationGroups[j];
+            if(intricationGroup.diceIndex == null)
+                continue;
+            for(int i=0; i<intricationGroup.diceIndex.Length; i++)
             {
-                if(DiceManager.instance.intricationGroups[intricationGroupIndex].mode == effects[i].entanglementMode)
+                if(intricationGroup.diceIndex[i] == dieIndex)
                 {
-                    // RemoveFromIntricationGroup(intricationGroupIndex);
-                    effectActive = true;
+                    activeIntrications.Add(intricationGroup.mode);
                 }
             }
+        }
+        for(int i=0; i<effects.Length; i++)
+        {
+            bool effectActive = activeIntrications.Contains(effects[i].entanglementMode);
+            // check if present in intrication group with the same entanglement mode as the displayed effect
+            
             if(effects[i].particleEffects != null)
                 effects[i].particleEffects.SetActive(effectActive);
             if(effectActive)

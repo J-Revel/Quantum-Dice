@@ -7,11 +7,20 @@ public class ConfirmEntanglementButton : MonoBehaviour
 {
     private Button button;
     public GameObject toShow;
+    public bool cancel;
     
     void Start()
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(() => {
+            if(cancel)
+            {
+                DiceManager.instance.RemoveIntricationGroup(MouseToolSelector.instance.intricationGroupIndex);
+            }
+            else
+            {
+                MouseToolSelector.instance.currentQuantumEnergy -= MouseToolSelector.instance.energyCost;
+            }
             MouseToolSelector.instance.intricationGroupIndex = -1;
             MouseToolSelector.instance.SelectTool(ToolMode.Entanglement);
             gameObject.SetActive(false);
@@ -32,10 +41,15 @@ public class ConfirmEntanglementButton : MonoBehaviour
         };
         gameObject.SetActive(false);
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        if(!cancel)
+        {
+            int currentGroupIndex = MouseToolSelector.instance.intricationGroupIndex;
+            int[] diceInGroup = DiceManager.instance.intricationGroups[currentGroupIndex].diceIndex;
+            IntricationMode intricationMode = MouseToolSelector.instance.intricationToolMode;
+            button.interactable = diceInGroup != null && diceInGroup.Length > 1 && MouseToolSelector.instance.currentQuantumEnergy >= MouseToolSelector.instance.energyCost;
+        }
     }
 }
