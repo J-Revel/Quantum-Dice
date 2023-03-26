@@ -6,4 +6,5 @@ using UnityEngine;
 public class LevelConfig : ScriptableObject
 {
     public int diceCount = 5;
+    public string[] introDialogueLocKeys;
 }
