@@ -29,7 +29,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1262790623232
-    m_Localized: "Clique sur un d\xE9 et d\xE9place-le vers le tapis pour le lancer."
+    m_Localized: "Arriverez-vous \xE0 faire l'objectif en respectants le nombre de
+      lanc\xE9s indiqu\xE9 sur la couronne ?"
     m_Metadata:
       m_Items: []
   - m_Id: 1262790623233
@@ -404,6 +405,22 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 59606972743687
     m_Localized: "Obtient somme sup\xE9rieure \xE0 27 avec 6 d\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82855244840960
+    m_Localized: "Pas assez d'\xE9nergie."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82855290978304
+    m_Localized: "Un d\xE9 ne peu pas \xEAtre gr\xE9gaire et individualiste."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82855290978305
+    m_Localized: "Un d\xE9 ne peut pas \xEAtre oppos\xE9 \xE0 plusieurs d\xE9s."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82855290978306
+    m_Localized: "Deux d\xE9s gregaires ne peuvent pas \xEAtre oppos\xE9s"
     m_Metadata:
       m_Items: []
   references:

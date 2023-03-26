@@ -17,6 +17,12 @@ public class MouseInput : MonoBehaviour
     public float verticalImpulse = 2;
     public float rotationOffsetDuration = 1;
     private Dictionary<RollableDie, Coroutine> coroutines = new Dictionary<RollableDie, Coroutine>();
+
+    public CanvasGroup successScreenPrefab;
+    public CanvasGroup failureScreenPrefab;
+    public Transform resultScreenContainer;
+    public float victoryAnimDelay = 3;
+    public float fadeAnimDuration = 1;
     
     void Start()
     {
@@ -62,6 +68,17 @@ public class MouseInput : MonoBehaviour
                     cursor++;
                 }
                 DiceManager.instance.RollDice(hoverDie.dieIndex);
+                if(DiceManager.instance.Victory())
+                {
+                    if(MouseToolSelector.instance.currentStepCount <= DiceManager.instance.config.targetThrowCount)
+                    {
+                        StartCoroutine(VictoryScreenCoroutine(successScreenPrefab));
+                    }
+                    else
+                    {
+                        StartCoroutine(VictoryScreenCoroutine(failureScreenPrefab));
+                    }
+                }
                 MouseToolSelector.instance.currentStepCount++;
                 int targetValue = DiceManager.instance.dice[hoverDie.dieIndex].value-1;
                 coroutines[hoverDie] = StartCoroutine(ReplayAnimCoroutine(hoverDie, storedPositions, storedRotations, targetValue));
@@ -145,6 +162,17 @@ public class MouseInput : MonoBehaviour
                 hoveredClickable.hoverEndDelegate?.Invoke();
                 hoveredClickable = null;
             }
+        }
+    }
+
+    public IEnumerator VictoryScreenCoroutine(CanvasGroup screenPrefab)
+    {
+        yield return new WaitForSeconds(victoryAnimDelay);
+        CanvasGroup canvasGroup = Instantiate(screenPrefab, resultScreenContainer);
+        for(float time=0; time < fadeAnimDuration; time+=Time.deltaTime)
+        {
+            canvasGroup.alpha = time / fadeAnimDuration;
+            yield return null;
         }
     }
 
