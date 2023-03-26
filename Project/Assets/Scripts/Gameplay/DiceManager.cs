@@ -303,7 +303,6 @@ public class DiceManager : MonoBehaviour
     public static DiceManager instance;
     public LevelConfig config;
     public DiceState[] dice;
-    public int nbRollDice;
     public IntricationGroup[] intricationGroups;
     public System.Action diceRollDelegate;
     Graph graphDice;
@@ -316,7 +315,6 @@ public class DiceManager : MonoBehaviour
             graphDice.AddNode(ds);
         }
         graphDice.AddEdgesFromGroups(intricationGroups);
-        nbRollDice = config.throwsDisable;
 
     }
 
@@ -385,7 +383,6 @@ public class DiceManager : MonoBehaviour
         }
 
         diceRollDelegate?.Invoke();
-        nbRollDice++;
     }
 
     public bool CheckVictoryCondition(List<VictoryCondition> condition,  List<GraphNode> diceValues)
