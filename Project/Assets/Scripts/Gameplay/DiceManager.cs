@@ -383,6 +383,8 @@ public class DiceManager : MonoBehaviour
         }
 
         diceRollDelegate?.Invoke();
+
+        Debug.Log("GAGNER "+ Victory());
     }
 
     public bool CheckVictoryCondition(List<VictoryCondition> condition,  List<GraphNode> diceValues)
@@ -420,6 +422,16 @@ public class DiceManager : MonoBehaviour
                         case VictoryConditionType.NSumEqual:
                             var combinations = GetCombinations(diceValues.Where(d => d.state.value != 0).Select(d => d.state.value), cond.N);
                             IsVictory &= combinations.Any(c => c.Sum() == cond.value);
+                            break;
+                        case VictoryConditionType.NOccurence:
+                            IsVictory &= diceValues.Where(d => d.state.value != 0)
+                                                    .GroupBy(d => d.state.value)
+                                               .Count(g => g.Count() >= cond.N) >= 2
+                                               ||
+                                         diceValues.Where(d => d.state.value != 0)
+                                         .GroupBy(d => d.state.value)
+                                               .Count(g => g.Count() >= 2*cond.N) >= 1
+                                               ;
                             break;
 
                 default:

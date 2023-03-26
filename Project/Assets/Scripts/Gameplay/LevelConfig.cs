@@ -8,12 +8,13 @@ using UnityEngine.Localization;
 public enum VictoryConditionType
 {
     NSupSum, // n des doit etre superieure ou egale e un certain seuil OK
-    AllDifferentValues, // chaque de doit avoir une valeur different entre elle, n= All OK
-    NAllSame, // N des doivent avoir la meme valeur OK
-    MixedValues, // n des doivent avoir une valeur specifique, tandis que le reste doit avoir une valeur differente
-    PairValues, //n des doivent etre impair OK
-    ImpairValues, //n des doivent etre paire OK
-    NSumEqual //n des doivent avoir comme somme = Value OK
+    AllDifferentValues, // chaque dice doit avoir une valeur different entre elle, n= All OK
+    NAllSame, // N des doivent avoir la meme valeur 
+    MixedValues, // n des doivent avoir une valeur specifique, tandis que le reste doit avoir une valeur differente ??
+    PairValues, //n des doivent etre impair a verifier
+    ImpairValues, //n des doivent etre paire
+    NSumEqual, //n des doivent avoir comme somme = Value
+    NOccurence // 2 group de N fois dice identique
 }
 
 [System.Serializable]
