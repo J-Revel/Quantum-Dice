@@ -16,115 +16,99 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: 6bb81c0712cd6da4390368fd510e46e1
   m_Entries:
   - m_Id: 1262715125760
-    m_Key: LVL1_TXT_1
+    m_Key: LVL1_TXT_P1_1
     m_Metadata:
       m_Items: []
   - m_Id: 1262786428928
-    m_Key: LVL1_TXT_2
+    m_Key: LVL1_TXT_P1_2
     m_Metadata:
       m_Items: []
   - m_Id: 1262790623232
-    m_Key: LVL1_TXT_3
+    m_Key: LVL1_TXT_P2_2
     m_Metadata:
       m_Items: []
   - m_Id: 1262790623233
-    m_Key: LVL2_TXT_1
+    m_Key: LVL2_TXT_P1_1
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817536
-    m_Key: LVL2_TXT_2
+    m_Key: LVL2_TXT_P1_2
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817537
-    m_Key: LVL2_TXT_3
+    m_Key: LVL2_TXT_P1_3
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817538
-    m_Key: LVL2_TXT_4
+    m_Key: LVL2_TXT_P2_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923961688064
+    m_Key: LVL3_TXT_P1_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923995242496
+    m_Key: LVL3_TXT_P1_2
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817539
-    m_Key: LVL3_TXT_1
+    m_Key: LVL3_TXT_P1_3
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817540
-    m_Key: LVL3_TXT_2
+    m_Key: LVL3_TXT_P2_1
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817541
-    m_Key: LVL4_TXT_1
+    m_Key: LVL4_TXT_P1_1
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817542
-    m_Key: LVL4_TXT_2
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1262794817543
-    m_Key: LVL4_TXT_3
+    m_Key: LVL4_TXT_P1_2
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817544
-    m_Key: LVL5_TXT_1
+    m_Key: LVL5_TXT_P1_1
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817545
-    m_Key: LVL5_TXT_2
+    m_Key: LVL5_TXT_P2_1
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817546
-    m_Key: LVL6_TXT_1
+    m_Key: LVL6_TXT_P1_1
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817547
-    m_Key: LVL6_TXT_2
+    m_Key: LVL6_TXT_P1_2
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817548
-    m_Key: LVL6_TXT_3
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1262794817549
-    m_Key: LVL6_TXT_4
+    m_Key: LVL6_TXT_P2_1
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817550
-    m_Key: LVL7_TXT_1
+    m_Key: LVL7_TXT_P1_1
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817551
-    m_Key: LVL7_TXT_2
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1262794817552
-    m_Key: LVL7_TXT_3
+    m_Key: LVL7_TXT_P2_1
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817553
-    m_Key: LVL8_TXT_1
+    m_Key: LVL8_TXT_P1_1
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817554
-    m_Key: LVL8_TXT_2
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1262794817555
-    m_Key: LVL8_TXT_3
+    m_Key: LVL8_TXT_P2_1
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817556
-    m_Key: LVL9_TXT_1
+    m_Key: LVL9_TXT_P1_1
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817557
-    m_Key: LVL9_TXT_2
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1262794817558
-    m_Key: LVL10_TXT_1
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1262794817559
-    m_Key: LVL10_TXT_2
+    m_Key: LVL9_TXT_P2_1
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817560
@@ -163,10 +147,6 @@ MonoBehaviour:
     m_Key: LVL9_TITLE
     m_Metadata:
       m_Items: []
-  - m_Id: 1262794817569
-    m_Key: LVL10_TITLE
-    m_Metadata:
-      m_Items: []
   - m_Id: 1262794817570
     m_Key: EndScreen_AlainAspect
     m_Metadata:
@@ -197,6 +177,94 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1262794817577
     m_Key: CreditScreen_Thanks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436800
+    m_Key: LVL1_TXT_Hint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436801
+    m_Key: LVL2_TXT_Hint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436802
+    m_Key: LVL3_TXT_Hint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436803
+    m_Key: LVL4_TXT_Hint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436804
+    m_Key: LVL5_TXT_Hint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436805
+    m_Key: LVL6_TXT_Hint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436806
+    m_Key: LVL7_TXT_Hint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436807
+    m_Key: LVL8_TXT_Hint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436808
+    m_Key: LVL9_TXT_Hint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436809
+    m_Key: LVL1_CITATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436810
+    m_Key: LVL2_CITATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436811
+    m_Key: LVL3_CITATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436812
+    m_Key: LVL4_CITATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436813
+    m_Key: LVL5_CITATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436814
+    m_Key: LVL6_CITATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436815
+    m_Key: LVL7_CITATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436816
+    m_Key: LVL8_CITATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436817
+    m_Key: LVL9_CITATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436818
+    m_Key: peda_screen_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436819
+    m_Key: peda_screen_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436820
+    m_Key: peda_screen_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436821
+    m_Key: peda_screen_4
     m_Metadata:
       m_Items: []
   m_Metadata:

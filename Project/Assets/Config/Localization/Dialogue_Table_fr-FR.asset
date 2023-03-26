@@ -53,14 +53,14 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817539
-    m_Localized: "Il est temps d\u2019utiliser un autre pouvoir quantique ! Essaye
-      les d\xE9s individualistes."
+    m_Localized: "Comme tu peux le voir, \xE0 chaque fois que tu intriques des d\xE9s,
+      cela co\xFBte de l\u2019\xE9nergie quantique. Intriquer 2 d\xE9s coute 1 d\u2019\xE9nergie,
+      3 d\xE9s coute 2 d\u2019\xE9nergie, 4 d\xE9s 3 d\u2019\xE9nergie\u2026 "
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817540
-    m_Localized: "Ces d\xE9s auront tous un r\xE9sultat diff\xE9rent les uns des
-      autres. Mais attention, plus vous intriquez de d\xE9s, plus cela co\xFBte d'\xE9nergie
-      quantique !"
+    m_Localized: "Comme tu peux le voir, tu as deux paires, mais chaque paire est
+      ind\xE9pendante de l\u2019autre !"
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817541
@@ -73,75 +73,51 @@ MonoBehaviour:
       oppos\xE9s comme 1 et 6."
     m_Metadata:
       m_Items: []
-  - m_Id: 1262794817543
-    m_Localized: "Bravo, tu connais maintenant 3 types d\u2019intrication ! (Il en
-      existe beaucoup d\u2019autres, mais on devrait pouvoir nous contenter de ceux-ci.)"
-    m_Metadata:
-      m_Items: []
   - m_Id: 1262794817544
     m_Localized: "\xE7a commence \xE0 \xEAtre int\xE9ressant\u2026 essaye un peu
       de m\xE9langer les types d\u2019intrication !"
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817545
-    m_Localized: "humm..humm\u2026 je te propose de former d'abord un triplet de
-      d\xE9s gr\xE9gaires puis trois paires de d\xE9s oppos\xE9s."
+    m_Localized: "Info Bonus : Les d\xE9s gr\xE9gaires ont le m\xEAme comportement
+      que les bosons, l\u2019autre famille de particules. Ces particules ont tendance
+      \xE0 se mettre toutes dans le m\xEAme \xE9tat, c\u2019est ce qu\u2019on a par
+      exemple pour la lumi\xE8re, et ce sont \xE0 l\u2019origine des Lasers !"
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817546
-    m_Localized: "C\u2019est bien, tu maitrises l\u2019intrication, mais laissons
-      \xE7a de c\xF4t\xE9 pour l\u2019instant\u2026"
+    m_Localized: "Il est temps d\u2019utiliser un autre pouvoir quantique ! Essaye
+      les d\xE9s individualistes."
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817547
-    m_Localized: "Je t'ai quand m\xEAme pr\xE9par\xE9 un petit quelque chose. On
-      ne va quand m\xEAme pas jouer qu'avec des d\xE9s classiques !"
+    m_Localized: "Ces d\xE9s auront tous un r\xE9sultat diff\xE9rent les uns des
+      autres."
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817548
-    m_Localized: Passe en phase de lancer directement et clique sur la fente !!
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1262794817549
-    m_Localized: "En utilisant des fentes constructives, tu es s\xFBr d\u2019obtenir
-      un r\xE9sultat pair (2, 4 ou 6) ! Mais attention, cela consomme une dose d'\xE9nergie
-      quantique \xE0 chaque fois qu\u2019un d\xE9 passe \xE0 travers."
+    m_Localized: "Bravo, tu connais maintenant 3 types d\u2019intrication ! (Il en
+      existe beaucoup d\u2019autres, mais on devrait pouvoir nous contenter de ceux-ci.)"
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817550
-    m_Localized: "Laissons toujours de c\xF4t\xE9 cette histoire d\u2019intrication."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1262794817551
-    m_Localized: "Tu as aussi acc\xE8s \xE0 des fentes destructives, qui ne donnent
-      que des r\xE9sultats impairs. Essaye pour voir !"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1262794817552
-    m_Localized: "Info Bonus : Lorsqu\u2019une onde passe \xE0 travers une fente,
-      elle passe par les deux ouvertures \xE0 la fois. Les deux ondes qui en r\xE9sultent
-      interf\xE8rent, ce qui \xE9limine certaines possibilit\xE9s ! Notre d\xE9 est
-      quantique et se comporte ici comme une onde !"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1262794817553
     m_Localized: "Tu ma\xEEtrises maintenant tous les outils, \xE0 toi de les utiliser
       comme tu veux pour devenir riche !"
     m_Metadata:
       m_Items: []
-  - m_Id: 1262794817554
+  - m_Id: 1262794817551
     m_Localized: "Info Bonus : Les d\xE9s individualistes ont le m\xEAme comportement
       que les fermions, une des deux familles de particules. Ces particules ont tendance
       \xE0 se mettre dans des \xE9tats tous diff\xE9rents, c\u2019est par exemple
       le cas des \xE9lectrons, responsables du courant \xE9lectrique !"
     m_Metadata:
       m_Items: []
-  - m_Id: 1262794817555
-    m_Localized: "Indice : Essaye d\u2019utiliser des d\xE9s individualistes ! Des
-      fentes constructives devraient aider !"
+  - m_Id: 1262794817553
+    m_Localized: "\u201CCe niveau est un peu plus dur, mais il y a un moyen d\u2019y
+      arriver \xE0 tous les coups !\u201D"
     m_Metadata:
       m_Items: []
-  - m_Id: 1262794817556
+  - m_Id: 1262794817554
     m_Localized: "Info Bonus : Les d\xE9s oppos\xE9s correspondent \xE0 un \xE9tat
       intriqu\xE9 un peu particulier, appel\xE9 \xE9tat de Bell, que j\u2019ai utilis\xE9
       pour montrer que la m\xE9canique quantique permet de gagner plus souvent \xE0
@@ -149,23 +125,14 @@ MonoBehaviour:
       !"
     m_Metadata:
       m_Items: []
+  - m_Id: 1262794817556
+    m_Localized: "\u201CC'est le dernier niveau vers les portes de la richesse, il
+      est possible que la chance vous tourne le dos, heureusement, tu peux recommencer
+      !\u201D"
+    m_Metadata:
+      m_Items: []
   - m_Id: 1262794817557
-    m_Localized: "Indice : Il y a plusieurs fa\xE7ons de r\xE9soudre ce puzzle, l\u2019une
-      d\u2019entre elles consiste \xE0 utiliser des d\xE9s oppos\xE9s \xE0 bon escient
-      !"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1262794817558
-    m_Localized: "Info Bonus : Les d\xE9s gr\xE9gaires ont le m\xEAme comportement
-      que les bosons, l\u2019autre famille de particules. Ces particules ont tendance
-      \xE0 se mettre toutes dans le m\xEAme \xE9tat, c\u2019est ce qu\u2019on a par
-      exemple pour la lumi\xE8re, et ce sont \xE0 l\u2019origine des Lasers !"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1262794817559
-    m_Localized: "Indice : Il y a \xE0 nouveau plusieurs fa\xE7ons de r\xE9soudre
-      ce puzzle, mais il faudra dans tous les cas utiliser deux paires de d\xE9s
-      gr\xE9gaires !"
+    m_Localized: "Tester calcul proba r\xE9sussite classique vs quantique"
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817560
@@ -177,7 +144,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817562
-    m_Localized: Chacun pour soi
+    m_Localized: Validation par les paires
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817563
@@ -185,27 +152,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817564
-    m_Localized: Black & Jack
+    m_Localized: Doubles troubles
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817565
-    m_Localized: "B\xE2tir sa fortune\u2026"
+    m_Localized: Chacun pour soi
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817566
-    m_Localized: "\u2026 En d\xE9truisant celle des autres !"
+    m_Localized: "Oppos\xE9s individualistes"
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817567
-    m_Localized: Pair singuliers ?
+    m_Localized: Black & Jack
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817568
-    m_Localized: Destruction alternative
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1262794817569
-    m_Localized: Doubler les doubles
+    m_Localized: Jackpot Quantique
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817570
@@ -250,16 +213,16 @@ MonoBehaviour:
       petite boussole qui peut pointer dans diff\xE9rentes directions. Une des propri\xE9t\xE9s
       importantes de ce spin est sa taille (un peu comme la longueur ou la force
       d\u2019aimantation de l\u2019aiguille de la boussole).\n\nUne particule qui
-      a un spin entier (0, 1, 2, \u2026) s'appelle \u201Cboson\u201D, et se comportera
+      a un spin entier (0, 1, 2, \u2026) s'appelle \u201Cboson\u201D, et se comporte
       comme les d\xE9s gr\xE9gaires introduits dans le jeu. C\u2019est le cas des
       photons qui composent la lumi\xE8re. Ces particules ont tendance \xE0 toutes
       se mettre dans le m\xEAme \xE9tat lorsque cela est possible.\n\nUne particule
-      avec un spin demi-entier (0.5, 1.5, 2.5\u2026) s'appelle fermion, et se comportera
-      comme les d\xE9s individualistes. C\u2019est le cas des \xE9lectrons qui sont
-      responsables du courant \xE9lectrique. Deux de ces particules ne peuvent jamais
-      \xEAtre exactement dans le m\xEAme \xE9tat.\n\nIci, nos d\xE9s peuvent \xEAtre
-      vus comme des spins 2.5, et si on suppose qu\u2019ils sont discernables, on
-      pourra les intriquer dans des \xE9tats antisym\xE9triques (comme les d\xE9s
+      avec un spin demi-entier (0.5, 1.5, 2.5\u2026) s'appelle \"fermion\", et se
+      comporte comme les d\xE9s individualistes. C\u2019est le cas des \xE9lectrons
+      qui sont responsables du courant \xE9lectrique. Deux de ces particules ne peuvent
+      jamais \xEAtre exactement dans le m\xEAme \xE9tat.\n\nIci, nos d\xE9s peuvent
+      \xEAtre vus comme des spins 2.5, et si on suppose qu\u2019ils sont discernables,
+      on pourra les intriquer dans des \xE9tats antisym\xE9triques (comme les d\xE9s
       individualistes) ou des \xE9tats sym\xE9triques (comme les d\xE9s gr\xE9gaires).\n\nEnfin,
       \xE0 partir de bosons ou de fermions, on peut cr\xE9er des \xE9tats intriqu\xE9s
       un peu particuliers, dits \xE9tats de Bell (dont les d\xE9s oppos\xE9s sont
@@ -267,24 +230,141 @@ MonoBehaviour:
       qu\u2019il existait des corr\xE9lations purement quantiques, et \xE0 \u201Cgagner\u201D
       \xE0 un jeu (appel\xE9 jeu de Bell) plus souvent qu\u2019avec des \xE9tats
       classiques (87% de victoires contre 75%). C\u2019est entre autres ce qui lui
-      a valu le prix Nobel de Physique 2022.\n\nLa derni\xE8re notion introduite,
-      \xE0 travers les fentes d\u2019Young, est la dualit\xE9 onde corpuscule. En
-      m\xE9canique quantique, un m\xEAme objet pourra, comme notre d\xE9, se comporter
-      tant\xF4t comme une particule, tant\xF4t comme une onde et interf\xE9rer lorsqu\u2019il
-      passe \xE0 travers les fentes. Une mod\xE9lisation de cette interf\xE9rence
-      peut \xEAtre vue par le fait qu\u2019en passant par une fente, la moiti\xE9
-      des r\xE9sultats possibles sera \xE9limin\xE9e, et on ne gardera que les r\xE9sultats
-      pair ou impair.\n\n\nLors de ma th\xE8se, je m\u2019int\xE9resse \xE0 des m\xE9thodes
-      pour former des \xE9tats intriqu\xE9s \xE0 partir d\u2019atomes. Notamment,
-      j\u2019essaye de d\xE9terminer quels types d\u2019\xE9tats intriqu\xE9s se
-      forment au cours du temps, comment les caract\xE9riser et quelles seraient
+      a valu le prix Nobel de Physique 2022.\n\nLors de ma th\xE8se, je m\u2019int\xE9resse
+      \xE0 des m\xE9thodes pour former des \xE9tats intriqu\xE9s \xE0 partir d\u2019atomes.
+      Notamment, j\u2019essaye de d\xE9terminer quels types d\u2019\xE9tats intriqu\xE9s
+      se forment au cours du temps, comment les caract\xE9riser et quelles seraient
       leurs applications. Un exemple typique d\u2019\xE9tat auquel je m\u2019int\xE9resse
       est une famille d\u2019\xE9tats proches d'\xE9tats de Bell, appel\xE9s \xE9tats
       de chat de Schr\xF6dinger (avec nos d\xE9s ici, cela serait caract\xE9ris\xE9
       par 2 d\xE9s ou plus, qui ne pourraient faire que des 1 ou que des 6, mais
       tout le m\xEAme r\xE9sultat). Ce genre d\u2019\xE9tat est tr\xE8s utile, car
       il permet de mesurer de fa\xE7on la plus pr\xE9cise possible un champ magn\xE9tique
-      ext\xE9rieur par exemple."
+      par exemple."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923961688064
+    m_Localized: "On va maintenant voir une deuxi\xE8me propri\xE9t\xE9 des d\xE9s
+      gr\xE9gaires\u202F!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923995242496
+    m_Localized: "Il est possible d\u2019utiliser ce pouvoir sur des groupes de d\xE9s
+      diff\xE9rents. Essaye de s\xE9lectionner 2 d\xE9s puis de valider. Puis s\xE9lectionne
+      les deux d\xE9s restants et valide."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436800
+    m_Localized: "Il suffit de lancer les d\xE9s, et esp\xE9rer que la chance soit
+      avec nous."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436801
+    m_Localized: "Si tous les d\xE9s sont gr\xE9gaires, ils auront tous le m\xEAme
+      r\xE9sultat !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436802
+    m_Localized: "S\xE9lectionne d\u2019abord 2 d\xE9s pour les rendre gr\xE9gaires,
+      valide, puis r\xE9alise exactement la m\xEAme action avec deux autres d\xE9s."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436803
+    m_Localized: "La somme de deux d\xE9s oppos\xE9s fera toujours 7 ! Il suffit
+      donc de cr\xE9er 3 pairs de d\xE9s oppos\xE9s."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436804
+    m_Localized: "Oppose une paire de d\xE9s et lie chaque d\xE9 de cette paire d\xE9s
+      \xE0 un autre avec l\u2019effet gr\xE9gaire. Des r\xE9sultats oppos\xE9s sont
+      toujours pairs et impairs !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436805
+    m_Localized: "Applique l\u2019effet individualiste sur 6 de tes d\xE9s pour avoir
+      6 r\xE9sultats diff\xE9rents du premier lanc\xE9 !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436806
+    m_Localized: "La cl\xE9 pour avoir des r\xE9sultats tous diff\xE9rents est d\u2019avoir
+      des d\xE9s individualistes ! Il suffit ensuite de former deux paires de d\xE9s
+      oppos\xE9s parmi ces d\xE9s individualistes."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436807
+    m_Localized: "Commence par opposer deux d\xE9s puis lie chacun de ces d\xE9s
+      avec deux autres gr\xE2ce \xE0 l\u2019intrication gr\xE9gaire."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436808
+    m_Localized: "Un oppos\xE9 et 5 gr\xE9gaires et la victoire est \xE0 nous , enfin
+      presque : nous n'avons qu'une chance sur 3 de r\xE9ussir ! "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436809
+    m_Localized: "\"La th\xE9orie, c'est quand on sait tout et que rien ne fonctionne.
+      La pratique, c'est quand tout fonctionne et que personne ne sait pourquoi.
+      Ici, nous avons r\xE9uni th\xE9orie et pratique : Rien ne fonctionne... et
+      personne ne sait pourquoi !\" (Albert Einstein)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436810
+    m_Localized: "\"Dans la vie, rien n'est \xE0 craindre, tout est \xE0 comprendre.\"
+      (Marie Curie)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436811
+    m_Localized: "\"Une personne qui n'a jamais commis d'erreurs n'a jamais tent\xE9
+      d'innover.\" (Albert Einstein)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436812
+    m_Localized: "\"Quand les choses se corsent, les durs prennent une pause-caf\xE9.\"
+      (Stephen Hawking)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436813
+    m_Localized: "\"Tout obstacle renforce la d\xE9termination. Celui qui s'est fix\xE9
+      un but n'en change pas.\" L\xE9onard de Vinci"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436814
+    m_Localized: '"La seule chose absolue dans un monde comme le notre c''est l''humour"
+      Albert Einstein'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436815
+    m_Localized: "\"Douter de tout ou tout croire sont deux solutions \xE9galement
+      commodes, qui l'une et l'autre nous dispensent de r\xE9fl\xE9chir\" (Poincar\xE9)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436816
+    m_Localized: "Physique quantique, un bilan\u2026 mitig\xE9 (Alexandre Astier)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436817
+    m_Localized: "Si vous croyez comprendre la m\xE9canique quantique, c\u2019est
+      que vous ne la comprenez pas (Richard Phillips Feynman)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436818
+    m_Localized: "D\xE9 classique : a une chance sur 6 de tomber sur chacune de ses
+      faces."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436819
+    m_Localized: "D\xE9 gregaire : tous les d\xE9s intriqu\xE9s de fa\xE7on gr\xE9gaires
+      tomberont sur la m\xEAme face."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436820
+    m_Localized: "D\xE9 oppos\xE9 : les deux d\xE9s tombent sur des faces oppos\xE9es
+      (1-6, 2-5 ou 3-4)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52923999436821
+    m_Localized: "D\xE9 individualiste : tous les d\xE9s intriqu\xE9s par cet effet
+      auront des r\xE9sultats diff\xE9rents les uns des autres."
     m_Metadata:
       m_Items: []
   references:

@@ -13,6 +13,6 @@ public class QuantumEnergyDisplay : MonoBehaviour
 
     void Update()
     {
-            text.text = MouseToolSelector.instance.currentQuantumEnergy + "/" + DiceManager.instance.config.quantumEnergy;
+        text.text = MouseToolSelector.instance.currentQuantumEnergy + "/" + DiceManager.instance.config.quantumEnergy;
     }
 }
