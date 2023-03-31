@@ -23,6 +23,8 @@ public class MouseInput : MonoBehaviour
     public Transform resultScreenContainer;
     public float victoryAnimDelay = 3;
     public float fadeAnimDuration = 1;
+
+    public System.Action throwDiceDelegate;
     
     void Start()
     {
@@ -68,6 +70,7 @@ public class MouseInput : MonoBehaviour
                     cursor++;
                 }
                 DiceManager.instance.RollDice(hoverDie.dieIndex);
+                throwDiceDelegate?.Invoke();
                 if(DiceManager.instance.Victory())
                 {
                     if(MouseToolSelector.instance.currentStepCount <= DiceManager.instance.config.targetThrowCount)

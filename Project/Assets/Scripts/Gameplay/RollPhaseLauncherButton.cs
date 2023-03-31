@@ -8,6 +8,7 @@ public class RollPhaseLauncherButton : MonoBehaviour
     private Button button;
     public float transitionDuration = 1;
     public Transform targetCameraPosition;
+    public MusicPlayer musicPlayer;
     void Start()
     {
         button = GetComponent<Button>();
@@ -34,10 +35,6 @@ public class RollPhaseLauncherButton : MonoBehaviour
         Camera.main.transform.position = targetCameraPosition.position;
         MouseToolSelector.instance.SelectTool(ToolMode.DragAndDrop);
         DiceManager.instance.ValidateGraph();
-    }
-
-    void Update()
-    {
-        
+        musicPlayer.StartCrossFade();
     }
 }

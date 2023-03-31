@@ -15,7 +15,10 @@ MonoBehaviour:
   diceCount: 4
   quantumEnergy: 2
   targetThrowCount: 4
-  conditions: []
+  conditions:
+  - vc: 7
+    N: 2
+    value: 0
   title:
     m_TableReference:
       m_TableCollectionName: GUID:6bb81c0712cd6da4390368fd510e46e1
