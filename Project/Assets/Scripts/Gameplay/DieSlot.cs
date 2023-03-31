@@ -27,7 +27,6 @@ public class DieSlot : MonoBehaviour
             die.transform.SetParent(null);
             Destroy(gameObject);
         }
-        
     }
 
     private void OnToolChanged()
@@ -39,8 +38,16 @@ public class DieSlot : MonoBehaviour
                 die.gameObject.SetActive(true);
                 break;
             case ToolMode.Entanglement:
-                entanglementClickable.gameObject.SetActive(true);
-                die.gameObject.SetActive(false);
+                if(MouseToolSelector.instance.intricationToolMode != IntricationMode.None)
+                {
+                    entanglementClickable.gameObject.SetActive(true);
+                    die.gameObject.SetActive(false);
+                }
+                else 
+                {
+                    entanglementClickable.gameObject.SetActive(false);
+                    die.gameObject.SetActive(true);
+                }
                 break;
         }
     }

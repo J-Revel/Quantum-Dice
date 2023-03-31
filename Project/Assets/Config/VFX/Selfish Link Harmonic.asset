@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7268e984acb6d0244a67562b4518c267, type: 3}
+  m_Name: Selfish Link Harmonic
+  m_EditorClassIdentifier: 
+  harmonics:
+  - freq: 0
+    movement: 0
+    displacement: {x: 0, y: 0.64, z: 0}
+    offset: 0
+    linkIndexOffset: 0
+    active: 1
+    worldspace: 0
+    random: 1
+  material: {fileID: 2100000, guid: d317c6ac3da3e164d8242f9b8ecc4281, type: 2}
+  lineCount: 2
+  lineThickness: 0.18

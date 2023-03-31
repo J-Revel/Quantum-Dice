@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6460703091692567356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6460703091692567354}
+  - component: {fileID: 6460703091692567357}
+  m_Layer: 0
+  m_Name: Link VFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6460703091692567354
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6460703091692567356}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6460703091692567357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6460703091692567356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60c9dfd71b8f77942a9664de31127667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  origin: {fileID: 0}
+  originOffset: {x: 0, y: 0, z: 0}
+  target: {fileID: 0}
+  targetOffset: {x: 0, y: 0, z: 0}
+  lineRendererPrefab: {fileID: 6154750883870971802, guid: 6e4744e410a753048aca4e6ac617e1f1, type: 3}
+  lineCount: 3
+  pointPerUnit: 10
+  config:
+    apexOffset: {x: 0, y: 5, z: 0}
+    harmonics:
+    - freq: 2.71
+      movement: 0.2
+      displacement: {x: 0, y: 1.01, z: 0}
+      offset: 0
+      linkIndexOffset: 0.43
+      active: 1
+      worldspace: 0
+    - freq: 8.55
+      movement: -0.5
+      displacement: {x: 0, y: 0.3, z: 0}
+      offset: 0
+      linkIndexOffset: 1
+      active: 1
+      worldspace: 0
+    - freq: 1.9
+      movement: 0.5
+      displacement: {x: 1, y: 1.56, z: 1}
+      offset: 0
+      linkIndexOffset: 1.22
+      active: 1
+      worldspace: 0
+    config: {fileID: 11400000, guid: 270d63a1045da1f4f858fc9971f8689a, type: 2}
+  animRatio: 0

@@ -29,8 +29,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1262790623232
-    m_Localized: "Arriverez-vous \xE0 faire l'objectif en respectants le nombre de
-      lanc\xE9s indiqu\xE9 sur la couronne ?"
+    m_Localized: "Maintenant, il te suffit de s\xE9lectionner un d\xE9 et de le lancer
+      en directions de la zone de jeu ! "
     m_Metadata:
       m_Items: []
   - m_Id: 1262790623233
@@ -40,11 +40,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817536
-    m_Localized: "Essaye un peu d\u2019utiliser des d\xE9s gr\xE9gaires\u202F! "
+    m_Localized: "Essaye un peu d\u2019utiliser des d\xE9s gr\xE9gaires\u202F! Clique
+      sur le jeton pour activer le pouvoir !"
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817537
-    m_Localized: "les d\xE9s que tu s\xE9lectionnes feront maintenant tous le m\xEAme
+    m_Localized: "Les d\xE9s que tu s\xE9lectionnes feront maintenant tous le m\xEAme
       r\xE9sultat. Essaye de s\xE9lectionner tous les d\xE9s puis valide ton choix
       et termine la phase d\u2019intrication."
     m_Metadata:
@@ -98,7 +99,7 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1262794817548
     m_Localized: "Bravo, tu connais maintenant 3 types d\u2019intrication ! (Il en
-      existe beaucoup d\u2019autres, mais on devrait pouvoir nous contenter de ceux-ci.)"
+      existe beaucoup d\u2019autres, mais on devrait pouvoir se contenter de ceux-ci.)"
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817550
@@ -128,7 +129,7 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1262794817556
     m_Localized: "\u201CC'est le dernier niveau vers les portes de la richesse, il
-      est possible que la chance vous tourne le dos, heureusement, tu peux recommencer
+      est possible que la chance te tourne le dos, heureusement, tu peux recommencer
       !\u201D"
     m_Metadata:
       m_Items: []
@@ -212,38 +213,41 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1262794817577
-    m_Localized: "Les particules physiques poss\xE8dent un spin, qui est comme une
-      petite boussole qui peut pointer dans diff\xE9rentes directions. Une des propri\xE9t\xE9s
-      importantes de ce spin est sa taille (un peu comme la longueur ou la force
-      d\u2019aimantation de l\u2019aiguille de la boussole).\n\nUne particule qui
-      a un spin entier (0, 1, 2, \u2026) s'appelle \u201Cboson\u201D, et se comporte
-      comme les d\xE9s gr\xE9gaires introduits dans le jeu. C\u2019est le cas des
-      photons qui composent la lumi\xE8re. Ces particules ont tendance \xE0 toutes
-      se mettre dans le m\xEAme \xE9tat lorsque cela est possible.\n\nUne particule
-      avec un spin demi-entier (0.5, 1.5, 2.5\u2026) s'appelle \"fermion\", et se
-      comporte comme les d\xE9s individualistes. C\u2019est le cas des \xE9lectrons
-      qui sont responsables du courant \xE9lectrique. Deux de ces particules ne peuvent
-      jamais \xEAtre exactement dans le m\xEAme \xE9tat.\n\nIci, nos d\xE9s peuvent
-      \xEAtre vus comme des spins 2.5, et si on suppose qu\u2019ils sont discernables,
-      on pourra les intriquer dans des \xE9tats antisym\xE9triques (comme les d\xE9s
-      individualistes) ou des \xE9tats sym\xE9triques (comme les d\xE9s gr\xE9gaires).\n\nEnfin,
-      \xE0 partir de bosons ou de fermions, on peut cr\xE9er des \xE9tats intriqu\xE9s
-      un peu particuliers, dits \xE9tats de Bell (dont les d\xE9s oppos\xE9s sont
-      un exemple). En utilisant ces \xE9tats, Alain Aspect a r\xE9ussi \xE0 d\xE9montrer
-      qu\u2019il existait des corr\xE9lations purement quantiques, et \xE0 \u201Cgagner\u201D
-      \xE0 un jeu (appel\xE9 jeu de Bell) plus souvent qu\u2019avec des \xE9tats
-      classiques (87% de victoires contre 75%). C\u2019est entre autres ce qui lui
-      a valu le prix Nobel de Physique 2022.\n\nLors de ma th\xE8se, je m\u2019int\xE9resse
-      \xE0 des m\xE9thodes pour former des \xE9tats intriqu\xE9s \xE0 partir d\u2019atomes.
-      Notamment, j\u2019essaye de d\xE9terminer quels types d\u2019\xE9tats intriqu\xE9s
-      se forment au cours du temps, comment les caract\xE9riser et quelles seraient
-      leurs applications. Un exemple typique d\u2019\xE9tat auquel je m\u2019int\xE9resse
-      est une famille d\u2019\xE9tats proches d'\xE9tats de Bell, appel\xE9s \xE9tats
-      de chat de Schr\xF6dinger (avec nos d\xE9s ici, cela serait caract\xE9ris\xE9
-      par 2 d\xE9s ou plus, qui ne pourraient faire que des 1 ou que des 6, mais
-      tout le m\xEAme r\xE9sultat). Ce genre d\u2019\xE9tat est tr\xE8s utile, car
-      il permet de mesurer de fa\xE7on la plus pr\xE9cise possible un champ magn\xE9tique
-      par exemple."
+    m_Localized: "Les particules physiques poss\xE8dent un <color=#ffd72c>spin</color>,
+      qui est comme une petite boussole qui peut pointer dans diff\xE9rentes directions.
+      Une des propri\xE9t\xE9s importantes de ce spin est sa taille (un peu comme
+      la longueur ou la force d\u2019aimantation de l\u2019aiguille de la boussole).\r\n\r\nUne
+      particule qui a un spin entier (0, 1, 2, \u2026) s'appelle <color=#ffd72c>\u201Cboson\u201D</color>,
+      et se comporte comme les d\xE9s <color=#ffd72c>gr\xE9gaires</color> introduits
+      dans le jeu. C\u2019est le cas des photons qui composent la lumi\xE8re. Ces
+      particules ont tendance \xE0 toutes se mettre dans le <color=#ffd72c>m\xEAme
+      \xE9tat</color> lorsque cela est possible.\r\n\r\nUne particule avec un spin
+      demi-entier (0.5, 1.5, 2.5\u2026) s'appelle <color=#ffd72c>\"fermion\"</color>,
+      et se comporte comme les d\xE9s <color=#ffd72c>individualistes</color>. C\u2019est
+      le cas des \xE9lectrons qui sont responsables du courant \xE9lectrique. Deux
+      de ces particules ne peuvent <color=#ffd72c>jamais \xEAtre exactement dans
+      le m\xEAme \xE9tat</color>.\r\n\r\nIci, nos d\xE9s peuvent \xEAtre vus comme
+      des spins 2.5, et si on suppose qu\u2019ils sont <color=#ffd72c>discernables</color>,
+      on pourra les intriquer dans des \xE9tats <color=#ffd72c>antisym\xE9triques</color>
+      (comme les d\xE9s individualistes) ou des \xE9tats <color=#ffd72c>sym\xE9triques</color>
+      (comme les d\xE9s gr\xE9gaires).\r\n\r\nEnfin, \xE0 partir de bosons ou de
+      fermions, on peut cr\xE9er des \xE9tats intriqu\xE9s un peu particuliers, dits
+      <color=#ffd72c>\xE9tats de Bell</color> (dont les d\xE9s <color=#ffd72c>oppos\xE9s</color>
+      sont un exemple). En utilisant ces \xE9tats, Alain Aspect a r\xE9ussi \xE0
+      d\xE9montrer qu\u2019il existait des corr\xE9lations purement quantiques, et
+      \xE0 \u201Cgagner\u201D \xE0 un jeu (appel\xE9 jeu de Bell) plus souvent qu\u2019avec
+      des \xE9tats classiques (87% de victoires contre 75%). C\u2019est entre autres
+      ce qui lui a valu le prix Nobel de Physique 2022.\r\n\r\nLors de ma th\xE8se,
+      je m\u2019int\xE9resse \xE0 des m\xE9thodes pour former des \xE9tats intriqu\xE9s
+      \xE0 partir d\u2019atomes. Notamment, j\u2019essaye de d\xE9terminer quels
+      types d\u2019\xE9tats intriqu\xE9s se forment au cours du temps, comment les
+      caract\xE9riser et quelles seraient leurs applications. Un exemple typique
+      d\u2019\xE9tat auquel je m\u2019int\xE9resse est une famille d\u2019\xE9tats
+      proches d'\xE9tats de Bell, appel\xE9s \xE9tats de <color=#ffd72c>chat de Schr\xF6dinger</color>
+      (avec nos d\xE9s ici, cela serait caract\xE9ris\xE9 par 2 d\xE9s ou plus, qui
+      ne pourraient faire que des 1 ou que des 6, mais tous le m\xEAme r\xE9sultat).
+      Ce genre d\u2019\xE9tat est tr\xE8s utile, car il permet de mesurer de fa\xE7on
+      la plus pr\xE9cise possible un champ magn\xE9tique, par exemple."
     m_Metadata:
       m_Items: []
   - m_Id: 52923961688064
@@ -420,7 +424,62 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 82855290978306
-    m_Localized: "Deux d\xE9s gregaires ne peuvent pas \xEAtre oppos\xE9s"
+    m_Localized: "Deux d\xE9s du m\xEAme groupe gr\xE9gaires ne peuvent pas \xEAtre
+      oppos\xE9s."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1844112298225664
+    m_Localized: "je vous sugg\xE8re d'utiliser les d\xE9s oppos\xE9s puis les d\xE9s
+      gr\xE9gaires."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1844112298225665
+    m_Localized: "Il y a trois fa\xE7on de faire les choses dans ce casino : la bonne
+      fa\xE7on, la mauvaise fa\xE7on et ma fa\xE7on.\n(Sam Ace Rothstein)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1844112298225666
+    m_Localized: "Obtenir une somme exacte de 15 avec 3 d\xE9s contenant un r\xE9sultat
+      pair"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1844112298225669
+    m_Localized: "Obtenir la somme exact correspondant au num\xE9ro atomique du carbone
+      avec 3 d\xE9s contenant des r\xE9sultats tous diff\xE9rents."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1844112298225672
+    m_Localized: "Obtenir une somme exacte de 15 avec au moins un double pair et
+      3 r\xE9sultats diff\xE9rents."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1844112298225675
+    m_Localized: "Obtenir le somme exact correspondant au num\xE9ro atomique de l\u2019oxyg\xE8ne
+      avec au moins un double impair."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1844112298225678
+    m_Localized: "Obtenir un score de 15 avec 3 d\xE9s pair et 3 d\xE9s impairs. "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1844112298225681
+    m_Localized: "Obtient un r\xE9sultat correspondant aux chiffres le plus malchanceux
+      connus avec au moins 1 double et 4 r\xE9sultats diff\xE9rents."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1844112298225684
+    m_Localized: "Obtenir le r\xE9sultat exact de la somme des num\xE9ros atomique
+      du carbone et deux deux oxyg\xE8nes avec au moin deux doubles."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1844112298225687
+    m_Localized: "Obtient un r\xE9sultat correspondant aux chiffres chances le plus
+      connu avec 5 d\xE9s contenant des r\xE9sultats impair unniquement."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1844112298225690
+    m_Localized: "Obtenir une somme exacte de 30 avec un double, deux r\xE9sultats
+      impairs et deux r\xE9sultats pairs."
     m_Metadata:
       m_Items: []
   references:

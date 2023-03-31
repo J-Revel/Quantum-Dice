@@ -22,6 +22,8 @@ public class DieStateDisplay : MonoBehaviour
     public float colorChangeDuration = 0.5f;
     public int dieIndex;
 
+    public static Dictionary<int, Vector3> dicePositions = new Dictionary<int, Vector3>();
+
     void Start()
     {
         propertyBlock = new MaterialPropertyBlock();
@@ -68,5 +70,6 @@ public class DieStateDisplay : MonoBehaviour
         
         renderer.SetPropertyBlock(propertyBlock);
         effectTime += Time.deltaTime;
+        dicePositions[dieIndex] = transform.position;
     }
 }

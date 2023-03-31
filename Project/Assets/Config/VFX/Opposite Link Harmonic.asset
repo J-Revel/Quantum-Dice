@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7268e984acb6d0244a67562b4518c267, type: 3}
+  m_Name: Opposite Link Harmonic
+  m_EditorClassIdentifier: 
+  harmonics:
+  - freq: 1.02
+    movement: 0.2
+    displacement: {x: 0, y: 0.05, z: 0}
+    offset: 0
+    linkIndexOffset: 0.43
+    active: 1
+    worldspace: 1
+    random: 0
+  - freq: 10.9
+    movement: -0.5
+    displacement: {x: 0, y: 0.01, z: 0}
+    offset: 0
+    linkIndexOffset: 1
+    active: 1
+    worldspace: 1
+    random: 0
+  - freq: 0.2
+    movement: 3.67
+    displacement: {x: 0, y: 0.23, z: 0}
+    offset: 0
+    linkIndexOffset: 1
+    active: 1
+    worldspace: 1
+    random: 0
+  material: {fileID: 2100000, guid: 5903d9406d5cd5747a87e1ea3f0e58fe, type: 2}
+  lineCount: 2
+  lineThickness: 0.15

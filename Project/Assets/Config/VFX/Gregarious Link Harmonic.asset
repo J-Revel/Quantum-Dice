@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7268e984acb6d0244a67562b4518c267, type: 3}
+  m_Name: Gregarious Link Harmonic
+  m_EditorClassIdentifier: 
+  harmonics:
+  - freq: 0.36
+    movement: 0.05
+    displacement: {x: 0.3, y: 0, z: 0}
+    offset: 0
+    linkIndexOffset: 1
+    active: 1
+    worldspace: 1
+    random: 0
+  - freq: 0.5
+    movement: 0.02
+    displacement: {x: 2, y: 0, z: 0}
+    offset: 0
+    linkIndexOffset: 0
+    active: 1
+    worldspace: 0
+    random: 0
+  - freq: 0.2
+    movement: 0.2
+    displacement: {x: 0.58, y: 0, z: 0}
+    offset: 0
+    linkIndexOffset: 0
+    active: 1
+    worldspace: 1
+    random: 0
+  - freq: 0.08
+    movement: 0.2
+    displacement: {x: 0.14, y: 0, z: 0}
+    offset: 0
+    linkIndexOffset: 0
+    active: 1
+    worldspace: 1
+    random: 0
+  material: {fileID: 2100000, guid: 2e6f6851d79fb234987fc32d70bfa8cf, type: 2}
+  lineCount: 3
+  lineThickness: 0.05

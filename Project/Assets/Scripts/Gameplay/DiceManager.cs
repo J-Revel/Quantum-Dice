@@ -231,10 +231,10 @@ public class Graph
         foreach (GraphNode node in nodes){
             if(node.state.value == 0 && node.state.possibleValues.Count == 1)
             {
-                foreach((GraphNode neighbord, IntricationMode mode) in node.neighbors){
+                foreach((GraphNode neighbor, IntricationMode mode) in node.neighbors){
                     if (mode.Equals(IntricationMode.Selfish))
                     {
-                        neighbord.state.possibleValues.Remove(node.state.possibleValues[0]);
+                        neighbor.state.possibleValues.Remove(node.state.possibleValues[0]);
                     }
                 }
             }
@@ -298,6 +298,243 @@ public class Graph
 
 }
 
+public class DiceLinkGraph
+{
+    public int[] availableValues; // for each die, an int representing a bit flag of all available values
+    public int[] forcedValues;
+
+    public Dictionary<int, int[]> entanglementGraph = new Dictionary<int, int[]>();
+
+    public string ArrayToString<T>(T[] a)
+    {
+        string listContent = "[";
+        for(int i=0; i<a.Length; i++)
+        {
+            if(i > 0)
+                listContent += ",";
+            listContent += a[i];
+        }
+        listContent += "]";
+        return listContent;
+    }
+
+    public void ComputeEntanglementGraph()
+    {
+        for(int diceIndex=0; diceIndex<DiceManager.instance.dice.Length; diceIndex++)
+        {
+            List<int> entanglementList = new List<int>();
+            for(int entanglementIndex=0; entanglementIndex<DiceManager.instance.intricationGroups.Length; entanglementIndex++)
+            {
+                if(DiceManager.instance.intricationGroups[entanglementIndex].diceIndex.Contains<int>(diceIndex))
+                {
+                    entanglementList.Add(entanglementIndex);
+                }
+            }
+            entanglementGraph[diceIndex] = entanglementList.ToArray();    
+            // Debug.Log("dice " + diceIndex + " : " + ArrayToString(entanglementGraph[diceIndex]));
+        }
+    }
+
+    
+    private struct DieEntanglementData
+    {
+        public int dieIndex;
+        public int entanglementIndex;
+
+        public override string ToString()
+        {
+            return "(" + dieIndex + ", " + entanglementIndex + ")";
+        }
+    }
+
+    public void ComputeAvailableValues(int[] diceValues)
+    {
+        availableValues = new int[diceValues.Length];
+        forcedValues = new int[diceValues.Length];
+        List<DieEntanglementData> entanglementsToHandle = new List<DieEntanglementData>();
+        for(int i=0; i<availableValues.Length; i++)
+        {
+            availableValues[i] = 0xff; // All flags on / All values possible
+            if(diceValues[i] > 0)
+            {
+                forcedValues[i] = diceValues[i] - 1;
+                availableValues[i] = 1 << (diceValues[i]-1);
+                for(int entanglementIndex = 0; entanglementGraph.ContainsKey(i) && entanglementIndex < entanglementGraph[i].Length; entanglementIndex++)
+                {
+                    DieEntanglementData entanglementData = new DieEntanglementData();
+                    entanglementData.dieIndex = i;
+                    entanglementData.entanglementIndex = entanglementGraph[i][entanglementIndex];
+                    
+                    if(!entanglementsToHandle.Contains(entanglementData))
+                    {
+                        entanglementsToHandle.Add(entanglementData); // Add all entanglements linked to rolled dice to the todo list
+                    }
+                }
+            }
+            else forcedValues[i] = -1;
+        }
+        while(entanglementsToHandle.Count > 0)
+        {
+            DieEntanglementData[] toHandle = entanglementsToHandle.ToArray();
+            entanglementsToHandle.Clear();
+            // Debug.Log("Entanglements To Handle : " + ArrayToString(toHandle));
+            foreach(DieEntanglementData entanglementToHandle in toHandle)
+            {
+                IntricationGroup entanglement = DiceManager.instance.intricationGroups[entanglementToHandle.entanglementIndex];
+                int originAvailableValues = availableValues[entanglementToHandle.dieIndex];
+                foreach(int dieIndex in entanglement.diceIndex)
+                {
+                    if(dieIndex != entanglementToHandle.dieIndex)
+                    {
+                        int oldAvailableValues = availableValues[dieIndex];
+                        switch(entanglement.mode)
+                        {
+                            case IntricationMode.Gregarious:
+                                availableValues[dieIndex] &= originAvailableValues;
+                                break;
+                            case IntricationMode.Opposite:
+                                availableValues[dieIndex] &= OppositeValues(originAvailableValues);
+                                break;
+                            case IntricationMode.Selfish:
+                                int valuesToRemove = 0;
+                                // array with cell i containing the count of dice that cannot have the value i
+                                int[] dieWithoutValueCount = new int[6];
+                                foreach(int linkedDieIndex in entanglement.diceIndex)
+                                {
+                                    if(forcedValues[linkedDieIndex] >= 0 && linkedDieIndex != dieIndex)
+                                        valuesToRemove |= 1 << forcedValues[linkedDieIndex];
+                                    
+                                }
+
+                                availableValues[dieIndex] &= ~valuesToRemove;
+
+                                foreach(int linkedDieIndex in entanglement.diceIndex)
+                                {
+                                    if(forcedValues[linkedDieIndex] >= 0 && linkedDieIndex != dieIndex)
+                                        valuesToRemove |= 1 << forcedValues[linkedDieIndex];
+                                    for(int i=0; i<6; i++)
+                                    {
+                                        if((availableValues[linkedDieIndex] & (1 << i)) == 0) // Check if the linked die can get the value i
+                                        {
+                                            dieWithoutValueCount[i]++;
+                                        }
+                                    }
+                                }
+                                for(int i=0; i<6; i++)
+                                {
+                                    if(dieWithoutValueCount[i] == 5 && (availableValues[dieIndex] & (1 << i)) > 0)
+                                    {
+                                        availableValues[dieIndex] = 1 << i;
+                                    }
+                                }
+                                
+                                break;
+                        }
+                        if(oldAvailableValues != availableValues[dieIndex])
+                        {
+                            foreach(var entanglementIndex in entanglementGraph[dieIndex])
+                            {
+                                DieEntanglementData entanglementData = new DieEntanglementData();
+                                entanglementData.dieIndex = dieIndex;
+                                entanglementData.entanglementIndex = entanglementIndex;
+                                entanglementsToHandle.Add(entanglementData);
+                            }
+                        }
+                        switch(availableValues[dieIndex])
+                        {
+                            case 1 << 0:
+                                forcedValues[dieIndex] = 0;
+                                break;
+                            case 1 << 1:
+                                forcedValues[dieIndex] = 1;
+                                break;
+                            case 1 << 2:
+                                forcedValues[dieIndex] = 2;
+                                break;
+                            case 1 << 3:
+                                forcedValues[dieIndex] = 3;
+                                break;
+                            case 1 << 4:
+                                forcedValues[dieIndex] = 4;
+                                break;
+                            case 1 << 5:
+                                forcedValues[dieIndex] = 5;
+                                break;
+                        }
+                    }
+                }
+                
+            }
+        }
+        // Debug.Log("forced values : " + ArrayToString(forcedValues));
+    }
+
+    public int[] GetAvailableValues(int dieIndex)
+    {
+        // Debug.Log("Available Values " + availableValues[dieIndex]);
+        List<int> result = new List<int>();
+        for(int i=0; i<6; i++)
+        {
+            if((availableValues[dieIndex] & (1<<i)) > 0)
+                result.Add(i);
+        }
+        return result.ToArray();
+    }
+
+    public int OppositeValues(int values)
+    {
+        int result = 0;
+        for(int i=0; i<6; i++)
+        {
+            if((values & (1 << i)) > 0)
+                result |=  1 << (5 - i);
+        }
+        return result;
+    }
+
+    public bool IsGraphValid()
+    {
+        ComputeEntanglementGraph();
+        int[] values = new int[DiceManager.instance.dice.Length];
+        for(int i=0; i<values.Length; i++)
+            values[i] = 0;
+        return CheckValidity(values, 0);
+    }
+
+    public bool CheckValidity(int[] values, int cursor)
+    {
+        if(cursor >= values.Length)
+            return true;
+        ComputeAvailableValues(values);
+        int[] availableValues = GetAvailableValues(cursor);
+        foreach(int availableValue in availableValues)
+        {
+            values[cursor] = availableValue + 1;
+            if(CheckValidity(values, cursor + 1))
+                return true;
+        }
+        values[cursor] = -1;
+        return false;
+    }
+
+    public override string ToString()
+    {
+        string result = "Forced Values : " + ArrayToString(forcedValues) + "\n";
+        result += "Available Values : \n";
+        for(int i=0; i<availableValues.Length; i++)
+        {
+            result += i + " : (";
+            for(int j=0; j<6; j++)
+            {
+                if((availableValues[i] & (1<<j)) > 0)
+                    result += (j+1);
+            }
+            result += ")\n";
+        }
+        return result;
+    }
+}
+
 public class DiceManager : MonoBehaviour
 {
     public static DiceManager instance;
@@ -306,6 +543,7 @@ public class DiceManager : MonoBehaviour
     public IntricationGroup[] intricationGroups;
     public System.Action diceRollDelegate;
     Graph graphDice;
+    DiceLinkGraph linkGraph = new DiceLinkGraph();
 
     public void Start()
     {
@@ -328,6 +566,12 @@ public class DiceManager : MonoBehaviour
     public void ValidateGraph()
     {
         graphDice.AddEdgesFromGroups(intricationGroups);
+        Debug.Log("Graph Validity : " + linkGraph.IsGraphValid());
+    }
+
+    public bool CheckGraphValidity()
+    {
+        return linkGraph.IsGraphValid();
     }
 
     public void Awake()
@@ -386,24 +630,35 @@ public class DiceManager : MonoBehaviour
     }
     public void RollDice(int diceIndex)
     {
-        Debug.Log($"Lancer du d�s {diceIndex} !");
+        Debug.Log($"Lancer du dés {diceIndex} !");
+        dice[diceIndex].value = -1;
+        linkGraph.ComputeEntanglementGraph();
+        int[] diceValues = new int[DiceManager.instance.dice.Length];
+        for(int i=0; i<diceValues.Length; i++)
+            diceValues[i] = DiceManager.instance.dice[i].value;
+        linkGraph.ComputeAvailableValues(diceValues);
 
-        System.Random random = new System.Random();
+        // System.Random random = new System.Random();
         //Debug.Log(graphDice.nodes[diceIndex].state.possibleValues);
-        int index = random.Next(graphDice.nodes[diceIndex].state.possibleValues.Count);
+        // int index = random.Next(graphDice.nodes[diceIndex].state.possibleValues.Count);
 
-        graphDice.BreadthFirstSearch(graphDice.nodes[diceIndex], graphDice.nodes[diceIndex].state.possibleValues[index]);
-        for(int i = 0; i < dice.Length; i++)
-        {
-            dice[i] = graphDice.nodes[i].state;
-        }
+        // graphDice.BreadthFirstSearch(graphDice.nodes[diceIndex], graphDice.nodes[diceIndex].state.possibleValues[index]);
+        int[] availableValues = linkGraph.GetAvailableValues(diceIndex);
+        int selectedValue = availableValues[UnityEngine.Random.Range(0, availableValues.Length)];
+        dice[diceIndex].value = selectedValue + 1;
+        diceValues[diceIndex] = selectedValue + 1;
+        Debug.Log(linkGraph);
+        linkGraph.ComputeEntanglementGraph();
+        linkGraph.ComputeAvailableValues(diceValues);
+        Debug.Log(linkGraph);
+        Debug.Log("Selected value : " + dice[diceIndex].value);
 
         diceRollDelegate?.Invoke();
 
         Debug.Log("GAGNER "+ Victory());
     }
 
-    public bool CheckVictoryCondition(List<VictoryCondition> condition,  List<GraphNode> diceValues)
+    public bool CheckVictoryCondition(List<VictoryCondition> condition)
     {
         bool IsVictory = true;
         foreach(VictoryCondition cond in config.conditions){
@@ -412,44 +667,44 @@ public class DiceManager : MonoBehaviour
                     {
                         case VictoryConditionType.NSupSum:
                             int sum = 0;
-                            for(int i=0; i<diceValues.Count; i++)
+                            for(int i=0; i<dice.Length; i++)
                             {
-                                sum += diceValues[i].state.value;
+                                sum += dice[i].value;
                             }
                             IsVictory &= sum >= cond.value;
                             break;
 
                         case VictoryConditionType.AllDifferentValues:
-                            IsVictory &= diceValues.Where(d => d.state.value != 0).Select(d => d.state.value).Distinct().Count() == cond.N;
+                            IsVictory &= dice.Where(d => d.value != 0).Select(d => d.value).Distinct().Count() == cond.N;
                             break;
 
                         case VictoryConditionType.NAllSame:
-                            IsVictory &= diceValues.Where(d => d.state.value != 0).GroupBy(d => d.state.value).Any(g => g.Count() == cond.N);
+                            IsVictory &= dice.Where(d => d.value != 0).GroupBy(d => d.value).Any(g => g.Count() == cond.N);
                             break;
                         case VictoryConditionType.MixedValues:
-                            int countSpecificValues = diceValues.Where(d => d.state.value != 0).Count(d => d.state.value == cond.value);
-                            int countOtherValues = diceValues.Count - countSpecificValues;
-                            IsVictory &= countSpecificValues == cond.N && countOtherValues == diceValues.Count - cond.N;
+                            int countSpecificValues = dice.Where(d => d.value != 0).Count(d => d.value == cond.value);
+                            int countOtherValues = dice.Length - countSpecificValues;
+                            IsVictory &= countSpecificValues == cond.N && countOtherValues == dice.Length - cond.N;
                             break;
                         case VictoryConditionType.PairValues:
-                            int countPairValues = diceValues.Count(d => (d.state.value % 2 == 0 && d.state.value !=0));
+                            int countPairValues = dice.Count(d => (d.value % 2 == 0 && d.value !=0));
                             IsVictory &= countPairValues == cond.N;
                             break;
                         case VictoryConditionType.ImpairValues:
-                            int countImpairValues = diceValues.Count(d => d.state.value % 2 == 1);
+                            int countImpairValues = dice.Count(d => d.value % 2 == 1);
                             IsVictory &= countImpairValues == cond.N;
                             break;
                         case VictoryConditionType.NSumEqual:
-                            var combinations = GetCombinations(diceValues.Where(d => d.state.value != 0).Select(d => d.state.value), cond.N);
+                            var combinations = GetCombinations(dice.Where(d => d.value != 0).Select(d => d.value), cond.N);
                             IsVictory &= combinations.Any(c => c.Sum() == cond.value);
                             break;
                         case VictoryConditionType.NOccurence:
-                            IsVictory &= diceValues.Where(d => d.state.value != 0)
-                                                    .GroupBy(d => d.state.value)
+                            IsVictory &= dice.Where(d => d.value != 0)
+                                                    .GroupBy(d => d.value)
                                                .Count(g => g.Count() >= cond.N) >= 2
                                                ||
-                                         diceValues.Where(d => d.state.value != 0)
-                                         .GroupBy(d => d.state.value)
+                                         dice.Where(d => d.value != 0)
+                                         .GroupBy(d => d.value)
                                                .Count(g => g.Count() >= 2*cond.N) >= 1
                                                ;
                             break;
@@ -466,7 +721,7 @@ public class DiceManager : MonoBehaviour
 
     public bool Victory()
     {
-        return CheckVictoryCondition(config.conditions, graphDice.nodes);
+        return CheckVictoryCondition(config.conditions);
     }
     public static IEnumerable<IEnumerable<T>> GetCombinations<T>(IEnumerable<T> list, int n)
     {
@@ -478,6 +733,4 @@ public class DiceManager : MonoBehaviour
                 GetCombinations(list.Skip(i + 1), n - 1).Select(c => (new[] { e }).Concat(c)));
         }
     }
-
-
 }

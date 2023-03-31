@@ -225,20 +225,22 @@ public class MouseInput : MonoBehaviour
 
         for(float time=0; time < storedPositions.Length * Time.fixedDeltaTime; time += Time.deltaTime)
         {
-            int stepIndex = Mathf.FloorToInt(time / Time.fixedDeltaTime);
-            die.transform.position = storedPositions[stepIndex];
-            float lerpRatio = Mathf.Clamp01(time / rotationOffsetDuration);
-            die.transform.rotation = storedRotations[stepIndex] * Quaternion.Lerp(Quaternion.identity, rotationOffset, 1 - (1-lerpRatio) * (1-lerpRatio));
+            if(die != null)
+            {
+                int stepIndex = Mathf.FloorToInt(time / Time.fixedDeltaTime);
+                die.transform.position = storedPositions[stepIndex];
+                float lerpRatio = Mathf.Clamp01(time / rotationOffsetDuration);
+                die.transform.rotation = storedRotations[stepIndex] * Quaternion.Lerp(Quaternion.identity, rotationOffset, 1 - (1-lerpRatio) * (1-lerpRatio));
+            }
             yield return null;
         }
         yield return null;
         int lastIndex = storedPositions.Length - 1;
-        Vector3 axis;
-        float angle;
-        rotationOffset.ToAngleAxis(out angle, out axis);
-        axis = die.transform.TransformDirection(axis);
-        die.transform.position = storedPositions[lastIndex];
-        die.transform.rotation = storedRotations[lastIndex] * rotationOffset;
+        if(die != null)
+        {
+            die.transform.position = storedPositions[lastIndex];
+            die.transform.rotation = storedRotations[lastIndex] * rotationOffset;
+        }
     }
 
     void FixedUpdate()

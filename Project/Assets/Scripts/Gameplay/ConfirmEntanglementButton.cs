@@ -53,7 +53,7 @@ public class ConfirmEntanglementButton : MonoBehaviour
             IntricationMode intricationMode = MouseToolSelector.instance.intricationToolMode;
             bool verificationR1 = true; //rip le nom :(
             bool verificationR2 = true;
-            bool verificationR3 = true; // regle qu'un des est liée a qu'un seul opposite
+            bool verificationR3 = true; // regle qu'un des est liï¿½e a qu'un seul opposite
 
             //if (diceInGroup.Length != 0)
             //{
@@ -92,7 +92,12 @@ public class ConfirmEntanglementButton : MonoBehaviour
                     }
                 }*/
             //}
-            button.interactable = verificationR3 && verificationR1 && diceInGroup != null && diceInGroup.Length > 1 && MouseToolSelector.instance.currentQuantumEnergy >= MouseToolSelector.instance.energyCost;
+            if(verificationR3 && verificationR1 && diceInGroup != null && diceInGroup.Length > 1 && MouseToolSelector.instance.currentQuantumEnergy >= MouseToolSelector.instance.energyCost)
+            {
+                button.interactable = DiceManager.instance.CheckGraphValidity();
+
+            }
+            else button.interactable = false;
         
         }
     }
